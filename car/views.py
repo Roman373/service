@@ -9,5 +9,12 @@ class MainPage(View):
 
         context = {
         }
-
         return render(request, 'index.html', context=context)
+
+
+class LoginPage(View):
+    def get(self, request):
+
+        context = {
+        }
+        return render(request, 'login.html', context=context)
