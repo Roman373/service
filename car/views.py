@@ -1,7 +1,13 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.views import View
+
+
+class VisitorPage(View):
+    def get(self, request):
+
+        context = {
+        }
+        return render(request, 'visitor.html', context=context)
 
 
 class MainPage(View):
@@ -18,3 +24,11 @@ class LoginPage(View):
         context = {
         }
         return render(request, 'login.html', context=context)
+
+
+class EnterPage(View):
+    def get(self, request):
+
+        context = {
+        }
+        return render(request, 'enter.html', context=context)
