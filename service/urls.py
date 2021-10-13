@@ -5,7 +5,7 @@ from car.views import MainPage, LoginPage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LoginPage.as_view()),
+    path('login', LoginPage.as_view()),
     path('', MainPage.as_view()),
     path('', MainPage.as_view())
 ]
