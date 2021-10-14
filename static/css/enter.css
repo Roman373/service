@@ -1,0 +1,35 @@
+.exit{
+  margin-top: 15%;
+}
+input {
+  border: none;
+  width: 35%;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  margin-inline:auto;
+  background-color: #bbb;
+}
+
+.exitBtn {
+  padding: 10px;
+  width: 25%;
+  background: #cb6262;
+  color: #ffffff;
+  font-size: 56px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin:auto auto;
+  bottom: 70px;
+  margin-top: 20px;
+}
+.exitBtn:hover {
+  background-color: #a8a7a7;
+}
+#nullExit{
+  text-align: center;
+  padding: 10px;
+  color: red;
+  font-size: 20px;
+}

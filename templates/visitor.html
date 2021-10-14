@@ -3,12 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/visitor.css'%}" type="text/css">
     <title>Гостевая страница</title>
 </head>
 <body>
-    <h1>Гостевая страница</h1>
-    <button id='btn' onclick="window.location.href='login.html'" class="exitBtn">Авторизация</button>
-    <button id='btn' onclick="window.location.href='enter.html'" class="exitBtn">Вход</button>
-
+<div class="exit">
+    <h1 style="text-align: center">Гостевая страница</h1>
+    <from>
+        <button id='btn' onclick="window.location.href='login.html'" class="exitBtn">Авторизация</button>
+        <button id='btn' onclick="window.location.href='enter.html'" class="exitBtn">Вход</button>
+    </from>
+</div>
 </body>
 </html>

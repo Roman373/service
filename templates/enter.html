@@ -3,18 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/login.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/enter.css'%}" type="text/css">
     <title>Вход</title>
 </head>
 <body>
     <div class="exit">
         <h2 style="text-align: center">Авторизация</h2>
-        <input type="text" placeholder="Логин" id="myLogin"><br>
-        <input type="password" placeholder="Пароль" id="myPassword">
-        <div id="nullExit"></div>
-        <div id="nullExit"></div>
+        <from>
+            <input type="text" placeholder="Логин" id="myLogin"><br>
+            <input type="password" placeholder="Пароль" id="myPassword">
+            <div id="nullExit"></div>
+        </from>
+
         <button id='btn' onclick="window.location.href='visitor.html'" class="exitBtn">Гостевую</button>
-        <button id='btn' onclick="window.location.href='index.html'" class="exitBtn">Войти</button>
+        <button id='btn' onclick=btn() class="exitBtn">Войти</button>
     </div>
     <script src="{% static 'js/enter.js' %}"></script>
 </body>

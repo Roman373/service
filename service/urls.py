@@ -9,5 +9,5 @@ urlpatterns = [
     path('visitor.html', VisitorPage.as_view()),
     path('login.html', LoginPage.as_view()),
     path('enter.html', EnterPage.as_view()),
-    path('index.html', MainPage.as_view())
+    path(r'index.html', MainPage.as_view())
 ]
