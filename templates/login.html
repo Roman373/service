@@ -7,16 +7,26 @@
     <title>Авторизация</title>
 </head>
 <body>
-<div class="exit">
+<div class="login">
     <h1 style="text-align: center">Авторизация</h1>
     <form>
-        <input type="text" placeholder="Фамилия"/>
-        <input type="text" placeholder="Имя"/>
-        <input type="text" placeholder="Логин"/>
-        <input type="password" placeholder="Пароль"/>
+        <label>
+            <input type="text" placeholder="Фамилия"/>
+        </label><br>
+        <label>
+            <input type="text" placeholder="Имя"/>
+        </label><br>
+        <label>
+            <input type="text" placeholder="Логин"/>
+        </label><br>
+        <label>
+            <input type="password" placeholder="Пароль"/>
+        </label><br>
     </form>
-    <button id='btn' onclick="window.location.href='visitor.html'" class="exitBtn">Гостевую</button>
-    <button id='btn' onclick="window.location.href='enter.html'" class="exitBtn">Зарегистрироваться</button>
+    <div class="btton">
+        <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Назад</button>
+        <button id='btn' onclick="window.location.href='enter.html'" class="enterBtn">Зарегистрироваться</button>
+    </div>
 </div>
 </body>
 </html>

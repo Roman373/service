@@ -1,35 +1,100 @@
-.exit{
-  margin-top: 15%;
-}
-input {
-  border: none;
-  width: 35%;
-  padding: 10px;
-  font-size: 16px;
-  display: flex;
-  margin-inline:auto;
-  background-color: #bbb;
+.gradient{
+  background: black;
+  height: 390px;
+  color: #fafafa;
+  width:100%;
 }
 
-.exitBtn {
-  padding: 10px;
-  width: 25%;
-  background: #cb6262;
-  color: #ffffff;
-  font-size: 56px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  margin:auto auto;
-  bottom: 70px;
-  margin-top: 20px;
+.hat{
+  background: black;
+  margin-bottom: 1px;
 }
-.exitBtn:hover {
+
+.text-fon{
+  color: #fafafa;
+  width: 550px;
+  text-align: center;
+  padding-right: 100px;
+  padding-top: 90px;
+  padding-bottom: 30px;
+}
+
+.address{
+  font-size: 25px;
+  color: #fafafa;
+  margin-right: 210px;
+  text-decoration: underline;
+}
+
+.spang{
+  margin-left: 70px;
+  margin-top: 70px;
+  font-size: 40px;
+  color: #fafafa;
+  font-weight: normal;
+}
+.btton{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.bton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: black;
+}
+
+.phoneBtn{
+  width: 20%;
+  background: #ecb832;
+  color: #000000;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: 20px;
+  height: 30px;
+  font-weight: normal;
+}
+.serviceBtn{
+  width: 20%;
+  background: #ecb832;
+  color: #000000;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: 20px;
+  height: 30px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+.loginBtn {
+  float: right;
+  width: 10%;
+  background: #ecb832;
+  color: #000000;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: 20px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.enterBtn {
+  float: right;
+  width: 5%;
+  background: #ecb832;
+  color: #000000;
+  font-size: 15px;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 20px;
+  height: 30px;
+}
+
+.loginBtn:hover {
   background-color: #a8a7a7;
 }
-#nullExit{
-  text-align: center;
-  padding: 10px;
-  color: red;
-  font-size: 20px;
+
+.enterBtn:hover {
+  background-color: #a8a7a7;
 }

@@ -1,6 +1,13 @@
-.exit{
-  margin-top: 15%;
+.login{
+  margin-top: 10%;
 }
+
+.btton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 input {
   border: none;
   width: 35%;
@@ -8,28 +15,37 @@ input {
   font-size: 16px;
   display: flex;
   margin-inline:auto;
-  background-color: #bbb;
+  justify-content: center;
+  background-color: #d0d0d0;
 }
 
-.exitBtn {
-  padding: 10px;
-  width: 25%;
-  background: #cb6262;
-  color: #ffffff;
-  font-size: 56px;
-  cursor: pointer;
-  display: flex;
+.visitBtn{
+  width: 10%;
+  height: 35px;
+  color: #3c75e8;
+  font-size: 25px;
+  display: inline-block;
   justify-content: center;
-  margin:auto auto;
+  bottom: 70px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.enterBtn {
+  width: 20%;
+  height: 35px;
+  color: #3c75e8;
+  font-size: 25px;
+  display: inline-block;
+  justify-content: center;
   bottom: 70px;
   margin-top: 20px;
 }
-.exitBtn:hover {
+
+.visitBtn:hover {
   background-color: #a8a7a7;
 }
-#nullExit{
-  text-align: center;
-  padding: 10px;
-  color: red;
-  font-size: 20px;
+
+.enterBtn:hover {
+  background-color: #a8a7a7;
 }

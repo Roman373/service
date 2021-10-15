@@ -14,9 +14,10 @@
             <input type="password" placeholder="Пароль" id="myPassword">
             <div id="nullExit"></div>
         </from>
-
-        <button id='btn' onclick="window.location.href='visitor.html'" class="exitBtn">Гостевую</button>
-        <button id='btn' onclick=btn() class="exitBtn">Войти</button>
+        <div class="btton">
+            <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
+            <button id='btn' onclick=btn() class="enterBtn">Войти</button>
+        </div>
     </div>
     <script src="{% static 'js/enter.js' %}"></script>
 </body>
