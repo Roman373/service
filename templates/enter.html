@@ -1,12 +1,14 @@
+{% extends 'index.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+{% block link %}
     <link rel="stylesheet" href="{% static 'css/enter.css'%}" type="text/css">
-    <title>Вход</title>
-</head>
-<body>
+{% endblock %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
     <div class="exit">
         <h2 style="text-align: center">Авторизация</h2>
         <from>
@@ -16,9 +18,8 @@
         </from>
         <div class="btton">
             <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
-            <button id='btn' onclick=btn() class="enterBtn">Войти</button>
+            <button id='btn' onclick="window.location.href='home.html'" class="enterBtn">Войти</button>
         </div>
     </div>
     <script src="{% static 'js/enter.js' %}"></script>
-</body>
-</html>
+{% endblock %}

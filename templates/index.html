@@ -3,15 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/index.css'%}" type="text/css">
-    <title>Главная</title>
+    {% block link %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<div class="exit">
-    <div class="btton">
-        <h1 style="text-align: center; margin-right: 500px;">Главная</h1>
-        <button id='btn' onclick="window.location.href='visitor.html'" class="exitBtn">Выйти</button>
-    </div>
-</div>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

@@ -32,13 +32,6 @@ body{
   text-decoration: underline;
 }
 
-.spang{
-  margin-left: 70px;
-  margin-top: 70px;
-  font-size: 40px;
-  color: #fafafa;
-  font-weight: normal;
-}
 .btton{
   display: flex;
   flex-direction: row;

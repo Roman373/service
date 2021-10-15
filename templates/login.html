@@ -1,13 +1,14 @@
+{% extends 'index.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+{% block link %}
     <link rel="stylesheet" href="{% static 'css/login.css'%}" type="text/css">
-    <title>Авторизация</title>
-</head>
-<body>
-<div class="login">
+{% endblock %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+    <div class="login">
     <h1 style="text-align: center">Авторизация</h1>
     <form>
         <label>
@@ -28,5 +29,4 @@
         <button id='btn' onclick="window.location.href='enter.html'" class="enterBtn">Зарегистрироваться</button>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

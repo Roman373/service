@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/home.css'%}" type="text/css">
+{% endblock %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="exit">
+    <div class="btton">
+        <h1 style="text-align: center; margin-right: 500px;">Главная</h1>
+        <button id='btn' onclick="window.location.href='visitor.html'" class="exitBtn">Выйти</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,20 +1,24 @@
+{% extends 'index.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+{% block link %}
     <link rel="stylesheet" href="{% static 'css/visitor.css'%}" type="text/css">
-    <title>Гостевая страница</title>
-</head>
-<body>
+{% endblock %}
+
+{% block title %}Гостевая страница{% endblock %}
+
+{% block content %}
     <div class="image">
             <div class="hat">
                 <div class="btton">
                     <div class="address">
-                        <p>	&#9742; 227-27-27 &#10155;  Екатеринбург, ул.Металлургов 34 &#9993; info3243044@yandex.ru</p>
+                        <p>	&#9742; 227-27-27 &#10155;  Екатеринбург,
+                            ул.Металлургов 34 &#9993; info3243044@yandex.ru</p>
                     </div>
-                    <button id='btn' onclick="window.location.href='login.html'" class="loginBtn">Авторизация</button>
-                    <button id='btn' onclick="window.location.href='enter.html'" class="enterBtn">Вход</button>
+                    <button id='btn' onclick="window.location.href='login.html'"
+                            class="loginBtn">Авторизация</button>
+                    <button id='btn' onclick="window.location.href='enter.html'"
+                            class="enterBtn">Вход</button>
                 </div>
             </div>
             <div class="gradient">
@@ -26,23 +30,11 @@
                     <img src="static/css/images/car_image.webp" style="float: right; width: 40%">
                 </div>
                 <div class="bton">
-                    <button id='btn' onclick="window.location.href='/'" class="phoneBtn">Заказать обратный звонок</button>
-                    <button id='btn' onclick="window.location.href='/'" class="serviceBtn">Записаться на осмотр и ремонт</button>
+                    <button id='btn' onclick="window.location.href='order_phone.html'" class="phoneBtn">
+                        Заказать обратный звонок</button>
+                    <button id='btn' onclick="window.location.href='/'" class="serviceBtn">
+                        Записаться на осмотр и ремонт</button>
                 </div>
             </div>
-
-            <div class="spang">
-                <span>
-                    Режим работы<br>
-                    Понедельник:<br>
-                    Вторник:<br>
-                    Среда:<br>
-                    Четверг: 9:00 20:00<br>
-                    Пятница:<br>
-                    Суббота:<br>
-                    Воскресенье:<br>
-                </span>
-            </div>
     </div>
-</body>
-</html>
+{% endblock %}

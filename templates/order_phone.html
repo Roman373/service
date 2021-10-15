@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/order_phone.css'%}" type="text/css">
+{% endblock %}
+
+{% block title %}Обратный звонок{% endblock %}
+
+{% block content %}
+    <form>
+        <input type="text" placeholder="Имя" required/><br>
+        <input type="text" placeholder="Фамилия" required/><br>
+        <input type="tel" placeholder="Телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/><br>
+        <button type="button" class="submit" onclick="window.location.href='/'">Отправить заявку</button>
+    </form>
+{% endblock %}
