@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/appointment.css'%}" type="text/css">
+{% endblock %}
+
+{% block title %}Запись на прием{% endblock %}
+
+{% block content %}
+    <form>
+        <label>
+            <input type="text" placeholder=""/>
+        </label><br>
+        <label>
+            <input type="text" placeholder=""/>
+        </label><br>
+        <label>
+            <input type="text" placeholder=""/>
+        </label><br>
+        <label>
+            <input type="text" placeholder=""/>
+        </label><br>
+    </form>
+    <div class="bton">
+            <button onclick="window.location.href='visitor.html'" class="backBtn">
+                Назад</button>
+            <button onclick="window.location.href='/'" class="appointBtn">
+                Записаться</button>
+    </div>
+{% endblock %}

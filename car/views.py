@@ -36,3 +36,10 @@ class PhonePage(TemplateView):
 
         context = {}
         return render(request, 'order_phone.html', context=context)
+
+
+class AppointmentPage(TemplateView):
+    def get(self, request):
+
+        context = {}
+        return render(request, 'appointment.html', context=context)
