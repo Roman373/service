@@ -10,21 +10,26 @@
 {% block content %}
     <div class="login">
     <h1 style="text-align: center">Авторизация</h1>
-    <form>
+    <form method="post">
+        {% csrf_token %}
         <label>
             <p>Фамилия:</p>
-            <input type="text" placeholder="Ваша фамилия"/>
+            {{ form.surname }}
+            <input type="text" placeholder="Ваша фамилия" name="surname"/>
         </label>
         <label>
             <p>Имя:</p>
-            <input type="text" placeholder="Ваше имя"/>
+            {{ form.name }}
+            <input type="text" placeholder="Ваше имя" name=""/>
         </label>
         <label>
             <p>Логин:</p>
+            {{ form.login }}
             <input type="text" placeholder="Ваш логин"/>
         </label>
         <label>
             <p>Пароль:</p>
+            {{ form.password }}
             <input type="password" placeholder="Ваш пароль"/>
         </label><br>
     </form>

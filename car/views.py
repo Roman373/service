@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
+
+from car.forms import *
 
 
 class VisitorPage(TemplateView):
@@ -8,6 +10,7 @@ class VisitorPage(TemplateView):
 
         context = {}
         return render(request, 'visitor.html', context=context)
+
 
 
 class MainPage(TemplateView):
@@ -20,7 +23,9 @@ class MainPage(TemplateView):
 class LoginPage(TemplateView):
     def get(self, request):
 
-        context = {}
+        context = {
+
+        }
         return render(request, 'login.html', context=context)
 
 
