@@ -1,25 +1,43 @@
 body{
-  margin-top: 200px;
+  margin-top: 10%;
 }
 input {
   border: none;
   width: 35%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   margin-inline:auto;
   justify-content: center;
   background-color: #d0d0d0;
 }
-.submit{
-   width: 20%;
+.submitBtn{
+   width: 15%;
   height: 35px;
   color: #000000;
   background: #ecb832;
-  font-size: 25px;
+  font-size: 15px;
   bottom: 70px;
   margin-top: 20px;
-  display: flex;
-  margin-inline:auto;
   justify-content: center;
+  margin-left: 5px;
+}
+.backBtn{
+  width: 15%;
+  height: 35px;
+  color: #000000;
+  background: #ecb832;
+  font-size: 15px;
+  bottom: 70px;
+  margin-top: 20px;
+  justify-content: center;
+  margin-right: 5px;
+}
+.btton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+p{
+  margin-left: 33%;
 }

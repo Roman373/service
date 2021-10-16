@@ -1,11 +1,11 @@
 .exit{
-  margin-top: 15%;
+  margin-top: 13%;
 }
 input {
   border: none;
   width: 35%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   margin-inline:auto;
   background-color: #d5d4d4;
@@ -16,10 +16,12 @@ input {
   justify-content: center;
 }
 .enterBtn {
-  width: 100px;
-  height: 35px;
-  color: #3c75e8;
-  font-size: 25px;
+  padding-top: 4px;
+  width: 150px;
+  height: 30px;
+  color: #000000;
+  background: #ecb832;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -28,10 +30,12 @@ input {
   margin-top: 20px;
 }
 .visitBtn {
-  width: 130px;
-  height: 35px;
-  color: #3c75e8;
-  font-size: 25px;
+  padding-top: 4px;
+  width: 150px;
+  height: 30px;
+  color: #000000;
+  background: #ecb832;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -50,4 +54,7 @@ input {
   padding: 10px;
   color: red;
   font-size: 20px;
+}
+p{
+  margin-left: 33%;
 }

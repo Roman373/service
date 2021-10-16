@@ -8,24 +8,27 @@
 {% block title %}Запись на прием{% endblock %}
 
 {% block content %}
+    <h1 style="text-align: center; margin-top: 70px">Запись на прием</h1>
     <form>
         <label>
-            <input type="text" placeholder=""/>
-        </label><br>
+            <p>Имя:</p>
+            <input type="text" placeholder="Ваше имя" required/>
+        </label>
         <label>
-            <input type="text" placeholder=""/>
-        </label><br>
+            <p>Телефон:</p>
+            <input type="tel" placeholder="Ваш телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/>
+        </label>
         <label>
-            <input type="text" placeholder=""/>
-        </label><br>
+            <p>Автомобиль:</p>
+            <input type="text" placeholder="Ваш автомобиль" required/>
+        </label>
         <label>
-            <input type="text" placeholder=""/>
-        </label><br>
+            <p>Дата осмотра/ремонта</p>
+            <input type="date" required/>
+        </label>
     </form>
     <div class="bton">
-            <button onclick="window.location.href='visitor.html'" class="backBtn">
-                Назад</button>
-            <button onclick="window.location.href='/'" class="appointBtn">
-                Записаться</button>
+        <button onclick="window.location.href='visitor.html'" class="backBtn">Назад</button>
+        <button onclick="window.location.href='/'" class="appointBtn">Записаться</button>
     </div>
 {% endblock %}

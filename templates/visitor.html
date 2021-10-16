@@ -8,12 +8,16 @@
 {% block title %}Гостевая страница{% endblock %}
 
 {% block content %}
-    <div class="image">
             <div class="hat">
                 <div class="btton">
                     <div class="address">
-                        <p>	&#9742; 227-27-27 &#10155;  Екатеринбург,
-                            ул.Металлургов 34 &#9993; info3243044@yandex.ru</p>
+                        <span>&#9990;<a href="https://wa.me/79962912643?text=Меня%20интересует%20ремонт%20авто">
+                            79962912643</a>
+                            <img src="static/css/images/icon_map.png" style="width: 20px;height: 20px">
+
+                            <a href="https://yandex.ru/maps/54/yekaterinburg/?ll=60.539261%2C56.830600&mode=routes&rtext=~56.830448%2C60.539731&rtt=comparison&ruri=~">
+                                Екатеринбург, ул.Крауля 77А</a>
+                        &#9993;<a href="mailto:roman.izibaeff2017@yandex.ru"> roman.izibaeff2017@yandex.ru</a></span>
                     </div>
                     <button id='btn' onclick="window.location.href='login.html'"
                             class="loginBtn">Авторизация</button>
@@ -36,5 +40,4 @@
                         Записаться на осмотр и ремонт</button>
                 </div>
             </div>
-    </div>
 {% endblock %}
