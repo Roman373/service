@@ -9,7 +9,8 @@
 
 {% block content %}
     <h1 style="text-align: center; margin-top: 70px">Запись на прием</h1>
-    <form>
+    <form id="zatemnenie">
+    <div id="okno">
         <label>
             <p>Имя:</p>
             <input type="text" placeholder="Ваше имя" required/>
@@ -26,6 +27,7 @@
             <p>Дата осмотра/ремонта</p>
             <input type="date" required/>
         </label>
+        </div>
     </form>
     <div class="bton">
         <button onclick="window.location.href='visitor.html'" class="backBtn">Назад</button>
