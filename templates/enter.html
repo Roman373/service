@@ -13,16 +13,14 @@
         <h2 style="text-align: center">Авторизация</h2>
         <from>
             <p>Логин</p>
-            <input type="text" placeholder="Ваш логин" id="myLogin">
+            {{ form.login}}
             <p>Пароль</p>
-            <input type="password" placeholder="Ваш пароль" id="myPassword">
+            {{ form.password}}
             <div id="nullExit"></div>
         </from>
         <div class="btton">
-
             <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
             <button id='btn' onclick="window.location.href='home.html'" class="enterBtn">Войти</button>
         </div>
     </div>
-    <script src="{% static 'js/enter.js' %}"></script>
 {% endblock %}

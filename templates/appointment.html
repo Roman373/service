@@ -9,7 +9,30 @@
 
 {% block content %}
     <h1 style="text-align: center; margin-top: 70px">Запись на прием</h1>
-    <form id="zatemnenie">
+    <form id="my" method="post">
+        {% csrf_token %}
+
+        <p>Модель вашего автомобиля</p>
+        {{ form.car_model }}
+        <p>Регистрационный знак</p>
+        {{ form.register_sign }}
+        <p>Цвет автомобиля</p>
+        {{form.car_color }}
+        <p>Год выпуска</p>
+        {{ form.year_issue }}
+        <p>№ двигателя</p>
+        {{ form.engine_number }}
+        <p>№ кузова</p>
+        {{ form.body_number }}
+        <p>VIN</p>
+        {{ form.vin }}
+        <p>Пробег</p>
+        {{ form.mileage }}
+        <p>Телефон</p>
+        {{ form.telephone}}
+        <span> {{ error }}</span>
+    </form>
+    <form >
     <div id="okno">
         <label>
             <p>Имя:</p>

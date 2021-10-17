@@ -12,26 +12,15 @@
     <h1 style="text-align: center">Авторизация</h1>
     <form method="post">
         {% csrf_token %}
-        <label>
-            <p>Фамилия:</p>
-            {{ form.surname }}
-            <input type="text" placeholder="Ваша фамилия" name="surname"/>
-        </label>
-        <label>
             <p>Имя:</p>
             {{ form.name }}
-            <input type="text" placeholder="Ваше имя" name=""/>
-        </label>
-        <label>
             <p>Логин:</p>
             {{ form.login }}
-            <input type="text" placeholder="Ваш логин"/>
-        </label>
-        <label>
             <p>Пароль:</p>
             {{ form.password }}
-            <input type="password" placeholder="Ваш пароль"/>
-        </label><br>
+            <p>Телефон:</p>
+            {{ form.telephone }}
+        <span> {{ error }}</span>
     </form>
     <div class="btton">
         <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Назад</button>

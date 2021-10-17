@@ -11,11 +11,10 @@
     <h1 style="text-align: center">Обратный звонок</h1>
     <form>
         <p>Имя:</p>
-        <input type="text" placeholder="Ваше имя" required/>
-        <p>Фамилия:</p>
-        <input type="text" placeholder="Ваша фамилия" required/>
+        {{ form.name }}
         <p>Телефон:</p>
-        <input type="tel" placeholder="Телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/>
+        {{ form.telephone }}
+        <span> {{ error }}</span>
         <div class="btton">
             <button type="button" class="backBtn" onclick="window.location.href='/'">Назад</button>
             <button type="button" class="submitBtn" onclick="window.location.href='/'">Отправить заявку</button>

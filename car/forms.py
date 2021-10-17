@@ -2,14 +2,11 @@ from django.forms import *
 from car.models import *
 
 
-class LoginForm(Form):
+class LoginForm(ModelForm):
     class Meta:
-        fields = ['surname', 'name', 'login', 'password', "telephone"]
-
+        fields = ['name', 'login', 'password', "telephone"]
+        model = User
         widgets = {
-            "surname": TextInput(attrs={
-                'placeholder': "Ваша фамилия"
-            }),
             "name": TextInput(attrs={
                 'placeholder': "Ваше имя"
             }),
@@ -28,50 +25,69 @@ class LoginForm(Form):
 class EnterForm(ModelForm):
     class Meta:
         fields = ['login', 'password']
-
+        model = User
         widgets = {
             "login": TextInput(attrs={
-                'placeholder': "Ваш логин"
+                'placeholder': "Ваш логин",
+                'id': "myPassword"
             }),
             "password": PasswordInput(attrs={
-                'placeholder': "Ваш пароль"
+                'placeholder': "Ваш пароль",
+                'id': "myLogin"
             })
         }
 
 
 class AppointmentForm(ModelForm):
     class Meta:
-        fields = ['name', 'phone', 'car','data']
-
+        fields = ['car_model', 'register_sign', 'car_color',
+                  'year_issue', 'engine_number', 'body_number',
+                  'vin', 'mileage', 'client_id']
+        model = Car
         widgets = {
-            "name": TextInput(attrs={
-                'placeholder': "Ваше имя"
+            "car_model": TextInput(attrs={
+                'placeholder': "Модель вашего автомобиля"
             }),
-            "phone": NumberInput(attrs={
-                'placeholder': "Ваш логин",
-                'value': '+7'
+            "register_sign": TextInput(attrs={
+                'placeholder': "Регистрационный знак",
             }),
-            "car": TextInput(attrs={
-                'placeholder': "Ваш автомобиль"
+            "car_color": TextInput(attrs={
+                'placeholder': "Цвет автомобиля"
             }),
-            "data": DateInput(attrs={
+            "year_issue": NumberInput(attrs={
+                'placeholder': "Год выпуска"
+            }),
+            "engine_number": TextInput(attrs={
+                'placeholder': "№ двигателя"
+            }),
+            "body_number": TextInput(attrs={
+                'placeholder': "№ кузова"
+            }),
+            "vin": TextInput(attrs={
+                'placeholder': "VIN"
+            }),
+            "mileage": NumberInput(attrs={
+                'placeholder': "Пробег"
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Телефон"
             })
         }
 
 
 class OrderPhoneForm(ModelForm):
     class Meta:
-        fields = ['surname', 'name', 'phone']
-
+        fields = ['name', 'telephone']
+        model = User
+        name = User.name
+        telephone = User.telephone
         widgets = {
-            "surname": TextInput(attrs={
-                'placeholder': "Ваша фамилия"
-            }),
             "name": TextInput(attrs={
-                'placeholder': "Ваше имя"
+                'placeholder': "Ваше имя",
+                "value": "name"
             }),
-            "phone": TextInput(attrs={
-                'placeholder': "Ваш логин",
-                'value': "+7"
+            "telephone": TextInput(attrs={
+                'placeholder': "Ваш телефон",
+                'value': "+telephone"
             })
         }
