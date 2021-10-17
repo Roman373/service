@@ -5,7 +5,7 @@ from car.models import *
 class LoginForm(Form):
     class Meta:
         fields = ['surname', 'name', 'login', 'password', "telephone"]
-        model = User
+
         widgets = {
             "surname": TextInput(attrs={
                 'placeholder': "Ваша фамилия"

@@ -47,7 +47,9 @@ class Spare(models.Model):
 
 class TypesJob(models.Model):
     name_work = models.CharField(max_length=40)
-    cost_work = models.DecimalField(6, 2)
+    X = 2
+    Y = 8
+    cost_work = models.DecimalField(decimal_places=X, max_digits=Y)
     lead_time = models.IntegerField(max_length=4)
     guarantee = models.CharField(max_length=200)
 
@@ -56,7 +58,9 @@ class WorkOrder(models.Model):
     date_appeal = models.DateField()
     date_completion = models.DateField()
     reason_petition = models.CharField(max_length=1000)
-    total_cost = models.DecimalField(6, 2)
+    X = 2
+    Y = 8
+    total_cost = models.DecimalField(decimal_places = X, max_digits = Y)
     order_status = models.CharField(max_length=20)
     car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
     stuff_id = models.ForeignKey(Stuff, on_delete=models.CASCADE)
