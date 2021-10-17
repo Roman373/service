@@ -1,10 +1,11 @@
 from django.forms import *
+from car.models import *
 
 
 class LoginForm(Form):
     class Meta:
-        fields = ['surname', 'name', 'login', 'password']
-
+        fields = ['surname', 'name', 'login', 'password', "telephone"]
+        model = User
         widgets = {
             "surname": TextInput(attrs={
                 'placeholder': "Ваша фамилия"
@@ -17,13 +18,16 @@ class LoginForm(Form):
             }),
             "password": PasswordInput(attrs={
                 'placeholder': "Ваш пароль"
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Ваш телефон"
             })
         }
 
 
-class EnterForm(Form):
+class EnterForm(ModelForm):
     class Meta:
-        fields = [ 'login', 'password']
+        fields = ['login', 'password']
 
         widgets = {
             "login": TextInput(attrs={
@@ -35,7 +39,7 @@ class EnterForm(Form):
         }
 
 
-class AppointmentForm(Form):
+class AppointmentForm(ModelForm):
     class Meta:
         fields = ['name', 'phone', 'car','data']
 
@@ -55,7 +59,7 @@ class AppointmentForm(Form):
         }
 
 
-class OrderphoneForm(Form):
+class OrderPhoneForm(ModelForm):
     class Meta:
         fields = ['surname', 'name', 'phone']
 
