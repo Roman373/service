@@ -21,21 +21,28 @@ class MainPage(TemplateView):
 
 class LoginPage(TemplateView):
     def get(self, request):
+        return render(request, 'login.html', context={"form": LoginForm})
+
+
+    def post(self, request):
         error = ""
+
         if request.method == 'POST':
             form = LoginForm(request.POST)
+
             if form.is_valid():
                 form.save()
-                return redirect('login.html')
+                return redirect('visitor.html')
             else:
                 error = "Ошибка формы"
-        form = LoginForm()
+
 
         context = {
             'form': form,
             'error': error
         }
         return render(request, 'login.html', context=context)
+
 
 
 class EnterPage(TemplateView):

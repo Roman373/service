@@ -21,10 +21,11 @@
             <p>Телефон:</p>
             {{ form.telephone }}
         <span> {{ error }}</span>
-    </form>
-    <div class="btton">
-        <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Назад</button>
-        <button id='btn' onclick="window.location.href='enter.html'" class="enterBtn">Зарегистрироваться</button>
+        <div class="btton">
+        <button  onclick="window.location.href='visitor.html'" class="visitBtn">Назад</button>
+        <button type="submit" class="enterBtn">Зарегистрироваться</button>
     </div>
+    </form>
+
 </div>
 {% endblock %}
