@@ -132,7 +132,7 @@ a{
 }
 li{
   border: 2px solid rgb(109, 129, 112);
-  background: rgba(39, 178, 8, 0.22);
+  background: rgba(65, 150, 79, 0.22);
   color: #000000;
   font-size: 25px;
   text-align: left;
@@ -145,7 +145,13 @@ li{
 }
 #price{
   text-align: left;
-  width: 80%;
-  margin-left: 10%;
-  font-size: 20px;
+  font-size: 19px;
+  background: black;
+  color: #fafafa;
+}
+#pr1{
+  width: 90%;
+  margin-left: 50px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
