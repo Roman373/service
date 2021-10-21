@@ -1,5 +1,6 @@
 import enter as enter
-from django.contrib.auth import authenticate
+import password
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -28,10 +29,8 @@ class LoginPage(View):
 
     def post(self, request):
         error = ""
-
         if request.method == 'POST':
             form = LoginForm(request.POST)
-
             if form.is_valid():
                 form.save()
                 return redirect('visitor.html')
@@ -54,17 +53,14 @@ class EnterPage(View):
 
         if request.method == 'POST':
             form = EnterForm(request.POST)
-            login = request.POST['login']
-            password = request.POST['password']
-            user = authenticate(login=login, password=password)
-            if form.is_valid() & user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('home.html')
 
+            user = authenticate(login=login, password=password)
+            if form.is_valid():
+                if check_password(form.password, request.User.password):
+
+                    return redirect('home.html')
             else:
                 error = "Ошибка формы"
-        form = EnterForm()
         context = {
             'form': form,
             'error': error
