@@ -1,28 +1,30 @@
+import enter as enter
+from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import check_password
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
-
 from car.forms import *
 
 
-class VisitorPage(TemplateView):
+class VisitorPage(View):
     def get(self, request):
 
         context = {}
         return render(request, 'visitor.html', context=context)
 
 
-class MainPage(TemplateView):
+class MainPage(View):
     def get(self, request):
 
         context = {}
         return render(request, 'home.html', context=context)
 
 
-class LoginPage(TemplateView):
+class LoginPage(View):
     def get(self, request):
         return render(request, 'login.html', context={"form": LoginForm})
-
 
     def post(self, request):
         error = ""
@@ -36,7 +38,6 @@ class LoginPage(TemplateView):
             else:
                 error = "Ошибка формы"
 
-
         context = {
             'form': form,
             'error': error
@@ -44,19 +45,26 @@ class LoginPage(TemplateView):
         return render(request, 'login.html', context=context)
 
 
-
-class EnterPage(TemplateView):
+class EnterPage(View):
     def get(self, request):
+        return render(request, 'enter.html', context={"form": EnterForm})
+
+    def post(self, request):
         error = ""
+
         if request.method == 'POST':
             form = EnterForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('enter.html')
+            login = request.POST['login']
+            password = request.POST['password']
+            user = authenticate(login=login, password=password)
+            if form.is_valid() & user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('home.html')
+
             else:
                 error = "Ошибка формы"
         form = EnterForm()
-
         context = {
             'form': form,
             'error': error
@@ -64,7 +72,7 @@ class EnterPage(TemplateView):
         return render(request, 'enter.html', context=context)
 
 
-class PhonePage(TemplateView):
+class PhonePage(View):
     def get(self, request):
         error = ""
         if request.method == 'POST':
@@ -83,7 +91,7 @@ class PhonePage(TemplateView):
         return render(request, 'order_phone.html', context=context)
 
 
-class AppointmentPage(TemplateView):
+class AppointmentPage(View):
     def get(self, request):
         error = ""
         if request.method == 'POST':

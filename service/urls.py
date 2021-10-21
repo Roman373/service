@@ -1,6 +1,9 @@
+from venv import create
+
 from django.contrib import admin
 from django.urls import path
 
+from car import views
 from car.views import *
 
 urlpatterns = [
@@ -11,5 +14,5 @@ urlpatterns = [
     path('enter.html', EnterPage.as_view()),
     path('home.html', MainPage.as_view()),
     path('order_phone.html', PhonePage.as_view()),
-    path('appointment.html', AppointmentPage.as_view())
+    path('appointment.html', AppointmentPage.as_view()),
 ]

@@ -4,11 +4,14 @@ from car.models import *
 
 class LoginForm(ModelForm):
     class Meta:
-        fields = ['name', 'login', 'password', "telephone"]
         model = User
+        fields = ['name', 'lastname', 'login', 'password', "telephone"]
         widgets = {
             "name": TextInput(attrs={
                 'placeholder': "Ваше имя"
+            }),
+            "lastname": TextInput(attrs={
+                'placeholder': "Ваша фамилия"
             }),
             "login": TextInput(attrs={
                 'placeholder': "Ваш логин"
