@@ -1,4 +1,6 @@
-import form as form
-from django.http import HttpResponseRedirect
-from tasks.model import render
 from car.models import *
+
+
+def autoriz(login, password):
+    users = User.objects.filter(login=login, password=password)
+    return users

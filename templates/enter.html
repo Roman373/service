@@ -11,17 +11,17 @@
 {% block content %}
     <div class="exit">
         <h2 style="text-align: center">Авторизация</h2>
-        <from method="post" name=""/>
+        <form method="post">
             {% csrf_token %}
-                <p>Логин</p>
-                {{ form.login}}
-                <p>Пароль</p>
-                {{ form.password}}
-                <span> {{ error }}</span>
-                <div class="btton">
-                    <button onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
-                    <button type="submit" name="submit" class="enterBtn">Войти</button>
-                </div>
-        </from>
+        <p>Логин</p>
+        {{ form.login }}
+        <p>Пароль</p>
+        {{ form.password }}
+        <div class="btton">
+            <button onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
+            <button type="submit" class="enterBtn">Вход</button>
+        </div>
+        </form>
+        <div id="nullExit">{{ message }}</div>
     </div>
 {% endblock %}

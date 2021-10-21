@@ -82,15 +82,49 @@ class OrderPhoneForm(ModelForm):
     class Meta:
         fields = ['name', 'telephone']
         model = User
-        name = User.name
-        telephone = User.telephone
         widgets = {
             "name": TextInput(attrs={
-                'placeholder': "Ваше имя",
-                "value": "name"
+                'placeholder': "Ваше имя"
             }),
             "telephone": TextInput(attrs={
                 'placeholder': "Ваш телефон",
-                'value': "+telephone"
+                'value': "+7"
+            })
+        }
+
+
+class NOnameForm(ModelForm):
+    class Meta:
+        fields = ['car_model', 'register_sign', 'car_color',
+                  'year_issue', 'engine_number', 'body_number',
+                  'vin', 'mileage', 'client_id']
+        model = Car
+        widgets = {
+            "car_model": TextInput(attrs={
+                'placeholder': "Модель вашего автомобиля"
+            }),
+            "register_sign": TextInput(attrs={
+                'placeholder': "Регистрационный знак",
+            }),
+            "car_color": TextInput(attrs={
+                'placeholder': "Цвет автомобиля"
+            }),
+            "year_issue": NumberInput(attrs={
+                'placeholder': "Год выпуска"
+            }),
+            "engine_number": TextInput(attrs={
+                'placeholder': "№ двигателя"
+            }),
+            "body_number": TextInput(attrs={
+                'placeholder': "№ кузова"
+            }),
+            "vin": TextInput(attrs={
+                'placeholder': "VIN"
+            }),
+            "mileage": NumberInput(attrs={
+                'placeholder': "Пробег"
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Телефон"
             })
         }

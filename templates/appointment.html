@@ -34,26 +34,19 @@
     </form>
     <form >
     <div id="okno">
-        <label>
-            <p>Имя:</p>
-            <input type="text" placeholder="Ваше имя" required/>
-        </label>
-        <label>
-            <p>Телефон:</p>
-            <input type="tel" placeholder="Ваш телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/>
-        </label>
-        <label>
-            <p>Автомобиль:</p>
-            <input type="text" placeholder="Ваш автомобиль" required/>
-        </label>
-        <label>
-            <p>Дата осмотра/ремонта</p>
-            <input type="date" required/>
-        </label>
+        <p>Имя:</p>
+        <input type="text" placeholder="Ваше имя" required/>
+        <p>Телефон:</p>
+        <input type="tel" placeholder="Ваш телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/>
+        <p>Автомобиль:</p>
+        <input type="text" placeholder="Ваш автомобиль" required/>
+        <p>Дата осмотра/ремонта</p>
+        <input type="date" required/>
+        </div>
+        <div class="bton">
+            <button onclick="window.location.href='visitor.html'" class="backBtn">Назад</button>
+            <button onclick="window.location.href='/'" class="appointBtn">Записаться</button>
         </div>
     </form>
-    <div class="bton">
-        <button onclick="window.location.href='visitor.html'" class="backBtn">Назад</button>
-        <button onclick="window.location.href='/'" class="appointBtn">Записаться</button>
-    </div>
+
 {% endblock %}

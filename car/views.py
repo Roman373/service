@@ -1,11 +1,7 @@
-import enter as enter
-import password
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.hashers import check_password
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView
+from car.basa import *
 from car.forms import *
 
 
@@ -18,7 +14,6 @@ class VisitorPage(View):
 
 class MainPage(View):
     def get(self, request):
-
         context = {}
         return render(request, 'home.html', context=context)
 
@@ -46,30 +41,29 @@ class LoginPage(View):
 
 class EnterPage(View):
     def get(self, request):
-        return render(request, 'enter.html', context={"form": EnterForm})
+        return render(request, 'enter.html', context={'form': EnterForm})
 
     def post(self, request):
-        error = ""
-
-        if request.method == 'POST':
-            form = EnterForm(request.POST)
-
-            user = authenticate(login=login, password=password)
-            if form.is_valid():
-                if check_password(form.password, request.User.password):
-
-                    return redirect('home.html')
-            else:
-                error = "Ошибка формы"
-        context = {
-            'form': form,
-            'error': error
-        }
-        return render(request, 'enter.html', context=context)
+        login = request.POST.get("login")
+        password = request.POST.get("password")
+        users = autoriz(login, password)
+        form = LoginForm(request.POST)
+        if not users:
+            context = {
+                'form': form,
+                "message": "Введен не правильный пароль или логин"
+            }
+            return render(request, 'enter.html', context=context)
+        else:
+            request.session["id_user"] = users[0].id
+            return HttpResponseRedirect('home.html')
 
 
 class PhonePage(View):
     def get(self, request):
+        return render(request, 'order_phone.html', context={"form": OrderPhoneForm})
+
+    def post(self, request):
         error = ""
         if request.method == 'POST':
             form = OrderPhoneForm(request.POST)
@@ -78,7 +72,6 @@ class PhonePage(View):
                 return redirect('order_phone.html')
             else:
                 error = "Ошибка формы"
-        form = OrderPhoneForm()
 
         context = {
             'form': form,
