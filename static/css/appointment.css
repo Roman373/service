@@ -1,23 +1,23 @@
-input {
+.aInp-5,.aInp-1,.aInp-2,.aInp-3{
   border: none;
-  width: 35%;
-  padding: 10px;
+  padding: 12px;
+  margin-top: 15px;
+  margin-left: 3px;
   font-size: 15px;
   display: flex;
-  margin-inline:auto;
-  justify-content: center;
-  background-color: #d0d0d0;
+  background-color: #e3e3e3;
 }
-.abackBtn{
-    padding:5px;
-  width: 220px;
-  background: #ecb832;
-  color: #000000;
-  font-size: 15px;
-  margin-top: 20px;
-  height: 30px;
-  justify-content: center;
-  margin-right: 5px;
+.aInp-1{
+  width: 58%;
+}
+.aInp-2{
+  width: 49%;
+}
+.aInp-3{
+  width: 43%;
+}
+.aInp-5{
+  width: 40%;
 }
 .appointBtn{
   padding:5px;
@@ -33,5 +33,10 @@ input {
 
 .abton{
   display: flex;
+  justify-content: center;
+}
+.ainput{
+  display: flex;
+  height: 30px;
   justify-content: center;
 }

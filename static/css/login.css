@@ -1,24 +1,41 @@
+.lInp-5,.lInp-1,.lInp-2,.lInp-3,.lInp-4{
+  border: none;
+  padding: 12px;
+  margin-top: 15px;
+  margin-left: 3px;
+  font-size: 15px;
+  display: flex;
+  background-color: #e3e3e3;
+}
+.lInp-1{
+  width: 58%;
+}
+.lInp-2{
+  width: 49%;
+}
+.lInp-3{
+  width: 55%;
+}
+.lInp-4{
+  width: 52%;
+}
+.lInp-5{
+  width: 49%;
+}
+
+.linput{
+  display: flex;
+  height: 30px;
+  justify-content: center;
+}
 .lbtton{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
-input {
-  border: none;
-  width: 35%;
-  padding: 10px;
-  font-size: 15px;
-  display: flex;
-  margin-inline:auto;
-  justify-content: center;
-  background-color: #d0d0d0;
-  flex: 0 1 150px;
-}
-
 .lenterBtn {
   width: 40%;
-  height: 35px;
+  height: 30px;
   color: #000000;
   background: #ecb832;
   font-size: 15px;

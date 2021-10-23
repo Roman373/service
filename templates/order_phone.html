@@ -11,10 +11,10 @@
     <h1 style="text-align: center">Обратный звонок</h1>
     <form method="post">
     {% csrf_token %}
-        <p>Имя:</p>
-        {{ orderphoneform.name }}
-        <p>Телефон:</p>
-        {{ orderphoneform.telephone }}
+        <div class="oinput">
+            <p>Имя:</p>{{ orderphoneform.name }}</div>
+        <div class="oinput">
+            <p>Телефон:</p>{{ orderphoneform.telephone }}</div>
         <span> {{ error }}</span>
         <div class="obtton">
             <button type="submit" name="phoneSubmit" class="osubmitBtn" >Отправить заявку</button>

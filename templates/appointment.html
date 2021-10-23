@@ -11,14 +11,22 @@
     <h1 style="text-align: center;">Запись на прием</h1>
     <form id="my" method="post">
         {% csrf_token %}
-        <p>Имя</p>
-        {{ appointmentform.name }}
-        <p>Телефон</p>
-        {{ appointmentform.telephone }}
-        <p>Автомобиль</p>
-        {{appointmentform.car }}
-        <p>Дата осмотра/ремонта</p>
-        {{ appointmentform.data }}
+        <div class="ainput">
+            <p>Имя:</p>
+            {{ appointmentform.name }}
+        </div>
+        <div class="ainput">
+            <p>Телефон:</p>
+            {{ appointmentform.telephone }}
+        </div>
+        <div class="ainput">
+            <p>Автомобиль:</p>
+            {{appointmentform.car }}
+        </div>
+        <div class="ainput">
+            <p>Дата осмотра:</p>
+            {{ appointmentform.data }}
+        </div>
         <span> {{ error }}</span>
         <div class="abton">
             <button type="submit" name="appointmentSubmit" class="appointBtn">Записаться</button>

@@ -12,10 +12,10 @@
         <h2 style="text-align: center">Авторизация</h2>
         <form method="post">
             {% csrf_token %}
-        <p>Логин</p>
-        {{ enterform.login }}
-        <p>Пароль</p>
-        {{ enterform.password }}
+       <div class="ainput">
+            <p>Логин</p>{{ enterform.login }}</div>
+       <div class="ainput">
+           <p>Пароль</p>{{ enterform.password }}</div>
         <div class="ebtton">
             <button type="esubmit" name="enterSubmit" class="eenterBtn">Вход</button>
         </div>

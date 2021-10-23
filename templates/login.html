@@ -12,16 +12,16 @@
     <h1 style="text-align: center">Авторизация</h1>
     <form method="post" />
         {% csrf_token %}
-            <p>Имя:</p>
-            {{ loginform.name }}
-            <p>Фамилия:</p>
-            {{ loginform.lastname }}
-            <p>Логин:</p>
-            {{ loginform.login }}
-            <p>Пароль:</p>
-            {{ loginform.password }}
-            <p>Телефон:</p>
-            {{ loginform.telephone }}
+        <div class="linput">
+            <p>Имя:</p>{{ loginform.name }}</div>
+        <div class="linput">
+            <p>Фамилия:</p>{{ loginform.lastname }}</div>
+        <div class="linput">
+            <p>Логин:</p>{{ loginform.login }}</div>
+        <div class="linput">
+            <p>Пароль:</p>{{ loginform.password }}</div>
+        <div class="linput">
+            <p>Телефон:</p>{{ loginform.telephone }}</div>
         <span> {{ error }}</span>
         <div class="lbtton">
             <button type="submit" name="loginSubmit" class="lenterBtn" >Зарегистрироваться</button>

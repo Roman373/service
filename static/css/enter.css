@@ -1,12 +1,19 @@
-input {
+.eInp-1,.eInp-2{
   border: none;
-  width: 35%;
-  padding: 10px;
+  padding: 12px;
+  margin-top: 15px;
+  margin-left: 3px;
   font-size: 15px;
   display: flex;
-  margin-inline:auto;
-  background-color: #d5d4d4;
+  background-color: #e3e3e3;
 }
+.eInp-1{
+  width: 52%;
+}
+.eInp-2{
+  width: 49%;
+}
+
 .ebtton{
   display: flex;
   flex-direction: row;

@@ -8,19 +8,24 @@ class LoginForm(ModelForm):
         fields = ['name', 'lastname', 'login', 'password', "telephone"]
         widgets = {
             "name": TextInput(attrs={
-                'placeholder': "Ваше имя"
+                'placeholder': "Ваше имя",
+                'class': 'lInp-1'
             }),
             "lastname": TextInput(attrs={
-                'placeholder': "Ваша фамилия"
+                'placeholder': "Ваша фамилия",
+                'class': 'lInp-2'
             }),
             "login": TextInput(attrs={
-                'placeholder': "Ваш логин"
+                'placeholder': "Ваш логин",
+                'class': 'lInp-3'
             }),
             "password": PasswordInput(attrs={
-                'placeholder': "Ваш пароль"
+                'placeholder': "Ваш пароль",
+                'class': 'lInp-4'
             }),
             "telephone": TextInput(attrs={
-                'placeholder': "Ваш телефон"
+                'placeholder': "Ваш телефон",
+                'class': 'lInp-5'
             })
         }
 
@@ -32,11 +37,13 @@ class EnterForm(ModelForm):
         widgets = {
             "login": TextInput(attrs={
                 'placeholder': "Ваш логин",
-                'id': "myPassword"
+                'id': "myPassword",
+                'class': 'eInp-1'
             }),
             "password": PasswordInput(attrs={
                 'placeholder': "Ваш пароль",
-                'id': "myLogin"
+                'id': "myLogin",
+                'class': 'eInp-2'
             })
         }
 
@@ -84,11 +91,13 @@ class OrderPhoneForm(ModelForm):
         model = User
         widgets = {
             "name": TextInput(attrs={
-                'placeholder': "Ваше имя"
+                'placeholder': "Ваше имя",
+                'class': 'oInp-1'
             }),
             "telephone": TextInput(attrs={
                 'placeholder': "Ваш телефон",
-                'value': "+7"
+                'value': "+7",
+                'class': 'oInp-2'
             })
         }
 
@@ -99,16 +108,20 @@ class AppointmentForm(ModelForm):
         model = Appointment
         widgets = {
             "name": TextInput(attrs={
-                'placeholder': "Ваше имя"
+                'placeholder': "Ваше имя",
+                'class': 'aInp-1'
             }),
             "telephone": TextInput(attrs={
                 'placeholder': "Ваш телефон",
-                'value': "+7"
+                'value': "+7",
+                'class': 'aInp-2'
             }),
             "car": TextInput(attrs={
-                'placeholder': "Ваш автомобиль"
+                'placeholder': "Ваш автомобиль",
+                'class': 'aInp-3'
             }),
-            "date": DateInput(attrs={
-                'placeholder': "Ваша дата осмотра/ремонта"
+            "data": DateInput(attrs={
+                'placeholder': "Дата осмотра/ремонта",
+                'class': 'aInp-5'
             })
         }
