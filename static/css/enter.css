@@ -1,6 +1,3 @@
-.exit{
-  margin-top: 13%;
-}
 input {
   border: none;
   width: 35%;
@@ -10,26 +7,12 @@ input {
   margin-inline:auto;
   background-color: #d5d4d4;
 }
-.btton{
+.ebtton{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.enterBtn {
-  padding-top: 4px;
-  width: 150px;
-  height: 30px;
-  color: #000000;
-  background: #ecb832;
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  margin-left: 10px;
-  bottom: 70px;
-  margin-top: 20px;
-}
-.visitBtn {
+.eenterBtn {
   padding-top: 4px;
   width: 150px;
   height: 30px;
@@ -46,7 +29,7 @@ input {
 .enterBtn:hover {
   background-color: #a8a7a7;
 }
-.visitBtn:hover {
+.evisitBtn:hover {
   background-color: #a8a7a7;
 }
 #nullExit{
@@ -54,7 +37,4 @@ input {
   padding: 10px;
   color: red;
   font-size: 20px;
-}
-p{
-  margin-left: 33%;
 }

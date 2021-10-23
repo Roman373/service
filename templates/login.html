@@ -13,19 +13,18 @@
     <form method="post" />
         {% csrf_token %}
             <p>Имя:</p>
-            {{ form.name }}
+            {{ loginform.name }}
             <p>Фамилия:</p>
-            {{ form.lastname }}
+            {{ loginform.lastname }}
             <p>Логин:</p>
-            {{ form.login }}
+            {{ loginform.login }}
             <p>Пароль:</p>
-            {{ form.password }}
+            {{ loginform.password }}
             <p>Телефон:</p>
-            {{ form.telephone }}
+            {{ loginform.telephone }}
         <span> {{ error }}</span>
-        <div class="btton">
-            <button id='btn' onclick="window.location.href='visitor.html'" class="visitBtn">Назад</button>
-            <button type="submit" name="submit" class="enterBtn" >Зарегистрироваться</button>
+        <div class="lbtton">
+            <button type="submit" name="loginSubmit" class="lenterBtn" >Зарегистрироваться</button>
         </div>
     </form>
     </div>

@@ -8,45 +8,20 @@
 {% block title %}Запись на прием{% endblock %}
 
 {% block content %}
-    <h1 style="text-align: center; margin-top: 70px">Запись на прием</h1>
+    <h1 style="text-align: center;">Запись на прием</h1>
     <form id="my" method="post">
         {% csrf_token %}
-
-        <p>Модель вашего автомобиля</p>
-        {{ form.car_model }}
-        <p>Регистрационный знак</p>
-        {{ form.register_sign }}
-        <p>Цвет автомобиля</p>
-        {{form.car_color }}
-        <p>Год выпуска</p>
-        {{ form.year_issue }}
-        <p>№ двигателя</p>
-        {{ form.engine_number }}
-        <p>№ кузова</p>
-        {{ form.body_number }}
-        <p>VIN</p>
-        {{ form.vin }}
-        <p>Пробег</p>
-        {{ form.mileage }}
+        <p>Имя</p>
+        {{ appointmentform.name }}
         <p>Телефон</p>
-        {{ form.telephone}}
-        <span> {{ error }}</span>
-    </form>
-    <form >
-    <div id="okno">
-        <p>Имя:</p>
-        <input type="text" placeholder="Ваше имя" required/>
-        <p>Телефон:</p>
-        <input type="tel" placeholder="Ваш телефон" pattern="+7[0-9]-{3}-[0-9]-{3}-[0-9]-{4}" name="tel" value="+7" required/>
-        <p>Автомобиль:</p>
-        <input type="text" placeholder="Ваш автомобиль" required/>
+        {{ appointmentform.telephone }}
+        <p>Автомобиль</p>
+        {{appointmentform.car }}
         <p>Дата осмотра/ремонта</p>
-        <input type="date" required/>
-        </div>
-        <div class="bton">
-            <button onclick="window.location.href='visitor.html'" class="backBtn">Назад</button>
-            <button onclick="window.location.href='/'" class="appointBtn">Записаться</button>
+        {{ appointmentform.data }}
+        <span> {{ error }}</span>
+        <div class="abton">
+            <button type="submit" name="appointmentSubmit" class="appointBtn">Записаться</button>
         </div>
     </form>
-
 {% endblock %}

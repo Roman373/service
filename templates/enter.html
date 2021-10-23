@@ -9,19 +9,17 @@
 {% block title %}Вход{% endblock %}
 
 {% block content %}
-    <div class="exit">
         <h2 style="text-align: center">Авторизация</h2>
         <form method="post">
             {% csrf_token %}
         <p>Логин</p>
-        {{ form.login }}
+        {{ enterform.login }}
         <p>Пароль</p>
-        {{ form.password }}
-        <div class="btton">
-            <button onclick="window.location.href='visitor.html'" class="visitBtn">Гостевую</button>
-            <button type="submit" class="enterBtn">Вход</button>
+        {{ enterform.password }}
+        <div class="ebtton">
+            <button type="esubmit" name="enterSubmit" class="eenterBtn">Вход</button>
         </div>
         </form>
         <div id="nullExit">{{ message }}</div>
-    </div>
+
 {% endblock %}

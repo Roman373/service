@@ -41,7 +41,7 @@ class EnterForm(ModelForm):
         }
 
 
-class AppointmentForm(ModelForm):
+class CarForm(ModelForm):
     class Meta:
         fields = ['car_model', 'register_sign', 'car_color',
                   'year_issue', 'engine_number', 'body_number',
@@ -93,38 +93,22 @@ class OrderPhoneForm(ModelForm):
         }
 
 
-class NOnameForm(ModelForm):
+class AppointmentForm(ModelForm):
     class Meta:
-        fields = ['car_model', 'register_sign', 'car_color',
-                  'year_issue', 'engine_number', 'body_number',
-                  'vin', 'mileage', 'client_id']
-        model = Car
+        fields = ['name', 'telephone', 'car', 'data']
+        model = Appointment
         widgets = {
-            "car_model": TextInput(attrs={
-                'placeholder': "Модель вашего автомобиля"
-            }),
-            "register_sign": TextInput(attrs={
-                'placeholder': "Регистрационный знак",
-            }),
-            "car_color": TextInput(attrs={
-                'placeholder': "Цвет автомобиля"
-            }),
-            "year_issue": NumberInput(attrs={
-                'placeholder': "Год выпуска"
-            }),
-            "engine_number": TextInput(attrs={
-                'placeholder': "№ двигателя"
-            }),
-            "body_number": TextInput(attrs={
-                'placeholder': "№ кузова"
-            }),
-            "vin": TextInput(attrs={
-                'placeholder': "VIN"
-            }),
-            "mileage": NumberInput(attrs={
-                'placeholder': "Пробег"
+            "name": TextInput(attrs={
+                'placeholder': "Ваше имя"
             }),
             "telephone": TextInput(attrs={
-                'placeholder': "Телефон"
+                'placeholder': "Ваш телефон",
+                'value': "+7"
+            }),
+            "car": TextInput(attrs={
+                'placeholder': "Ваш автомобиль"
+            }),
+            "date": DateInput(attrs={
+                'placeholder': "Ваша дата осмотра/ремонта"
             })
         }

@@ -1,8 +1,4 @@
-.login{
-  margin-top: 6%;
-}
-
-.btton{
+.lbtton{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -17,23 +13,11 @@ input {
   margin-inline:auto;
   justify-content: center;
   background-color: #d0d0d0;
+  flex: 0 1 150px;
 }
 
-.visitBtn{
-  width: 15%;
-  height: 35px;
-  background: #ecb832;
-  color: #000000;
-  font-size: 15px;
-  display: inline-block;
-  justify-content: center;
-  bottom: 70px;
-  margin-top: 20px;
-  margin-right: 10px;
-}
-
-.enterBtn {
-  width: 15%;
+.lenterBtn {
+  width: 40%;
   height: 35px;
   color: #000000;
   background: #ecb832;
@@ -44,13 +28,6 @@ input {
   margin-top: 20px;
 }
 
-p{
-  margin-left: 33%;
-}
-.visitBtn:hover {
-  background-color: #a8a7a7;
-}
-
-.enterBtn:hover {
+.lenterBtn:hover {
   background-color: #a8a7a7;
 }

@@ -8,10 +8,7 @@ input {
   justify-content: center;
   background-color: #d0d0d0;
 }
-p{
-  padding-left: 33%;
-}
-.backBtn{
+.abackBtn{
     padding:5px;
   width: 220px;
   background: #ecb832;
@@ -34,7 +31,7 @@ p{
   margin-left: 5px;
 }
 
-.bton{
+.abton{
   display: flex;
   justify-content: center;
 }

@@ -60,7 +60,7 @@ class WorkOrder(models.Model):
     reason_petition = models.CharField(max_length=1000)
     X = 2
     Y = 8
-    total_cost = models.DecimalField(decimal_places = X, max_digits = Y)
+    total_cost = models.DecimalField(decimal_places=X, max_digits=Y)
     order_status = models.CharField(max_length=20)
     car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
     stuff_id = models.ForeignKey(Stuff, on_delete=models.CASCADE)
@@ -84,3 +84,10 @@ class PartsSupplier(models.Model):
     supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     spares_id = models.ForeignKey(Spare, on_delete=models.CASCADE)
     guarantee = models.CharField(max_length=200)
+
+
+class Appointment(models.Model):
+    name = models.CharField(max_length=40)
+    telephone = models.CharField(max_length=11)
+    car = models.CharField(max_length=40)
+    data = models.DateField()

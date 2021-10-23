@@ -12,13 +12,12 @@
     <form method="post">
     {% csrf_token %}
         <p>Имя:</p>
-        {{ form.name }}
+        {{ orderphoneform.name }}
         <p>Телефон:</p>
-        {{ form.telephone }}
+        {{ orderphoneform.telephone }}
         <span> {{ error }}</span>
-        <div class="btton">
-            <button type="button" class="backBtn" onclick="window.location.href='/'">Назад</button>
-            <button type="submit" class="submitBtn" >Отправить заявку</button>
+        <div class="obtton">
+            <button type="submit" name="phoneSubmit" class="osubmitBtn" >Отправить заявку</button>
         </div>
     </form>
 {% endblock %}

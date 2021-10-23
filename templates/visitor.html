@@ -18,8 +18,20 @@
                 Екатеринбург, ул.Крауля 77А</a>
                     &#9993;<a href="mailto:roman.izibaeff2017@yandex.ru"> roman.izibaeff2017@yandex.ru</a></span>
             </div>
-            <button id='btn' onclick="window.location.href='login.html'" class="loginBtn">Авторизация</button>
-            <button id='btn' onclick="window.location.href='enter.html'" class="enterBtn">Вход</button>
+            <button onclick="window.location.href='#openModal1'" class="loginBtn">Авторизация</button>
+            <div id="openModal1" class="modalDialog">
+                <div>
+                    <a href="#close" title="Закрыть" class="close">X</a>
+                    {% include "login.html" %}
+                </div>
+            </div>
+            <button onclick="window.location.href='#openModal2'" class="enterBtn">Вход</button>
+            <div id="openModal2" class="modalDialog">
+                <div>
+                    <a href="#close" title="Закрыть" class="close">X</a>
+                    {% include "enter.html" %}
+                </div>
+            </div>
         </div>
     </div>
     <div class="gradient">
@@ -29,18 +41,28 @@
                 <h1>Автомастерская</h1>
                 <h1>Автосервис Комплексного обслуживания автомобилей</h1>
             </div>
-
         </div>
         <div class="bton">
-            <button id='btn' onclick="window.location.href='order_phone.html'" class="phoneBtn">
+            <button id='btn' onclick="window.location.href='#openModal3'" class="phoneBtn">
                 Заказать обратный звонок</button>
-            <button id='btn' onclick="window.location.href='appointment.html'" class="serviceBtn">
+            <div id="openModal3" class="modalDialog">
+                <div>
+                    <a href="#close" title="Закрыть" class="close">X</a>
+                    {% include "order_phone.html" %}
+                </div>
+            </div>
+            <button id='btn' onclick="window.location.href='#openModal4'" class="serviceBtn">
                 Записаться на осмотр и ремонт</button>
+            <div id="openModal4" class="modalDialog">
+                <div>
+                    <a href="#close" title="Закрыть" class="close">X</a>
+                    {% include "appointment.html" %}
+                </div>
+            </div>
         </div>
     </div>
     <p id="serv"><strong>Наши услуги</strong></p>
     <div class="service">
-
         <p id="serv1">Кузовной ремонт</p>
         <p id="serv1">Техническое обслуживание</p>
         <p id="serv1">Уход за автомобилем</p>
