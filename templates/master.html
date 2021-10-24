@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/m_work_order.css'%}" type="text/css">
+{% endblock %}
+
+{% block title %}Главная мастер{% endblock %}
+
+{% block content %}
+    <div id="m_work_order" class="modalDialog">{% include "m_work_order.html" %}</div>
+    <div id="m_user" class="modalDialog">{% include "m_user.html" %}</div>
+    <div id="m_spare" class="modalDialog">{% include "m_spare.html" %}</div>
+    <div class="widget">
+      <h3 class="widget-title">Категории</h3>
+      <ul class="widget-list">
+        <li><a href="#m_work_order">Заказ-наряд</a></li>
+        <li><a href="#m_user">Запчасти</a></li>
+        <li><a href="#m_spare">Поставщик</a></li>
+          <li><a href="/">Выйти</a></li>
+      </ul>
+    </div>
+{% endblock %}

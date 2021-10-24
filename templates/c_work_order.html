@@ -1,0 +1,25 @@
+<table id="m_table">
+        <tr>
+            <th>Номер заказа:</th>
+            <th>Дата начала:</th>
+            <th>Дата заверщения:</th>
+            <th style="width: 20%">Причина обращения:</th>
+            <th>Общая стоимость:</th>
+            <th>Статус заказа:</th>
+            <th>Номер автомобиля:</th>
+            <th>Номер запчасти:</th>
+            <th>Номер обращения:</th>
+        </tr>
+            {% for workorder in workorders %}
+                <tr>
+                <td>{{ workorder.id }}</td>
+                <td>{{ workorder.date_appeal| date:"d.m.Y" }}</td>
+                <td>{{ workorder.date_completion | date:"d.m.Y"}}</td>
+                <td>{{ workorder.reason_petition}}</td>
+                <td>{{ workorder.total_cost}}</td>
+                <td>{{ workorder.order_status}}</td>
+                <td>{{ workorder.car_id}}</td>
+                <td>{{ workorder.stuff_id}}</td>
+                <td>{{ workorder.appointment_id}}</td></tr><br>
+            {% endfor %}
+    </table>

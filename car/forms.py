@@ -52,7 +52,7 @@ class CarForm(ModelForm):
     class Meta:
         fields = ['car_model', 'register_sign', 'car_color',
                   'year_issue', 'engine_number', 'body_number',
-                  'vin', 'mileage', 'client_id']
+                  'vin', 'mileage', 'client']
         model = Car
         widgets = {
             "car_model": TextInput(attrs={
@@ -124,4 +124,47 @@ class AppointmentForm(ModelForm):
                 'placeholder': "Дата осмотра/ремонта",
                 'class': 'aInp-5'
             })
+        }
+
+
+class MWorkOrderForm(ModelForm):
+    class Meta:
+        fields = ['date_appeal', 'date_completion',
+                  'reason_petition', 'total_cost',
+                  'order_status', 'car',
+                  'stuff', 'appointment']
+        model = WorkOrder
+        widgets = {
+            'date_appeal': TextInput(attrs={
+                'placeholder': "Дата обращения",
+                'class': 'oInp-1'
+            }),
+            'date_completion': TextInput(attrs={
+                'placeholder': "Дата заверщения",
+                'class': 'oInp-1'
+            }),
+            'reason_petition': TextInput(attrs={
+                'placeholder': "Причина обращения",
+                'class': 'oInp-1'
+            }),
+            'total_cost': TextInput(attrs={
+                'placeholder': "Общая стоимость",
+                'class': 'oInp-1'
+            }),
+            'order_status': TextInput(attrs={
+                'placeholder': "Статус заказа",
+                'class': 'oInp-1'
+            }),
+            'car_id': TextInput(attrs={
+                'placeholder': "Номер автомобиля",
+                'class': 'oInp-1'
+            }),
+            'stuff_id': TextInput(attrs={
+                'placeholder': "Номер запчасти",
+                'class': 'oInp-1'
+            }),
+            'appointment_id': TextInput(attrs={
+                'placeholder': "Номер",
+                'class': 'oInp-1'
+            }),
         }

@@ -1,4 +1,3 @@
-from django.db import models
 from django.contrib.auth.models import *
 
 
@@ -17,7 +16,7 @@ class Position(models.Model):
 class Client(models.Model):
     e_mail = models.EmailField(max_length=50)
     discount = models.IntegerField(max_length=6)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Car(models.Model):
@@ -29,13 +28,13 @@ class Car(models.Model):
     body_number = models.CharField(max_length=12)
     vin = models.CharField(max_length=17)
     mileage = models.IntegerField(max_length=6)
-    client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
 
 
 class Stuff(models.Model):
     work_experience = models.IntegerField(max_length=2)
-    position_id = models.ForeignKey(Position, on_delete=models.CASCADE)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Spare(models.Model):
@@ -54,6 +53,13 @@ class TypesJob(models.Model):
     guarantee = models.CharField(max_length=200)
 
 
+class Appointment(models.Model):
+    name = models.CharField(max_length=40)
+    telephone = models.CharField(max_length=11)
+    car = models.CharField(max_length=40)
+    data = models.DateField()
+
+
 class WorkOrder(models.Model):
     date_appeal = models.DateField()
     date_completion = models.DateField()
@@ -62,15 +68,16 @@ class WorkOrder(models.Model):
     Y = 8
     total_cost = models.DecimalField(decimal_places=X, max_digits=Y)
     order_status = models.CharField(max_length=20)
-    car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
-    stuff_id = models.ForeignKey(Stuff, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    stuff = models.ForeignKey(Stuff, on_delete=models.CASCADE)
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
 
 class Service(models.Model):
     number_spare_parts = models.IntegerField(max_length=4)
-    job_id = models.ForeignKey(TypesJob, on_delete=models.CASCADE)
-    spare_id = models.ForeignKey(Spare, on_delete=models.CASCADE)
-    work_order_id = models.ManyToManyField(WorkOrder)
+    job = models.ForeignKey(TypesJob, on_delete=models.CASCADE)
+    spare = models.ForeignKey(Spare, on_delete=models.CASCADE)
+    work_order= models.ManyToManyField(WorkOrder)
 
 
 class Supplier(models.Model):
@@ -81,13 +88,6 @@ class Supplier(models.Model):
 
 class PartsSupplier(models.Model):
     number_spare_parts = models.IntegerField(max_length=3)
-    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    spares_id = models.ForeignKey(Spare, on_delete=models.CASCADE)
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    spares = models.ForeignKey(Spare, on_delete=models.CASCADE)
     guarantee = models.CharField(max_length=200)
-
-
-class Appointment(models.Model):
-    name = models.CharField(max_length=40)
-    telephone = models.CharField(max_length=11)
-    car = models.CharField(max_length=40)
-    data = models.DateField()

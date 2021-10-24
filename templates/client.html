@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/client.css'%}" type="text/css">
+{% endblock %}
+
+{% block title %}Страница клиента{% endblock %}
+
+{% block content %}
+    <div id="c_work_order" class="modalDialog">{% include "c_work_order.html" %}</div>
+    <div id="c_user" class="modalDialog">{% include "c_user.html" %}</div>
+    <div id="c_appointment" class="modalDialog">{% include "c_appointment.html" %}</div>
+    <div class="widget">
+      <h3 class="widget-title">Категории</h3>
+      <ul class="widget-list">
+        <li><a href="#c_work_order">Заказ-наряд</a></li>
+        <li><a href="#c_user">Пользователь</a></li>
+        <li><a href="#c_appointment">Обращения</a></li>
+          <li><a href="/">Выйти</a></li>
+      </ul>
+    </div>
+{% endblock %}

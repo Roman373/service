@@ -80,7 +80,30 @@ class VisitorPage(View):
             return render(request, 'visitor.html', context=context)
 
 
+class ClientPage(View):
+    def get(self, request):
+        clients = get_client()
+        workorders = get_workorder()
+        context = {
+            'clients': clients,
+            'workorders': workorders
+        }
+        return render(request, 'client.html', context=context)
+
+
+class MasterPage(View):
+    def get(self, request):
+        workorders = get_client()
+        context = {
+            'workorders': workorders
+        }
+        return render(request, 'master.html', context=context)
+
+
 class MainPage(View):
     def get(self, request):
         context = {}
         return render(request, 'home.html', context=context)
+
+
+
