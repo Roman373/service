@@ -44,6 +44,12 @@ class Spare(models.Model):
     guarantee = models.CharField(max_length=200)
 
 
+class Service(models.Model):
+    number_spare_parts = models.IntegerField(max_length=4)
+    job = models.ForeignKey('TypesJob', on_delete=models.CASCADE)
+    spare = models.ForeignKey(Spare, on_delete=models.CASCADE)
+
+
 class TypesJob(models.Model):
     name_work = models.CharField(max_length=40)
     X = 2
@@ -71,13 +77,6 @@ class WorkOrder(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     stuff = models.ForeignKey(Stuff, on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
-
-
-class Service(models.Model):
-    number_spare_parts = models.IntegerField(max_length=4)
-    job = models.ForeignKey(TypesJob, on_delete=models.CASCADE)
-    spare = models.ForeignKey(Spare, on_delete=models.CASCADE)
-    work_order= models.ManyToManyField(WorkOrder)
 
 
 class Supplier(models.Model):

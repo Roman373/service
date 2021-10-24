@@ -1,0 +1,17 @@
+ <table id="m_table">
+        <tr>
+            <th>Номер услуги:</th>
+            <th>Количество запасных частей:</th>
+            <th>Тип работа:</th>
+            <th>Номер запчасти:</th>
+        </tr>
+            {% for service in services %}
+                <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.number_spare_parts }}</td>
+                <td>{{ service.lead_time}}</td>
+                <td>{{ service.guarantee}}</td>
+                </tr>
+            {% endfor %}
+
+    </table>

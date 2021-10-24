@@ -29,7 +29,7 @@ class VisitorPage(View):
                 return render(request, 'visitor.html', context=context)
             else:
                 request.session["id_user"] = users[0].id
-                return HttpResponseRedirect('home.html')
+                return HttpResponseRedirect('client.html')
 
         if 'phoneSubmit' in request.POST:
             error = ""
@@ -84,9 +84,15 @@ class ClientPage(View):
     def get(self, request):
         clients = get_client()
         workorders = get_workorder()
+        users = get_user()
+        appointments = get_appointment()
+        cars = get_c_car()
         context = {
             'clients': clients,
-            'workorders': workorders
+            'workorders': workorders,
+            'users': users,
+            "appointments": appointments,
+            'cars': cars
         }
         return render(request, 'client.html', context=context)
 
@@ -94,8 +100,19 @@ class ClientPage(View):
 class MasterPage(View):
     def get(self, request):
         workorders = get_client()
+        cars = get_m_car()
+        spares = get_spare()
+        suppliers = get_supplier()
+        services = get_service()
+        type_jobs = get_type_job()
         context = {
-            'workorders': workorders
+            'workorders': workorders,
+            'cars': cars,
+            "spares": spares,
+            "suppliers": suppliers,
+            "services": services,
+            "type_jobs": type_jobs
+
         }
         return render(request, 'master.html', context=context)
 

@@ -1,0 +1,19 @@
+ <table id="m_table">
+        <tr>
+            <th>Номер запчасти:</th>
+            <th>Имя:</th>
+            <th>Остаток:</th>
+            <th>Стоимость:</th>
+            <th>Гарантия:</th>
+        </tr>
+            {% for spare in spares %}
+                <tr>
+                <td>{{ spare.id }}</td>
+                <td>{{ spare.name}}</td>
+                <td>{{ spare.remainder}}</td>
+                <td>{{ spare.spare_cost}} </td>
+                <td>{{ spare.guarantee}}</td>
+                </tr>
+            {% endfor %}
+
+    </table>

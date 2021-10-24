@@ -1,0 +1,19 @@
+ <table id="m_table">
+        <tr>
+            <th>Номер работы:</th>
+            <th>Название:</th>
+            <th>Стоимость:</th>
+            <th>Время выполнения:</th>
+            <th>Гарантия:</th>
+        </tr>
+            {% for types_job in types_jobs %}
+                <tr>
+                <td>{{ types_job.id }}</td>
+                <td>{{ types_job.name_work }}</td>
+                <td>{{ types_job.cost_work}}</td>
+                <td>{{ types_job.}}</td>
+                <td>{{ types_job.}}</td>
+                </tr>
+            {% endfor %}
+
+    </table>

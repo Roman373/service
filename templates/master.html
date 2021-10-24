@@ -5,19 +5,26 @@
     <link rel="stylesheet" href="{% static 'css/m_work_order.css'%}" type="text/css">
 {% endblock %}
 
-{% block title %}Главная мастер{% endblock %}
+{% block title %}Страница мастер{% endblock %}
 
 {% block content %}
     <div id="m_work_order" class="modalDialog">{% include "m_work_order.html" %}</div>
     <div id="m_user" class="modalDialog">{% include "m_user.html" %}</div>
+    <div id="m_car" class="modalDialog">{% include "m_car.html" %}</div>
     <div id="m_spare" class="modalDialog">{% include "m_spare.html" %}</div>
+    <div id="m_supplier" class="modalDialog">{% include "m_supplier.html" %}</div>
+    <div id="m_service" class="modalDialog">{% include "m_service.html" %}</div>
+    <div id="m_type_job" class="modalDialog">{% include "m_type_job.html" %}</div>
     <div class="widget">
       <h3 class="widget-title">Категории</h3>
       <ul class="widget-list">
         <li><a href="#m_work_order">Заказ-наряд</a></li>
+        <li><a href="#m_user">Пользователь</a></li>
         <li><a href="#m_car">Автомобили</a></li>
-        <li><a href="#m_user">Запчасти</a></li>
-        <li><a href="#m_spare">Поставщик</a></li>
+        <li><a href="#m_service">Услуги</a></li>
+          <li><a href="#m_type_job">Виды работ</a></li>
+        <li><a href="#m_spare">Запчасти</a></li>
+        <li><a href="#m_supplier">Поставщик</a></li>
           <li><a href="/">Выйти</a></li>
       </ul>
     </div>

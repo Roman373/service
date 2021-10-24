@@ -1,0 +1,29 @@
+ <table id="m_table">
+        <tr>
+            <th>Номер автомобиля:</th>
+            <th>Модель автомобиля:</th>
+            <th>Рег. знак:</th>
+            <th>Цвет автомобиля:</th>
+            <th>Год выпуска:</th>
+            <th>Номер двигателя:</th>
+            <th>Номер кузова:</th>
+            <th>VIN:</th>
+            <th>Расстояние в км:</th>
+            <th>Клиент:</th>
+        </tr>
+            {% for car in cars %}
+                <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.car_model }}</td>
+                <td>{{ car.register_sign }}</td>
+                <td>{{ car.car_color }}</td>
+                <td>{{ car.year_issue }}</td>
+                <td>{{ car.engine_number }}</td>
+                <td>{{ car.body_number }}</td>
+                <td>{{ car.vin }}</td>
+                <td>{{ car.mileage }}</td>
+                <td>{{ car.client_id }}</td>
+                </tr>
+            {% endfor %}
+
+    </table>
