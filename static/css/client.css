@@ -1,4 +1,3 @@
-
 .widget {
   padding: 20px 30px;
   background: white;
@@ -48,8 +47,7 @@
 	pointer-events: auto;
 }
 
-
-#m_table{
+#c_table{
   margin-top: 30px;
   width: 80%;
   float: right;
@@ -61,14 +59,14 @@
   font-family: 'Roboto', sans-serif;
 
 }
-#m_table h3 {
+#c_table h3 {
   margin-bottom: 20px;
   text-align: center;
   font-size: 24px;
   font-weight: normal;
   color:  #424949;
 }
-#m_table th {
+#c_table th {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -76,23 +74,21 @@
   text-align: left;
   border-bottom: 1px solid #eaeaea;
 }
-#m_table td {
+#c_table td {
   vertical-align:top;
   list-style: none;
   border-bottom: 1px solid #eaeaea;
 }
-#m_table td:last-child {
+#c_table td:last-child {
   border-bottom: none;
 }
-#m_table a {
+#c_table a {
   text-decoration: none;
   color:  #616a6b;
   display: inline-block;
 }
-#m_table td:before {
+#c_table td:before {
   font-family: FontAwesome;
   font-size: 20px;
   color: #dd3333;
 }
-
-

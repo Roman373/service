@@ -1,16 +1,15 @@
  <table id="m_table">
         <tr>
-            <th id="table_th">Номер заказа:</th>
-            <th id="table_th">Дата начала:</th>
-            <th id="table_th">Дата заверщения:</th>
-            <th id="table_petition">Причина обращения:</th>
-            <th id="table_th">Общая стоимость:</th>
-            <th id="table_th">Статус заказа:</th>
-            <th id="table_th">Номер автомобиля:</th>
-            <th id="table_th">Номер запчасти:</th>
-            <th id="table_th">Номер обращения:</th>
+            <th>Номер заказа:</th>
+            <th>Дата начала:</th>
+            <th>Дата заверщения:</th>
+            <th style="width: 20%">Причина обращения:</th>
+            <th>Общая стоимость:</th>
+            <th>Статус заказа:</th>
+            <th>Номер автомобиля:</th>
+            <th>Номер запчасти:</th>
+            <th>Номер обращения:</th>
         </tr>
-
             {% for workorder in workorders %}
                 <tr>
                 <td>{{ workorder.id }}</td>
