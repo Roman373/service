@@ -8,7 +8,6 @@ from car.forms import *
 class VisitorPage(View):
     def get(self, request):
         context = {
-
             "orderphoneform": OrderPhoneForm,
             "loginform": LoginForm,
             'appointmentform': AppointmentForm,
@@ -26,61 +25,45 @@ class VisitorPage(View):
                 context = {
                     "message": "Введен не правильный пароль или логин",
                     'enterform': enterform,
-
                 }
                 return render(request, 'visitor.html', context=context)
             else:
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
-
-        elif 'phoneSubmit' in request.POST:
-            error = ""
-            if request.method == 'POST':
-                orderphoneform = OrderPhoneForm(request.POST)
-                if orderphoneform.is_valid():
-                    orderphoneform.save()
-                    return redirect('visitor.html')
-                else:
-                    error = "Ошибка формы"
+        error = ""
+        if 'phoneSubmit' in request.POST and request.method == 'POST':
+            orderphoneform = OrderPhoneForm(request.POST)
+            if orderphoneform.is_valid():
+                orderphoneform.save()
+                return redirect('visitor.html')
             else:
-                orderphoneform = OrderPhoneForm()
-            context = {
-                'orderphoneform': orderphoneform,
-                'error': error
-            }
-            return render(request, 'visitor.html', context=context)
+                error = "Ошибка формы"
+        else:
+            orderphoneform = OrderPhoneForm()
 
-        elif 'loginSubmit' in request.POST:
-            error = ""
-            if request.method == 'POST':
-                loginform = LoginForm(request.POST)
-                if loginform.is_valid():
-                    loginform.save()
-                    return redirect('visitor.html')
-                else:
-                    error = "Ошибка формы"
+        if 'loginSubmit' in request.POST and request.method == 'POST':
+            loginform = LoginForm(request.POST)
+            if loginform.is_valid():
+                loginform.save()
+                return redirect('visitor.html')
+            else:
+                error = "Ошибка формы"
 
-            context = {
-                'loginform': loginform,
-                'error': error
-            }
-            return render(request, 'visitor.html', context=context)
+        if 'appointmentSubmit' in request.POST and request.method == 'POST':
+            appointmentform = AppointmentForm(request.POST)
+            if appointmentform.is_valid():
+                appointmentform.save()
+                return redirect('visitor.html')
+            else:
+                error = "Ошибка формы"
 
-        elif 'appointmentSubmit' in request.POST:
-            error = ""
-            if request.method == 'POST':
-                appointmentform = AppointmentForm(request.POST)
-                if appointmentform.is_valid():
-                    appointmentform.save()
-                    return redirect('visitor.html')
-                else:
-                    error = "Ошибка формы"
-
-            context = {
-                'appointmentform': appointmentform,
-                'error': error
-            }
-            return render(request, 'visitor.html', context=context)
+        context = {
+            'appointmentform': appointmentform,
+            'loginform': loginform,
+            'orderphoneform': orderphoneform,
+            'error': error
+        }
+        return render(request, 'visitor.html', context=context)
 
 
 class ClientPage(View):
