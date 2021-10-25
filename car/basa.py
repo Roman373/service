@@ -26,8 +26,8 @@ def get_c_car():
     return cars
 
 
-def get_user():
-    users = User.objects.all()
+def get_user(user_id):
+    users = User.objects.filter(id=user_id)
     return users
 
 

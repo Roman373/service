@@ -8,10 +8,11 @@ from car.forms import *
 class VisitorPage(View):
     def get(self, request):
         context = {
-            'enterform': EnterForm,
+
             "orderphoneform": OrderPhoneForm,
             "loginform": LoginForm,
-            'appointmentform': AppointmentForm
+            'appointmentform': AppointmentForm,
+            'enterform': EnterForm,
         }
         return render(request, 'visitor.html', context=context)
 
@@ -23,15 +24,16 @@ class VisitorPage(View):
             enterform = EnterForm(request.POST)
             if not users:
                 context = {
+                    "message": "Введен не правильный пароль или логин",
                     'enterform': enterform,
-                    "message": "Введен не правильный пароль или логин"
+
                 }
                 return render(request, 'visitor.html', context=context)
             else:
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
 
-        if 'phoneSubmit' in request.POST:
+        elif 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
                 orderphoneform = OrderPhoneForm(request.POST)
@@ -40,14 +42,15 @@ class VisitorPage(View):
                     return redirect('visitor.html')
                 else:
                     error = "Ошибка формы"
-
+            else:
+                orderphoneform = OrderPhoneForm()
             context = {
                 'orderphoneform': orderphoneform,
                 'error': error
             }
-            return render(request, 'order_phone.html', context=context)
+            return render(request, 'visitor.html', context=context)
 
-        if 'loginSubmit' in request.POST:
+        elif 'loginSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
                 loginform = LoginForm(request.POST)
@@ -61,9 +64,9 @@ class VisitorPage(View):
                 'loginform': loginform,
                 'error': error
             }
-            return render(request, 'login.html', context=context)
+            return render(request, 'visitor.html', context=context)
 
-        if 'appointmentSubmit' in request.POST:
+        elif 'appointmentSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
                 appointmentform = AppointmentForm(request.POST)
@@ -84,7 +87,7 @@ class ClientPage(View):
     def get(self, request):
         clients = get_client()
         workorders = get_workorder()
-        users = get_user()
+        users = get_user(request.session['id_user'])
         appointments = get_appointment()
         cars = get_c_car()
         context = {
