@@ -28,7 +28,6 @@ class VisitorPage(View):
                     "loginform": LoginForm,
                     'appointmentform': AppointmentForm,
                     "orderphoneform": OrderPhoneForm,
-                    'enterform': EnterForm,
                 }
                 return render(request, 'visitor.html', context=context)
             else:
