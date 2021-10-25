@@ -6,9 +6,9 @@ def autoriz(login, password):
     return users
 
 
-def get_client():
-    workorders = WorkOrder.objects.all()
-    return workorders
+def get_client(user_id):
+    clientworkorders = WorkOrder.objects.filter(car__client__user_id__in=user_id)
+    return clientworkorders
 
 
 def get_workorder():

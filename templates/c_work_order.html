@@ -10,17 +10,17 @@
             <th>Номер запчасти:</th>
             <th>Номер обращения:</th>
         </tr>
-            {% for workorder in workorders %}
+            {% for clientworkorder in clientworkorders %}
                 <tr>
-                <td>{{ workorder.id }}</td>
-                <td>{{ workorder.date_appeal| date:"d.m.Y" }}</td>
-                <td>{{ workorder.date_completion | date:"d.m.Y"}}</td>
-                <td>{{ workorder.reason_petition}}</td>
-                <td>{{ workorder.total_cost}}</td>
-                <td>{{ workorder.order_status}}</td>
-                <td>{{ workorder.car_id}}</td>
-                <td>{{ workorder.stuff_id}}</td>
-                <td>{{ workorder.appointment_id}}</td>
+                <td>{{ clientworkorder.id }}</td>
+                <td>{{ clientworkorder.date_appeal| date:"d.m.Y" }}</td>
+                <td>{{ clientworkorder.date_completion | date:"d.m.Y"}}</td>
+                <td>{{ clientworkorder.reason_petition}}</td>
+                <td>{{ clientworkorder.total_cost}}</td>
+                <td>{{ clientworkorder.order_status}}</td>
+                <td>{{ clientworkorder.car_id}}</td>
+                <td>{{ clientworkorder.stuff_id}}</td>
+                <td>{{ clientworkorder.appointment_id}}</td>
                 </tr>
             {% endfor %}
     </table>
