@@ -30,9 +30,12 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            else:
-                request.session["id_user"] = users[0].id
+            elif users and Client:
+                request.session["id_client"] = users[0].id
                 return HttpResponseRedirect('client.html')
+            elif users and Master:
+                request.session["id_master"] = users[0].id
+                return HttpResponseRedirect('master.html')
 
         if 'phoneSubmit' in request.POST:
             error = ""
@@ -82,13 +85,13 @@ class VisitorPage(View):
 class ClientPage(View):
     def get(self, request):
 
-        users = get_user(request.session['id_user'])
-        clientworkorders = get_client(users)
-        appointments = get_appointment(users)
+        clients = get_client(request.session['id_client'])
+        clientworkorders = get_c_work_order(clients)
+        appointments = get_appointment(clients)
         cars = get_c_car()
         context = {
             'clientworkorders': clientworkorders,
-            'users': users,
+            'clients': clients,
             "appointments": appointments,
             'cars': cars
         }
@@ -103,14 +106,18 @@ class MasterPage(View):
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
+        users = get_master(request.session['id_master'])
+        masters = get_master(users)
+
         context = {
             'workorders': workorders,
             'cars': cars,
             "spares": spares,
             "suppliers": suppliers,
             "services": services,
-            "type_jobs": type_jobs
-
+            "type_jobs": type_jobs,
+            'masters': masters,
+            "users": users
         }
         return render(request, 'master.html', context=context)
 
@@ -119,6 +126,3 @@ class MainPage(View):
     def get(self, request):
         context = {}
         return render(request, 'home.html', context=context)
-
-
-

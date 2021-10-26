@@ -19,6 +19,13 @@ class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
+class Master(models.Model):
+    e_mail = models.EmailField(max_length=50)
+    experience = models.IntegerField(max_length=2)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+
 class Car(models.Model):
     car_model = models.CharField(max_length=30)
     register_sign = models.CharField(max_length=8)
