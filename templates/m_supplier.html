@@ -2,14 +2,14 @@
         <tr>
             <th>Номер поставщика:</th>
             <th>Имя:</th>
-            <th>Адрес:</th>
+            <th style="width: 55%">Адрес:</th>
             <th>Телефон:</th>
         </tr>
             {% for supplier in suppliers %}
                 <tr>
                 <td>{{ supplier.id }}</td>
-                <td>{{ supplier.login}}</td>
-                <td>{{ supplier.password}}</td>
+                <td>{{ supplier.name}}</td>
+                <td>{{ supplier.address}}</td>
                 <td>{{ supplier.telephone}}</td>
                 </tr>
             {% endfor %}

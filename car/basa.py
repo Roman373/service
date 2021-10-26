@@ -31,8 +31,8 @@ def get_user(user_id):
     return users
 
 
-def get_appointment():
-    appointments = Appointment.objects.all()
+def get_appointment(user_id):
+    appointments = Appointment.objects.filter(workorder__car__client__user_id__in=user_id)
     return appointments
 
 

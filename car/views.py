@@ -84,7 +84,7 @@ class ClientPage(View):
 
         users = get_user(request.session['id_user'])
         clientworkorders = get_client(users)
-        appointments = get_appointment()
+        appointments = get_appointment(users)
         cars = get_c_car()
         context = {
             'clientworkorders': clientworkorders,
