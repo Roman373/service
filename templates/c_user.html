@@ -7,14 +7,16 @@
             <th>Фамилия:</th>
             <th>Телефон:</th>
         </tr>
-            {% for user in users %}
+            {% for client in clients %}
                 <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.login}}</td>
-                <td>{{ user.password}}</td>
-                <td>{{ user.name}} </td>
-                <td>{{ user.lastname}}</td>
-                <td>{{ user.telephone}}</td>
+                <td>{{ client.id }}</td>
+                    {% for user in users %}
+                    <td>{{ user.login}}</td>
+                    <td>{{ user.password}}</td>
+                    <td>{{ user.name}} </td>
+                    <td>{{ user.lastname}}</td>
+                    <td>{{ user.telephone}}</td>
+                    {% endfor %}
                 </tr>
             {% endfor %}
 

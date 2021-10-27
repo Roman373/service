@@ -30,10 +30,10 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            elif users and Client:
+            elif request.user:
                 request.session["id_client"] = users[0].id
                 return HttpResponseRedirect('client.html')
-            elif users and Master:
+            elif request.user and request.user.groups.filter(name='master').exists():
                 request.session["id_master"] = users[0].id
                 return HttpResponseRedirect('master.html')
 
@@ -86,6 +86,7 @@ class ClientPage(View):
     def get(self, request):
 
         clients = get_client(request.session['id_client'])
+        users = get_user(request.session['id_user'])
         clientworkorders = get_c_work_order(clients)
         appointments = get_appointment(clients)
         cars = get_c_car()
@@ -93,21 +94,22 @@ class ClientPage(View):
             'clientworkorders': clientworkorders,
             'clients': clients,
             "appointments": appointments,
-            'cars': cars
+            'cars': cars,
+            "users": users
         }
         return render(request, 'client.html', context=context)
 
 
 class MasterPage(View):
     def get(self, request):
+        masters = get_master(request.session['id_master'])
+        users = get_user(request.session['id_user'])
         workorders = get_workorder()
         cars = get_m_car()
         spares = get_spare()
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
-        users = get_master(request.session['id_master'])
-        masters = get_master(users)
 
         context = {
             'workorders': workorders,
