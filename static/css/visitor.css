@@ -166,7 +166,6 @@ li{
 	right: 0;
 	bottom: 0;
 	left: 0;
-    color: black;
 	background: rgba(0,0,0,0.8);
 	z-index: 99999;
 	-webkit-transition: opacity 400ms ease-in;
@@ -176,7 +175,6 @@ li{
 	pointer-events: none;
 }
 
-
 .modalDialog:target {
 	display: block;
 	pointer-events: auto;
@@ -185,7 +183,7 @@ li{
 .modalDialog > div {
 	width: 400px;
 	position: relative;
-	margin: 3% auto;
+	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
 	background: #fff;

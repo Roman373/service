@@ -8,23 +8,263 @@
 {% block title %}Страница мастер{% endblock %}
 
 {% block content %}
-    <div id="m_work_order" class="modalDialog">{% include "m_work_order.html" %}</div>
-    <div id="m_user" class="modalDialog">{% include "m_user.html" %}</div>
-    <div id="m_car" class="modalDialog">{% include "m_car.html" %}</div>
-    <div id="m_spare" class="modalDialog">{% include "m_spare.html" %}</div>
-    <div id="m_supplier" class="modalDialog">{% include "m_supplier.html" %}</div>
-    <div id="m_service" class="modalDialog">{% include "m_service.html" %}</div>
-    <div id="m_type_job" class="modalDialog">{% include "m_type_job.html" %}</div>
+    <div id="m_work_order" class="dialog">
+        <table id="m_table">
+        <tr>
+            <th>Номер заказа:</th>
+            <th>Дата начала:</th>
+            <th>Дата заверщения:</th>
+            <th style="width: 20%">Причина обращения:</th>
+            <th>Общая стоимость:</th>
+            <th>Статус заказа:</th>
+            <th>Номер автомобиля:</th>
+            <th>Номер запчасти:</th>
+            <th>Номер обращения:</th>
+        </tr>
+            {% for workorder in workorders %}
+                <tr>
+                    <td>{{ workorder.id }}</td>
+                    <td>{{ workorder.date_appeal| date:"d.m.Y" }}</td>
+                    <td>{{ workorder.date_completion | date:"d.m.Y"}}</td>
+                    <td>{{ workorder.reason_petition}}</td>
+                    <td>{{ workorder.total_cost}}</td>
+                    <td>{{ workorder.order_status}}</td>
+                    <td>{{ workorder.car_id}} </td>
+                    <td>{{ workorder.stuff_id}}</td>
+                    <td>{{ workorder.appointment_id}}</td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="m_user" class="dialog">
+         <table id="m_table">
+        <tr>
+            <th>Номер мастера:</th>
+            <th>Логин:</th>
+            <th>Пароль:</th>
+            <th>Имя:</th>
+            <th>Фамилия:</th>
+            <th>Телефон:</th>
+            <th>Стаж:</th>
+            <th>Должность:</th>
+            <th>Номер пользователя:</th>
+            <th>E-mail:</th>
+        </tr>
+            {% for master in masters %}
+                <tr>
+                    <td>{{ master.id }}</td>
+                        {% for user in users %}
+                            <td>{{ user.login}}</td>
+                            <td>{{ user.password}}</td>
+                            <td>{{ user.name}} </td>
+                            <td>{{ user.lastname}}</td>
+                            <td>{{ user.telephone}}</td>
+                        {% endfor %}
+                    <td>{{ master.experience}}</td>
+                    <td>{{ master.position_id}}</td>
+                    <td>{{ master.user_id}}</td>
+                    <td>{{ master.e_mail}}</td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div id="m_car" class="dialog">
+        <table id="m_table">
+        <tr>
+            <th>Номер автомобиля:</th>
+            <th>Модель автомобиля:</th>
+            <th>Рег. знак:</th>
+            <th>Цвет автомобиля:</th>
+            <th>Год выпуска:</th>
+            <th>Номер двигателя:</th>
+            <th>Номер кузова:</th>
+            <th>VIN:</th>
+            <th>Расстояние в км:</th>
+            <th>Клиент:</th>
+        </tr>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.car_model }}</td>
+                    <td>{{ car.register_sign }}</td>
+                    <td>{{ car.car_color }}</td>
+                    <td>{{ car.year_issue }}</td>
+                    <td>{{ car.engine_number }}</td>
+                    <td>{{ car.body_number }}</td>
+                    <td>{{ car.vin }}</td>
+                    <td>{{ car.mileage }}</td>
+                    <td>{{ car.client_id }}</td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="m_spare" class="dialog">
+        <table id="m_table">
+        <tr>
+            <th>Номер запчасти:</th>
+            <th>Наименование:</th>
+            <th>Остаток:</th>
+            <th>Стоимость:</th>
+            <th>Гарантия:</th>
+        </tr>
+            {% for spare in spares %}
+                <tr>
+                    <td>{{ spare.id }}</td>
+                    <td>{{ spare.name}}</td>
+                    <td>{{ spare.remainder}}</td>
+                    <td>{{ spare.spare_cost}} </td>
+                    <td>{{ spare.guarantee}}</td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+    <div id="m_supplier" class="dialog">
+        <table id="m_table">
+        <tr>
+            <th>Номер поставщика:</th>
+            <th>Имя:</th>
+            <th style="width: 55%">Адрес:</th>
+            <th>Телефон:</th>
+        </tr>
+            {% for supplier in suppliers %}
+                <tr>
+                    <td>{{ supplier.id }}</td>
+                    <td>{{ supplier.name}}</td>
+                    <td>{{ supplier.address}}</td>
+                    <td>{{ supplier.telephone}}</td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                    </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="m_service" class="dialog">
+        <table id="m_table">
+        <tr>
+            <th>Номер услуги:</th>
+            <th>Количество запасных частей:</th>
+            <th>Типы работ:</th>
+            <th>Номер запчасти:</th>
+        </tr>
+            {% for service in services %}
+                <tr>
+                    <td>{{ service.id }}</td>
+                    <td>{{ service.number_spare_parts }}</td>
+                    <td>{{ service.job_id}}</td>
+                    <td>{{ service.spare_id}}</td>
+                    <td>
+                        <a href="/"><img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+    </table></div>
+
+    <div id="m_type_job" class="dialog">
+        <table id="m_table">
+            <tr>
+                <th>Номер работы:</th>
+                <th>Название:</th>
+                <th>Стоимость:</th>
+                <th>Время выполнения:</th>
+                <th>Гарантия:</th>
+            </tr>
+                {% for type_job in type_jobs %}
+                    <tr>
+                        <td>{{ type_job.id }}</td>
+                        <td>{{ type_job.name_work}}</td>
+                        <td>{{ type_job.cost_work}}</td>
+                        <td>{{ type_job.lead_time}}</td>
+                        <td>{{ type_job.guarantee}}</td>
+                        <td><a href="/">
+                            <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                            </a>
+                        </td>
+                        <td><a href="/">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+
     <div class="widget">
       <h3 class="widget-title">Категории</h3>
       <ul class="widget-list">
-        <li><a href="#m_work_order">Заказ-наряд</a></li>
-        <li><a href="#m_user">Мастер</a></li>
-        <li><a href="#m_car">Автомобили</a></li>
-        <li><a href="#m_service">Услуги</a></li>
-          <li><a href="#m_type_job">Виды работ</a></li>
-        <li><a href="#m_spare">Запчасти</a></li>
-        <li><a href="#m_supplier">Поставщик</a></li>
+          <li><a href='#form' title="Добавить">
+              Добавить
+          </a>
+              {% include "m_form.html" %}</li>
+        <li class="btton">
+            <a href="#m_work_order">Заказ-наряд</a>
+        </li>
+        <li class="btton">
+            <a href="#m_user">Мастер</a>
+        </li>
+        <li class="btton">
+            <a href="#m_car">Автомобили</a>
+        </li>
+        <li class="btton">
+            <a href="#m_service">Услуги</a>
+        </li>
+        <li class="btton">
+            <a href="#m_type_job">Виды работ</a>
+        </li>
+        <li class="btton">
+            <a href="#m_spare">Запчасти</a>
+        </li>
+        <li class="btton">
+            <a href="#m_supplier">Поставщик</a>
+        </li>
           <li><a href="/">Выйти</a></li>
       </ul>
     </div>

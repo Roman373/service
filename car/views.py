@@ -36,7 +36,6 @@ class VisitorPage(View):
             elif request.user and request.user.groups.filter(name='master').exists():
                 request.session["id_master"] = users[0].id
                 return HttpResponseRedirect('master.html')
-
         if 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
@@ -46,7 +45,6 @@ class VisitorPage(View):
                     return HttpResponseRedirect('visitor.html')
                 else:
                     error = "Ошибка формы"
-
             context = {
                 'orderphoneform': orderphoneform,
                 'error': error
@@ -84,7 +82,6 @@ class VisitorPage(View):
 
 class ClientPage(View):
     def get(self, request):
-
         clients = get_client(request.session['id_client'])
         users = get_user(request.session['id_user'])
         clientworkorders = get_c_work_order(clients)
@@ -102,15 +99,15 @@ class ClientPage(View):
 
 class MasterPage(View):
     def get(self, request):
-        masters = get_master(request.session['id_master'])
         users = get_user(request.session['id_user'])
+        masters = get_master(request.session['id_master'])
+
         workorders = get_workorder()
         cars = get_m_car()
         spares = get_spare()
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
-
         context = {
             'workorders': workorders,
             'cars': cars,
@@ -118,8 +115,10 @@ class MasterPage(View):
             "suppliers": suppliers,
             "services": services,
             "type_jobs": type_jobs,
+            'mworkorderform': MWorkOrderForm,
+            'carform': CarForm,
+            'users': users,
             'masters': masters,
-            "users": users
         }
         return render(request, 'master.html', context=context)
 

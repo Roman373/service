@@ -65,3 +65,4 @@ def get_client(user_id):
     clients = Client.objects.filter(user_id=user_id)
     return clients
 
+

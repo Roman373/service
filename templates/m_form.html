@@ -1,0 +1,104 @@
+<div id="form" class="dialog">
+    <input onclick="window.location.href='#f_work_order'" title="Добавить" class="btn" value="Заказ-наряд">
+    <input onclick="window.location.href='#f_car'" title="Добавить" class="btn" value="Автомобиль">
+    <input onclick="window.location.href='#f_service'" title="Добавить" class="btn" value="Услугу">
+    <input onclick="window.location.href='#f_type_job'" title="Добавить" class="btn" value="Тип работы">
+    <input onclick="window.location.href='#f_spare'" title="Добавить" class="btn" value="Запчасти">
+</div>
+<div id="f_car" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+         <form method="post">
+            {% csrf_token %}
+        <div class="minput">
+            <p>Добавить автомобиль</p>
+            <p>Модель автомобиля:</p>{{ carform.car_model}}
+            <p>Регистрационный знак:</p>{{ CarForm.register_sign}}</div>
+        <div class="minput">
+                <p>Цвет:</p>{{ CarForm.car_color}}</div>
+        <div class="minput">
+                <p>Год выпуска:</p>{{ carform.year_issue}}
+                <p>Номер двигателя:</p>{{ CarForm.engine_number}}</div>
+        <div class="minput">
+                <p>Номер кузова:</p>{{ carform.body_number}}
+                <p>VIN:</p>{{ CarForm.vin}}
+                <p>Расстояние в км:</p>{{ CarForm.mileage}}</div>
+            <div class="minput"><p>Клиент:</p>{{ CarForm.client_id}}</div>
+        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+        </form>
+    </div>
+</div>
+<div id="f_service" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <form method="post"/>
+            {% csrf_token %}
+            <p>Добавить услугу</p>
+            <div class="btton">
+                <p>Количество запасных частей:</p>{{ serviceform.number_spare_parts}}
+                <p>Тип работы:</p>{{ serviceform.job_id}}
+                <p>Номер запчасти:</p>{{ serviceform.spare_id}}
+            </div>
+        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+        </form>
+    </div>
+</div>
+
+    <div id="f_type_job" class="modalDialog">
+        <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+            <p>Добавить тип работы</p>
+         <form method="post"/>
+            {% csrf_token %}
+            <div class="btton">
+                <p>Название работы:</p>{{ typejobform.name_work}}
+                <p>Стоимость работ:</p>{{ typejobform.cost_work}}
+                <p>Время выполнения::</p>{{ typejobform.lead_time}}
+                <p>Гарантия:</p>{{ typejobform.guarantee}}
+            </div>
+            <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+        </form>
+        </div>
+    </div>
+
+    <div id="f_spare" class="modalDialog">
+        <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+            <p>Добавить запчасти</p>
+         <form method="post"/>
+            {% csrf_token %}
+            <div class="btton">
+                <p>Наименование:</p>{{ spareform.name}}
+                <p>Остаток:</p>{{ spareform.remainder}}
+                <p>Стоимость запчасти:</p>{{ spareform.spare_cost}}
+                <p>Гарантия:</p>{{ spareform.guarantee}}
+
+            </div>
+            <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+        </form>
+        </div>
+    </div>
+
+<div id="f_work_order" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+         <form method="post"/>
+            {% csrf_token %}
+        <div class="btton">
+            <p>Дата начала:</p>{{ mworkorderform.date_appeal}}
+            <p>Дата заверщения:</p>{{ mworkorderform.date_completion }}</div>
+        <div class="btton">
+                <p>Причина обращения:</p>{{ mworkorderform.reason_petition }}</div>
+        <div class="btton">
+                <p>Общая стоимость:</p>{{mworkorderform.total_cost }}
+                <p>Статус заказа:</p>{{mworkorderform.order_status }}</div>
+        <div class="btton">
+                <p>Номер автомобиля:</p>{{ mworkorderform.car_id }}
+                <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
+                <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
+        </div>
+        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+        </form
+    </div>
+</div>
+

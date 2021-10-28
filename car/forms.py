@@ -168,3 +168,20 @@ class MWorkOrderForm(ModelForm):
                 'class': 'oInp-1'
             }),
         }
+
+
+class CarForm(ModelForm):
+    class Meta:
+        fields = ['name', 'telephone']
+        model = User
+        widgets = {
+            "name": TextInput(attrs={
+                'placeholder': "Ваше имя",
+                'class': 'oInp-1'
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Ваш телефон",
+                'value': "+7",
+                'class': 'oInp-2'
+            })
+        }
