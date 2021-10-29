@@ -30,9 +30,12 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            else:
+            elif get_client(users):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
+            elif get_master(users):
+                request.session["id_user"] = users[0].id
+                return HttpResponseRedirect('master.html')
         if 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
