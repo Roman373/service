@@ -21,6 +21,7 @@ class VisitorPage(View):
             password = request.POST.get("password")
             users = autoriz(login, password)
             enterform = EnterForm(request.POST)
+            iduser = users[0].id
             if not users:
                 context = {
                     "message": "Введен не правильный пароль или логин",
@@ -30,9 +31,12 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            else:
+            elif get_client(iduser):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
+            elif get_master(iduser):
+                request.session["id_user"] = users[0].id
+                return HttpResponseRedirect('master.html')
         if 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
@@ -91,6 +95,7 @@ class ClientPage(View):
             "users": users,
             'clients': clients,
             'appointmentform': AppointmentForm,
+            'workorderform': MWorkOrderForm,
         }
         return render(request, 'client.html', context=context)
 
