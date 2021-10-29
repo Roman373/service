@@ -94,6 +94,7 @@ class ClientPage(View):
             "users": users,
             'clients': clients,
             'appointmentform': AppointmentForm,
+            'mworkorderform': MWorkOrderForm,
         }
         return render(request, 'client.html', context=context)
 
@@ -111,16 +112,17 @@ class ClientPage(View):
                 'error': error
             }
             return render(request, 'client.html', context=context)
+
         if 'workorderSubmit' in request.POST:
             if request.method == 'POST':
-                workorderform = MWorkOrderForm(request.POST)
-                if workorderform.is_valid():
-                    workorderform.save()
+                mworkorderform = MWorkOrderForm(request.POST)
+                if mworkorderform.is_valid():
+                    mworkorderform.save()
                     return HttpResponseRedirect('client.html')
                 else:
                     error = "Ошибка формы"
             context = {
-                'workorderform': workorderform,
+                'mworkorderform': mworkorderform,
                 'error': error
             }
             return render(request, 'client.html', context=context)
@@ -147,8 +149,78 @@ class MasterPage(View):
             'carform': CarForm,
             'users': users,
             'masters': masters,
+            'serviceform': ServiceForm,
+            'typejobform': TypeJobForm,
+            'spareform': SpareForm
         }
         return render(request, 'master.html', context=context)
+
+    def post(self, request):
+        if 'mworkorderSubmit' in request.POST:
+            if request.method == 'POST':
+                mworkorderform = MWorkOrderForm(request.POST)
+                if mworkorderform.is_valid():
+                    mworkorderform.save()
+                    return HttpResponseRedirect('master.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'mworkorderform': mworkorderform,
+                'error': error
+            }
+            return render(request, 'master.html', context=context)
+        if 'carformSubmit' in request.POST:
+            if request.method == 'POST':
+                carform = CarForm(request.POST)
+                if carform.is_valid():
+                    carform.save()
+                    return HttpResponseRedirect('master.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'carform': carform,
+                'error': error
+            }
+            return render(request, 'master.html', context=context)
+        if 'serviceformSubmit' in request.POST:
+            if request.method == 'POST':
+                serviceform = ServiceForm(request.POST)
+                if serviceform.is_valid():
+                    serviceform.save()
+                    return HttpResponseRedirect('master.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'serviceform': serviceform,
+                'error': error
+            }
+            return render(request, 'master.html', context=context)
+        if 'typejobformSubmit' in request.POST:
+            if request.method == 'POST':
+                typejobform = TypeJobForm(request.POST)
+                if typejobform.is_valid():
+                    typejobform.save()
+                    return HttpResponseRedirect('master.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'typejobform': typejobform,
+                'error': error
+            }
+            return render(request, 'master.html', context=context)
+        if 'spareformSubmit' in request.POST:
+            if request.method == 'POST':
+                spareform = SpareForm(request.POST)
+                if spareform.is_valid():
+                    spareform.save()
+                    return HttpResponseRedirect('master.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'spareform': spareform,
+                'error': error
+            }
+            return render(request, 'master.html', context=context)
 
 
 class MainPage(View):

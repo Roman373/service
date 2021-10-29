@@ -9,18 +9,18 @@
          <form method="post">
             {% csrf_token %}
             <div class="btton">
-                <p>Дата начала:</p>{{ workorderform.date_appeal}}
-                <p>Дата заверщения:</p>{{ workorderform.date_completion }}</div>
+                <p>Дата начала:</p>{{ mworkorderform.date_appeal}}
+                <p>Дата заверщения:</p>{{ mworkorderform.date_completion }}</div>
             <div class="btton">
-                    <p>Причина обращения:</p>{{ workorderform.reason_petition }}</div>
+                    <p>Причина обращения:</p>{{ mworkorderform.reason_petition }}</div>
             <div class="btton">
-                    <p>Общая стоимость:</p>{{workorderform.total_cost }}
-                    <p>Статус заказа:</p>{{workorderform.order_status }}</div>
+                    <p>Общая стоимость:</p>{{mworkorderform.total_cost }}
+                    <p>Статус заказа:</p>{{mworkorderform.order_status }}</div>
             <div class="btton">
-                    <p>Номер автомобиля:</p>{{ workorderform.car_id }}
-                    <option value="{{ workorderform.car_id }}">{{ workorderform.car_id  }}</option>
-                    <p>Номер запчасти:</p>{{ workorderform.stuff_id }}
-                    <p>Номер обращения:</p>{{ workorderform.appointment_id }}
+                    <p>Номер автомобиля:</p>{{ mworkorderform.car_id }}
+                    <option>{{ workorderform.car_id  }}</option>
+                    <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
+                    <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
             </div>
             <button type="submit" name="workorderSubmit" class="lenterBtn" >Добавить</button>
         </form>
@@ -33,6 +33,8 @@
         <a href="#close" title="Закрыть" class="close">X</a>
         <form method="post">
             {% csrf_token %}
+            <h2 style="text-align:center">Добавление обращения</h2>
+            <div class="stlapp">
             <div class="btton">
                 <p>Имя:</p>{{ appointmentform.name }}
             </div>
@@ -44,11 +46,12 @@
             </div>
             <div class="btton">
                 <p>Дата осмотра:</p>{{ appointmentform.data }}
-            </div>
+            </div></div>
             <span> {{ error }}</span>
+            <div class="cbtn">
             <div class="btton">
                 <button type="submit" name="appointmentSubmit" class="appointBtn">Записаться</button>
-            </div>
+            </div></div>
         </form>
     </div>
 </div>

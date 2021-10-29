@@ -27,7 +27,7 @@ def get_c_car():
 
 
 def get_appointment(user_id):
-    appointments = Appointment.objects.filter(workorder__car__client__id__in=user_id)
+    appointments = Appointment.objects.filter(workorder__car__client__user__id__in=user_id)
     return appointments
 
 

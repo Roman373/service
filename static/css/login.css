@@ -22,7 +22,6 @@
 .lInp-5{
   width: 49%;
 }
-
 .linput{
   display: flex;
   height: 30px;
@@ -44,7 +43,6 @@
   bottom: 70px;
   margin-top: 20px;
 }
-
 .lenterBtn:hover {
   background-color: #a8a7a7;
 }

@@ -1,4 +1,3 @@
-
 .widget {
   padding: 20px 30px;
   background: white;
@@ -45,7 +44,7 @@
 	pointer-events: auto;
 }
 
-#m_table{
+.m_table{
   margin-top: 30px;
   width: 80%;
   float: right;
@@ -57,14 +56,14 @@
   font-family: 'Roboto', sans-serif;
 
 }
-#m_table h3 {
+.m_table h3 {
   margin-bottom: 20px;
   text-align: center;
   font-size: 24px;
   font-weight: normal;
   color:  #424949;
 }
-#m_table th {
+.m_table th {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -72,20 +71,20 @@
   text-align: left;
   border-bottom: 1px solid #eaeaea;
 }
-#m_table td {
+.m_table td {
   vertical-align:top;
   list-style: none;
   border-bottom: 1px solid #eaeaea;
 }
-#m_table td:last-child {
+.m_table td:last-child {
   border-bottom: none;
 }
-#m_table a {
+.m_table a {
   text-decoration: none;
   color:  #616a6b;
   display: inline-block;
 }
-#m_table td:before {
+.m_table td:before {
   font-family: FontAwesome;
   font-size: 20px;
   color: #dd3333;
@@ -166,14 +165,32 @@
 .btn:hover { background: #00e600; }
 
 
-.lInp-5,.lInp-1,.lInp-2,.lInp-3,.lInp-4{
+.lInp-5,.lInp-1,.lInp-2,.lInp-3,
+.lInp-4,.cInp-1,.cInp-2,.cInp-3,
+.cInp-4,.cInp-5,.cInp-6,.cInp-7,
+.cInp-8,.cInp-9,.sInp-1,.sInp-2,
+.tInp-1,.tInp-2,.tInp-3,.tInp-4,
+.spInp-1,.spInp-2,.spInp-3,.spInp-4{
   border: none;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 2px;
+  margin-top: 13px;
   margin-left: 3px;
+  height:20px;
   font-size: 15px;
   display: flex;
   background-color: #e3e3e3;
+}
+.spInp-1{
+    width: 58%;
+}
+.spInp-2{
+    width: 72%;
+}
+.spInp-3{
+    width: 47%;
+}
+.spInp-4{
+    width: 69%;
 }
 .lInp-1{
   width: 28%;
@@ -189,4 +206,66 @@
 }
 .lInp-5{
   width: 49%;
+}
+.cInp-1{
+    width: 44%;
+}.cInp-2{
+    width: 40%;
+}
+.cInp-3{
+    width: 24%;
+    margin-right:5px;
+}
+.cInp-4{
+    width: 22%;
+}
+.cInp-5{
+    width: 50%;
+}.cInp-6{
+    width: 57%;
+}
+.cInp-7{
+    width: 77%;
+}
+.cInp-8{
+    width: 40%;
+}
+.minput{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+
+}
+.mbtn{
+    display: flex;
+    justify-content: center;
+}
+.stl_car{
+    margin-left:30px;
+}
+.sInp-1{
+    width:20%;
+}
+.tInp-1{
+    width:50%;
+}
+.tInp-2{
+    width:51%;
+}
+.tInp-3{
+    width:46%;
+}
+.tInp-4{
+    width:66%;
+}
+.menterBtn {
+  width: 40%;
+  height: 30px;
+  color: #000000;
+  background: #ecb832;
+  font-size: 15px;
+  display: inline-block;
+  justify-content: center;
+  bottom: 70px;
+  margin-top: 20px;
 }

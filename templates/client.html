@@ -9,7 +9,7 @@
 
 {% block content %}
 <div id="c_appointment" class="modalD">
-     <table id="c_table">
+     <table class="c_table">
         <tr>
             <th>Номер обращения:</th>
             <th>Имя:</th>
@@ -30,7 +30,7 @@
     </table>
 </div>
 <div id="c_user" class="modalD">
- <table id="c_table">
+ <table class="c_table">
         <tr>
             <th>Номер пользователя:</th>
             <th>Логин:</th>
@@ -59,7 +59,7 @@
     </table>
 </div>
 <div id="c_work_order" class="modalD">
-    <table id="c_table">
+    <table class="c_table">
         <tr>
             <th>Номер заказа:</th>
             <th>Дата начала:</th>
@@ -94,7 +94,6 @@
               <a href="#c_add_form" title="Добавить">Добавить</a>
               {% include "c_add_form.html" %}
           </li>
-
           <li class="btton">
               <a href="#c_work_order">Заказ-наряд</a>
           </li>
@@ -108,9 +107,9 @@
       </ul>
     </div>
     <div id="appointment" class="modalDialog">
-                <div>
-                    <a href="#close" title="Закрыть" class="close">X</a>
-                    {% include "appointment.html" %}
-                </div>
-            </div>
+        <div>
+            <a href="#close" title="Закрыть" class="close">X</a>
+            {% include "appointment.html" %}
+        </div>
+    </div>
 {% endblock %}

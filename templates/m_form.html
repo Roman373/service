@@ -8,38 +8,48 @@
 <div id="f_car" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-         <form method="post">
+         <form method="post" class="stl_car">
             {% csrf_token %}
-        <div class="minput">
-            <p>Добавить автомобиль</p>
-            <p>Модель автомобиля:</p>{{ carform.car_model}}
-            <p>Регистрационный знак:</p>{{ CarForm.register_sign}}</div>
-        <div class="minput">
-                <p>Цвет:</p>{{ CarForm.car_color}}</div>
-        <div class="minput">
+             <h2 style="text-align:center">Добавить автомобиль</h2>
+            <div class="minput">
+                <p>Модель автомобиля:</p>{{ carform.car_model}}</div>
+            <div class="minput">
+                <p>Регистрационный знак:</p>{{ carform.register_sign}}</div>
+            <div class="minput">
+                <p>Цвет:</p>{{ carform.car_color}}
                 <p>Год выпуска:</p>{{ carform.year_issue}}
-                <p>Номер двигателя:</p>{{ CarForm.engine_number}}</div>
-        <div class="minput">
+            </div>
+            <div class="minput">
+                <p>Номер двигателя:</p>{{ carform.engine_number}}
+            </div>
+            <div class="minput">
                 <p>Номер кузова:</p>{{ carform.body_number}}
-                <p>VIN:</p>{{ CarForm.vin}}
-                <p>Расстояние в км:</p>{{ CarForm.mileage}}</div>
-            <div class="minput"><p>Клиент:</p>{{ CarForm.client_id}}</div>
-        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+            </div>
+            <div class="minput">
+                <p>VIN:</p>{{ carform.vin}}
+            </div>
+            <div class="minput">
+            <p>Расстояние в км:</p>{{ carform.mileage}}</div>
+             <div class="mbtn">
+                 <button type="submit" name="carSubmit" class="menterBtn" >Добавить</button></div>
         </form>
     </div>
 </div>
 <div id="f_service" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-        <form method="post"/>
+        <form method="post" class="stl_car">
             {% csrf_token %}
-            <p>Добавить услугу</p>
+            <h2 style="text-align:center">Добавить услугу</h2>
             <div class="btton">
-                <p>Количество запасных частей:</p>{{ serviceform.number_spare_parts}}
-                <p>Тип работы:</p>{{ serviceform.job_id}}
-                <p>Номер запчасти:</p>{{ serviceform.spare_id}}
+                <p>Количество запасных частей:</p>{{ serviceform.number_spare_parts }}
             </div>
-        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+            <div class="btton">
+                <p>Тип работы:</p>{{ serviceform.job_id }}
+                <p>Номер запчасти:</p>{{ serviceform.spare_id }}
+            </div>
+        <div class="mbtn">
+            <button type="submit" name="serviceSubmit" class="menterBtn" >Добавить</button></div>
         </form>
     </div>
 </div>
@@ -47,16 +57,21 @@
     <div id="f_type_job" class="modalDialog">
         <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-            <p>Добавить тип работы</p>
-         <form method="post"/>
+            <h2 style="text-align:center">Добавить тип работы</h2>
+         <form method="post" class="stl_car">
             {% csrf_token %}
             <div class="btton">
                 <p>Название работы:</p>{{ typejobform.name_work}}
-                <p>Стоимость работ:</p>{{ typejobform.cost_work}}
-                <p>Время выполнения::</p>{{ typejobform.lead_time}}
+            </div>
+                <div class="btton">
+                    <p>Стоимость работ:</p>{{ typejobform.cost_work}}</div>
+                <div class="btton">
+                    <p>Время выполнения::</p>{{ typejobform.lead_time}}</div>
+                <div class="btton">
                 <p>Гарантия:</p>{{ typejobform.guarantee}}
             </div>
-            <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+            <div class="mbtn">
+                <button type="submit" name="typejobSubmit" class="menterBtn" >Добавить</button></div>
         </form>
         </div>
     </div>
@@ -64,17 +79,20 @@
     <div id="f_spare" class="modalDialog">
         <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-            <p>Добавить запчасти</p>
-         <form method="post"/>
+            <h2 style="text-align:center">Добавить запчасти</h2>
+         <form method="post" class="stl_car">
             {% csrf_token %}
             <div class="btton">
-                <p>Наименование:</p>{{ spareform.name}}
-                <p>Остаток:</p>{{ spareform.remainder}}
-                <p>Стоимость запчасти:</p>{{ spareform.spare_cost}}
+                <p>Наименование:</p>{{ spareform.name}}</div>
+                <div class="btton">
+                    <p>Остаток:</p>{{ spareform.remainder}}</div>
+            <div class="btton">
+                <p>Стоимость запчасти:</p>{{ spareform.spare_cost}}</div>
+            <div class="btton">
                 <p>Гарантия:</p>{{ spareform.guarantee}}
-
             </div>
-            <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
+            <div class="mbtn">
+                <button type="submit" name="spareSubmit" class="menterBtn" >Добавить</button></div>
         </form>
         </div>
     </div>
@@ -82,8 +100,9 @@
 <div id="f_work_order" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-         <form method="post"/>
+         <form method="post" class="stl_car">
             {% csrf_token %}
+        <h2 style="text-align:center">Добавить заказ-наряд</h2>
         <div class="btton">
             <p>Дата начала:</p>{{ mworkorderform.date_appeal}}
             <p>Дата заверщения:</p>{{ mworkorderform.date_completion }}</div>
@@ -97,8 +116,9 @@
                 <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
                 <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
         </div>
-        <button type="submit" name="loginSubmit" class="lenterBtn" >Добавить</button>
-        </form
+        <div class="mbtn">
+            <button type="submit" name="mworkorderSubmit" class="menterBtn" >Добавить</button></div>
+        </form>
     </div>
 </div>
 

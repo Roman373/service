@@ -1,3 +1,5 @@
+
+
 .widget {
   padding: 20px 30px;
   background: white;
@@ -42,7 +44,7 @@
     display: contents;
 }
 
-#c_table{
+.c_table{
   margin-top: 30px;
   width: 80%;
   float: right;
@@ -54,14 +56,14 @@
   font-family: 'Roboto', sans-serif;
 
 }
-#c_table h3 {
+.c_table h3 {
   margin-bottom: 20px;
   text-align: center;
   font-size: 24px;
   font-weight: normal;
   color:  #424949;
 }
-#c_table th {
+.c_table th {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -69,26 +71,24 @@
   text-align: left;
   border-bottom: 1px solid #eaeaea;
 }
-#c_table td {
+.c_table td {
   vertical-align:top;
   list-style: none;
   border-bottom: 1px solid #eaeaea;
 }
-#c_table td:last-child {
+.c_table td:last-child {
   border-bottom: none;
 }
-#c_table a {
+.c_table a {
   text-decoration: none;
   color:  #616a6b;
   display: inline-block;
 }
-#c_table td:before {
+.c_table td:before {
   font-family: FontAwesome;
   font-size: 20px;
   color: #dd3333;
 }
-
-
 
 .modalDialog {
 	position: fixed;
@@ -163,19 +163,60 @@
 }
 .btn:hover { background: #00e600; }
 
-.wInp-1,.wInp-2{
+.aInp-5,.aInp-1,.aInp-2,.aInp-3,
+.wInp-1,.wInp-2,.wInp-3,.wInp-4,
+.wInp-5,.wInp-6,.wInp-7,.wInp-8{
   border: none;
   padding: 12px;
   margin-top: 15px;
+  height:8px;
   margin-left: 3px;
   font-size: 15px;
   display: flex;
-  height:12px;
   background-color: #e3e3e3;
 }
+.aInp-1{
+  width: 58%;
+}
+.aInp-2{
+  width: 49%;
+}
+.aInp-3{
+  width: 43%;
+}
+.aInp-5{
+  width: 40%;
+}
 .wInp-1{
-  width: 52%;
+  width: 40%;
 }
 .wInp-2{
-  width: 49%;
+  width: 40%;
+}
+.wInp-3{
+  width: 40%;
+}
+.wInp-4{
+  width: 40%;
+  margin-right:5px;
+}
+.wInp-5{
+  width: 40%;
+}
+.wInp-6{
+  width: 40%;
+}
+.wInp-7{
+  width: 40%;
+}
+.wInp-8{
+  width: 40%;
+}
+.cbtn{
+    display: flex;
+    justify-content: center;
+}
+
+.stlapp{
+    margin-left:40px;
 }
