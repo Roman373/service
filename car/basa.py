@@ -51,18 +51,18 @@ def get_type_job():
     return type_jobs
 
 
-def get_master(user_id):
-    masters = Master.objects.filter(user_id=user_id)
-    return masters
-
-
-def get_user(user_id):
+def get_user_filter(user_id):
     users = User.objects.filter(id=user_id)
     return users
 
 
+def get_master(user_id):
+    masters = Master.objects.filter(user_id__in=user_id)
+    return masters
+
+
 def get_client(user_id):
-    clients = Client.objects.filter(user_id=user_id)
+    clients = Client.objects.filter(user_id__in=user_id)
     return clients
 
 

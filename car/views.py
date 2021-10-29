@@ -30,12 +30,9 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            elif request.user:
-                request.session["id_client"] = users[0].id
+            else:
+                request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
-            elif request.user and request.user.groups.filter(name='master').exists():
-                request.session["id_master"] = users[0].id
-                return HttpResponseRedirect('master.html')
         if 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
@@ -82,32 +79,60 @@ class VisitorPage(View):
 
 class ClientPage(View):
     def get(self, request):
-        clients = get_client(request.session['id_client'])
-        users = get_user(request.session['id_user'])
-        clientworkorders = get_c_work_order(clients)
-        appointments = get_appointment(clients)
+        users = get_user_filter(request.session["id_user"])
+        clients = get_client(users)
+        clientworkorders = get_c_work_order(users)
+        appointments = get_appointment(users)
         cars = get_c_car()
         context = {
             'clientworkorders': clientworkorders,
-            'clients': clients,
             "appointments": appointments,
             'cars': cars,
-            "users": users
+            "users": users,
+            'clients': clients,
+            'appointmentform': AppointmentForm,
         }
         return render(request, 'client.html', context=context)
+
+    def post(self, request):
+        if 'appointmentSubmit' in request.POST:
+            if request.method == 'POST':
+                appointmentform = AppointmentForm(request.POST)
+                if appointmentform.is_valid():
+                    appointmentform.save()
+                    return HttpResponseRedirect('client.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'appointmentform': appointmentform,
+                'error': error
+            }
+            return render(request, 'client.html', context=context)
+        if 'workorderSubmit' in request.POST:
+            if request.method == 'POST':
+                workorderform = MWorkOrderForm(request.POST)
+                if workorderform.is_valid():
+                    workorderform.save()
+                    return HttpResponseRedirect('client.html')
+                else:
+                    error = "Ошибка формы"
+            context = {
+                'workorderform': workorderform,
+                'error': error
+            }
+            return render(request, 'client.html', context=context)
 
 
 class MasterPage(View):
     def get(self, request):
-        users = get_user(request.session['id_user'])
-        masters = get_master(request.session['id_master'])
-
+        users = get_user_filter(request.session["id_user"])
         workorders = get_workorder()
         cars = get_m_car()
         spares = get_spare()
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
+        masters = get_master(users)
         context = {
             'workorders': workorders,
             'cars': cars,
