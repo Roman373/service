@@ -137,35 +137,35 @@ class MWorkOrderForm(ModelForm):
         widgets = {
             'date_appeal': TextInput(attrs={
                 'placeholder': "Дата обращения",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'date_completion': TextInput(attrs={
                 'placeholder': "Дата заверщения",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'reason_petition': TextInput(attrs={
                 'placeholder': "Причина обращения",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'total_cost': TextInput(attrs={
                 'placeholder': "Общая стоимость",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'order_status': TextInput(attrs={
                 'placeholder': "Статус заказа",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'car_id': TextInput(attrs={
                 'placeholder': "Номер автомобиля",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'stuff_id': TextInput(attrs={
                 'placeholder': "Номер запчасти",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
             'appointment_id': TextInput(attrs={
                 'placeholder': "Номер",
-                'class': 'oInp-1'
+                'class': 'wInp-1'
             }),
         }
 

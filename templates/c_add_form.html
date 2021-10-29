@@ -8,20 +8,21 @@
         <a href="#close" title="Закрыть" class="close">X</a>
          <form method="post">
             {% csrf_token %}
-        <div class="btton">
-            <p>Дата начала:</p>{{ workorderform.date_appeal}}
-            <p>Дата заверщения:</p>{{ workorderform.date_completion }}</div>
-        <div class="btton">
-                <p>Причина обращения:</p>{{ workorderform.reason_petition }}</div>
-        <div class="btton">
-                <p>Общая стоимость:</p>{{workorderform.total_cost }}
-                <p>Статус заказа:</p>{{workorderform.order_status }}</div>
-        <div class="btton">
-                <p>Номер автомобиля:</p>{{ workorderform.car_id }}
-                <p>Номер запчасти:</p>{{ workorderform.stuff_id }}
-                <p>Номер обращения:</p>{{ workorderform.appointment_id }}
-        </div>
-        <button type="submit" name="workorderSubmit" class="lenterBtn" >Добавить</button>
+            <div class="btton">
+                <p>Дата начала:</p>{{ workorderform.date_appeal}}
+                <p>Дата заверщения:</p>{{ workorderform.date_completion }}</div>
+            <div class="btton">
+                    <p>Причина обращения:</p>{{ workorderform.reason_petition }}</div>
+            <div class="btton">
+                    <p>Общая стоимость:</p>{{workorderform.total_cost }}
+                    <p>Статус заказа:</p>{{workorderform.order_status }}</div>
+            <div class="btton">
+                    <p>Номер автомобиля:</p>{{ workorderform.car_id }}
+                    <option value="{{ workorderform.car_id }}">{{ workorderform.car_id  }}</option>
+                    <p>Номер запчасти:</p>{{ workorderform.stuff_id }}
+                    <p>Номер обращения:</p>{{ workorderform.appointment_id }}
+            </div>
+            <button type="submit" name="workorderSubmit" class="lenterBtn" >Добавить</button>
         </form>
     </div>
 </div>
