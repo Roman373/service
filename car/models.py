@@ -7,23 +7,17 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     telephone = models.CharField(max_length=11)
+    e_mail = models.EmailField(max_length=50)
+
+
+class Staff(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    experience = models.IntegerField(max_length=2)
+    position = models.ForeignKey('Position', on_delete=models.CASCADE)
 
 
 class Position(models.Model):
     job_title = models.CharField(max_length=50)
-
-
-class Client(models.Model):
-    e_mail = models.EmailField(max_length=50)
-    discount = models.IntegerField(max_length=6)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-
-class Master(models.Model):
-    e_mail = models.EmailField(max_length=50)
-    experience = models.IntegerField(max_length=2)
-    position = models.ForeignKey(Position, on_delete=models.CASCADE)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Car(models.Model):
@@ -35,13 +29,7 @@ class Car(models.Model):
     body_number = models.CharField(max_length=12)
     vin = models.CharField(max_length=17)
     mileage = models.IntegerField(max_length=6)
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-
-
-class Stuff(models.Model):
-    work_experience = models.IntegerField(max_length=2)
-    position = models.ForeignKey(Position, on_delete=models.CASCADE)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Spare(models.Model):
@@ -52,6 +40,7 @@ class Spare(models.Model):
 
 
 class Service(models.Model):
+    name_service = models.CharField(max_length=40)
     number_spare_parts = models.IntegerField(max_length=4)
     job = models.ForeignKey('TypesJob', on_delete=models.CASCADE)
     spare = models.ForeignKey(Spare, on_delete=models.CASCADE)
@@ -82,7 +71,7 @@ class WorkOrder(models.Model):
     total_cost = models.DecimalField(decimal_places=X, max_digits=Y)
     order_status = models.CharField(max_length=20)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    stuff = models.ForeignKey(Stuff, on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
 

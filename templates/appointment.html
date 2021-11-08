@@ -28,8 +28,15 @@
             {{ appointmentform.data }}
         </div>
         <span> {{ error }}</span>
+        <div id='hideMe'>
+            {% if messages %}
+                <p style="color:green; text-align:center">Обращение отправленно успешно</p>
+            {% endif %}
+        </div>
+
         <div class="abton">
-            <button type="submit" name="appointmentSubmit" class="appointBtn">Записаться</button>
+            <button type="submit" name="appointmentSubmit" id="appointmentsubmit" class="appointBtn">Записаться</button>
         </div>
     </form>
+<script src="script.js"></script>
 {% endblock %}

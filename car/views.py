@@ -1,8 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from car.basa import *
 from car.forms import *
+from django.contrib import messages
 
 
 class VisitorPage(View):
@@ -12,6 +13,7 @@ class VisitorPage(View):
             'appointmentform': AppointmentForm,
             "orderphoneform": OrderPhoneForm,
             'enterform': EnterForm,
+
         }
         return render(request, 'visitor.html', context=context)
 
@@ -30,28 +32,32 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
+            elif get_master(users) and get_position(2):
+                request.session["id_user"] = users[0].id
+                return HttpResponseRedirect('master.html')
             elif get_client(users):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
-            elif get_master(users):
-                request.session["id_user"] = users[0].id
-                return HttpResponseRedirect('master.html')
+
         if 'phoneSubmit' in request.POST:
             error = ""
             if request.method == 'POST':
                 orderphoneform = OrderPhoneForm(request.POST)
                 if orderphoneform.is_valid():
                     orderphoneform.save()
+                    messages.success(request, ' ')
                     return HttpResponseRedirect('visitor.html')
                 else:
                     error = "Ошибка формы"
             context = {
                 'orderphoneform': orderphoneform,
-                'error': error
+                'error': error,
+                "mess":True
             }
             return render(request, 'visitor.html', context=context)
 
         if 'loginSubmit' in request.POST:
+            error = ''
             if request.method == 'POST':
                 loginform = LoginForm(request.POST)
                 if loginform.is_valid():
@@ -59,23 +65,27 @@ class VisitorPage(View):
                     return HttpResponseRedirect('visitor.html')
                 else:
                     error = "Ошибка формы"
+
             context = {
                 'loginform': loginform,
-                'error': error
+                'error': error,
+                "mess":messages.success(request, 'fff')
             }
             return render(request, 'visitor.html', context=context)
 
         if 'appointmentSubmit' in request.POST:
+            error = ''
             if request.method == 'POST':
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
+                    messages.success(request, 'Обращение отправлено успешно!')
                     return HttpResponseRedirect('visitor.html')
                 else:
                     error = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
-                'error': error
+                'error': error,
             }
             return render(request, 'visitor.html', context=context)
 
@@ -143,12 +153,12 @@ class MasterPage(View):
             'cars': cars,
             "spares": spares,
             "suppliers": suppliers,
+            'masters': masters,
             "services": services,
             "type_jobs": type_jobs,
             'mworkorderform': MWorkOrderForm,
             'carform': CarForm,
             'users': users,
-            'masters': masters,
             'serviceform': ServiceForm,
             'typejobform': TypeJobForm,
             'spareform': SpareForm

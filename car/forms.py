@@ -5,7 +5,7 @@ from car.models import *
 class LoginForm(ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'lastname', 'login', 'password', "telephone"]
+        fields = ['name', 'lastname', 'login', 'password', "telephone", 'e_mail']
         widgets = {
             "name": TextInput(attrs={
                 'placeholder': "Ваше имя",
@@ -26,6 +26,10 @@ class LoginForm(ModelForm):
             "telephone": TextInput(attrs={
                 'placeholder': "Ваш телефон",
                 'class': 'lInp-5'
+            }),
+            "e_mail": EmailInput(attrs={
+                'placeholder': "Ваша почта",
+                'class': 'lInp-6'
             })
         }
 
@@ -52,7 +56,7 @@ class CarForm(ModelForm):
     class Meta:
         fields = ['car_model', 'register_sign', 'car_color',
                   'year_issue', 'engine_number', 'body_number',
-                  'vin', 'mileage', 'client']
+                  'vin', 'mileage', 'user']
         model = Car
         widgets = {
             "car_model": TextInput(attrs={
@@ -80,7 +84,8 @@ class CarForm(ModelForm):
                 'placeholder': "Пробег"
             }),
             "telephone": TextInput(attrs={
-                'placeholder': "Телефон"
+                'placeholder': "Телефон",
+                'value': "+7"
             })
         }
 
@@ -132,7 +137,7 @@ class MWorkOrderForm(ModelForm):
         fields = ['date_appeal', 'date_completion',
                   'reason_petition', 'total_cost',
                   'order_status', 'car',
-                  'stuff', 'appointment']
+                  'staff', 'appointment']
         model = WorkOrder
         widgets = {
             'date_appeal': TextInput(attrs={
@@ -159,7 +164,7 @@ class MWorkOrderForm(ModelForm):
                 'placeholder': "Номер автомобиля",
                 'class': 'wInp-6'
             }),
-            'stuff_id': TextInput(attrs={
+            'staff_id': TextInput(attrs={
                 'placeholder': "Номер запчасти",
                 'class': 'wInp-7'
             }),
@@ -175,7 +180,7 @@ class CarForm(ModelForm):
         fields = ['car_model', 'register_sign',
                   'car_color', 'year_issue',
                   'engine_number', 'body_number',
-                  'vin', 'mileage', 'client']
+                  'vin', 'mileage', 'user']
         model = Car
         widgets = {
             'car_model': TextInput(attrs={

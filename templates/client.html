@@ -38,24 +38,20 @@
             <th>Имя:</th>
             <th>Фамилия:</th>
             <th>Телефон:</th>
-            <th>Скидка:</th>
             <th>E-mail:</th>
         </tr>
-            {% for client in clients %}
                 <tr>
-                    <td>{{ client.id }}</td>
                     {% for user in users %}
+                    <td>{{ user.id}}</td>
                         <td>{{ user.login}}</td>
                         <td>{{ user.password}}</td>
                         <td>{{ user.name}} </td>
                         <td>{{ user.lastname}}</td>
                         <td>{{ user.telephone}}</td>
+                        <td>{{ user.e_mail}}</td>
                     {% endfor %}
-                    <td>{{ client.discount }}</td>
-                    <td>{{ client.e_mail }}</td>
                     <td></td>
                 </tr>
-            {% endfor %}
     </table>
 </div>
 <div id="c_work_order" class="modalD">

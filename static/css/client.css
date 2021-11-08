@@ -154,14 +154,12 @@
 	color: #black;
 	right: 8px;
 	height:25px;
-	margin-left:15px;
-	text-align: center;
+	margin-left:10px;
 	top: -10px;
 	border:none;
 	border-radius: 19px;
     font-size:15px;
 }
-.btn:hover { background: #00e600; }
 
 .aInp-5,.aInp-1,.aInp-2,.aInp-3,
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,

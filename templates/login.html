@@ -8,9 +8,10 @@
 {% block title %}Авторизация{% endblock %}
 
 {% block content %}
+<script src="script.js"></script>
     <div class="login">
     <h1 style="text-align: center">Регистрация</h1>
-    <form method="post"/>
+    <form method="post" name="login">
         {% csrf_token %}
         <div class="linput">
             <p>Имя:</p>{{ loginform.name }}</div>
@@ -22,9 +23,17 @@
             <p>Пароль:</p>{{ loginform.password }}</div>
         <div class="linput">
             <p>Телефон:</p>{{ loginform.telephone }}</div>
+        <div class="linput">
+            <p>Почта:</p>{{ loginform.e_mail }}</div>
         <span> {{ error }}</span>
+
+        <div id='hideMe'>
+            {% if messages %}
+            <p style="color:green; text-align:center">Регистрация выполнена успешно</p>
+            {% endif %}
+            </div>
         <div class="lbtton">
-            <button type="submit" name="loginSubmit" class="lenterBtn" >Зарегистрироваться</button>
+            <button type="submit" name="loginSubmit" id="loginsubmit" class="lenterBtn" >Зарегистрироваться</button>
         </div>
     </form>
     </div>

@@ -7,7 +7,7 @@ def autoriz(login, password):
 
 
 def get_c_work_order(user_id):
-    clientworkorders = WorkOrder.objects.filter(car__client__id__in=user_id)
+    clientworkorders = WorkOrder.objects.filter(id__in=user_id)
     return clientworkorders
 
 
@@ -27,7 +27,7 @@ def get_c_car():
 
 
 def get_appointment(user_id):
-    appointments = Appointment.objects.filter(workorder__car__client__user__id__in=user_id)
+    appointments = Appointment.objects.filter(workorder__car__user__id__in=user_id)
     return appointments
 
 
@@ -57,12 +57,15 @@ def get_user_filter(user_id):
 
 
 def get_master(user_id):
-    masters = Master.objects.filter(user_id__in=user_id)
+    masters = Staff.objects.filter(position__staff__user_id__in=user_id)
+    return masters
+
+
+def get_position(user_id):
+    masters = Staff.objects.filter(position__id=user_id)
     return masters
 
 
 def get_client(user_id):
-    clients = Client.objects.filter(user_id__in=user_id)
+    clients = User.objects.filter(id__in=user_id)
     return clients
-
-

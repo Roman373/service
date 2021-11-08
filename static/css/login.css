@@ -1,4 +1,4 @@
-.lInp-5,.lInp-1,.lInp-2,.lInp-3,.lInp-4{
+.lInp-5,.lInp-1,.lInp-2,.lInp-3,.lInp-4,.lInp-6{
   border: none;
   padding: 12px;
   margin-top: 15px;
@@ -21,6 +21,9 @@
 }
 .lInp-5{
   width: 49%;
+}
+.lInp-6{
+  width: 55%;
 }
 .linput{
   display: flex;
@@ -45,4 +48,32 @@
 }
 .lenterBtn:hover {
   background-color: #a8a7a7;
+}
+
+
+
+#hideMe {
+    -moz-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 1s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
 }
