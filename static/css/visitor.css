@@ -122,7 +122,7 @@ a{
   font-size: 30px;
   color: #000000;
 }
-#serv1{
+.serv1{
   width: 25%;
   background: #000000;
   color: #ffffff;
@@ -216,3 +216,12 @@ li{
 
 
 
+.modalD{
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	z-index: 99999;
+	display: none;
+}
+.modalD:target {
+    display: contents;
+}

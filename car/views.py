@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.views import View
 from car.basa import *
 from car.forms import *
-from django.contrib import messages
 
 
 class VisitorPage(View):
@@ -13,7 +12,6 @@ class VisitorPage(View):
             'appointmentform': AppointmentForm,
             "orderphoneform": OrderPhoneForm,
             'enterform': EnterForm,
-
         }
         return render(request, 'visitor.html', context=context)
 
@@ -40,52 +38,65 @@ class VisitorPage(View):
                 return HttpResponseRedirect('client.html')
 
         if 'phoneSubmit' in request.POST:
-            error = ""
+            error = " "
+            mess = ''
             if request.method == 'POST':
                 orderphoneform = OrderPhoneForm(request.POST)
                 if orderphoneform.is_valid():
                     orderphoneform.save()
-                    messages.success(request, ' ')
-                    return HttpResponseRedirect('visitor.html')
+                    orderphoneform = OrderPhoneForm()
+                    mess = 'Заявка отправлена успешно'
                 else:
                     error = "Ошибка формы"
             context = {
                 'orderphoneform': orderphoneform,
                 'error': error,
-                "mess":True
+                "mess": mess,
+                "loginform": LoginForm,
+                'appointmentform': AppointmentForm,
+                'enterform': EnterForm,
             }
             return render(request, 'visitor.html', context=context)
 
         if 'loginSubmit' in request.POST:
             error = ''
+            messlogin = ''
             if request.method == 'POST':
                 loginform = LoginForm(request.POST)
                 if loginform.is_valid():
                     loginform.save()
-                    return HttpResponseRedirect('visitor.html')
+                    messlogin="Регистрация выполнена успешно"
                 else:
                     error = "Ошибка формы"
 
             context = {
                 'loginform': loginform,
                 'error': error,
-                "mess":messages.success(request, 'fff')
+                "messlogin": messlogin,
+                'appointmentform': AppointmentForm,
+                "orderphoneform": OrderPhoneForm,
+                'enterform': EnterForm,
+
             }
             return render(request, 'visitor.html', context=context)
 
         if 'appointmentSubmit' in request.POST:
             error = ''
+            messappoint =''
             if request.method == 'POST':
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
-                    messages.success(request, 'Обращение отправлено успешно!')
-                    return HttpResponseRedirect('visitor.html')
+                    messappoint="Обращение отправлено успешно"
                 else:
                     error = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
                 'error': error,
+                "messappoint":messappoint,
+                "loginform": LoginForm,
+                "orderphoneform": OrderPhoneForm,
+                'enterform': EnterForm,
             }
             return render(request, 'visitor.html', context=context)
 

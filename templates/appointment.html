@@ -1,11 +1,9 @@
-{% extends 'index.html' %}
+
 {% load static %}
 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/appointment.css'%}" type="text/css">
 {% endblock %}
-
-{% block title %}Запись на прием{% endblock %}
 
 {% block content %}
     <h1 style="text-align: center;">Запись на прием</h1>
@@ -28,15 +26,9 @@
             {{ appointmentform.data }}
         </div>
         <span> {{ error }}</span>
-        <div id='hideMe'>
-            {% if messages %}
-                <p style="color:green; text-align:center">Обращение отправленно успешно</p>
-            {% endif %}
-        </div>
-
+        <span class="mess"> {{ messappoint }}</span>
         <div class="abton">
             <button type="submit" name="appointmentSubmit" id="appointmentsubmit" class="appointBtn">Записаться</button>
         </div>
     </form>
-<script src="script.js"></script>
 {% endblock %}

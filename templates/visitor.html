@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/visitor.css' %}" type="text/css" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'css/visitor.css' %}" type="text/css">
 {% endblock %}
 
 {% block title %}Гостевая страница{% endblock %}
@@ -64,9 +64,9 @@
     </div>
     <p id="serv"><strong>Наши услуги</strong></p>
     <div class="service">
-        <p id="serv1">Кузовной ремонт</p>
-        <p id="serv1">Техническое обслуживание</p>
-        <p id="serv1">Уход за автомобилем</p>
+        <p class="serv1">Кузовной ремонт</p>
+        <p class="serv1">Техническое обслуживание</p>
+        <p class="serv1">Уход за автомобилем</p>
     </div>
     <div class="servicep">
         <ul class="ul">
@@ -102,6 +102,5 @@
         от характера повреждения и колличества поврежденных элементов.
         Стоимость работ, связанных с техническим обслуживание, от модификации автомобиля!
         Для более точного определения объема работ и стоимости, ЖДЕМ ВАС
-    НА ОСМОТР или ФОТО ВАШИХ ПОВРЕЖДЕНИЙ.</div></div></p>
-
+    НА ОСМОТР или ФОТО ВАШИХ ПОВРЕЖДЕНИЙ.</p></div></div>
 {% endblock %}

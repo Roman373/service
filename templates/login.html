@@ -1,17 +1,14 @@
-{% extends 'index.html' %}
+
 {% load static %}
 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/login.css'%}" type="text/css">
 {% endblock %}
 
-{% block title %}Авторизация{% endblock %}
-
 {% block content %}
-<script src="script.js"></script>
     <div class="login">
     <h1 style="text-align: center">Регистрация</h1>
-    <form method="post" name="login">
+    <form method="post">
         {% csrf_token %}
         <div class="linput">
             <p>Имя:</p>{{ loginform.name }}</div>
@@ -26,12 +23,7 @@
         <div class="linput">
             <p>Почта:</p>{{ loginform.e_mail }}</div>
         <span> {{ error }}</span>
-
-        <div id='hideMe'>
-            {% if messages %}
-            <p style="color:green; text-align:center">Регистрация выполнена успешно</p>
-            {% endif %}
-            </div>
+        <span class="mess"> {{ messlogin }}</span>
         <div class="lbtton">
             <button type="submit" name="loginSubmit" id="loginsubmit" class="lenterBtn" >Зарегистрироваться</button>
         </div>

@@ -1,30 +1,21 @@
-{% extends 'index.html' %}
 {% load static %}
 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/order_phone.css'%}" type="text/css">
 {% endblock %}
 
-{% block title %}Обратный звонок{% endblock %}
-
 {% block content %}
-    <h1 style="text-align: center">Обратный звонок</h1>
-
-    <form method="post" name="order">
+    <h1 style="text-align: center">Обратный звонок {{ messphone.mess }}</h1>
+    <form method="post">
     {% csrf_token %}
         <div class="oinput">
             <p>Имя:</p>{{ orderphoneform.name }}</div>
         <div class="oinput">
             <p>Телефон:</p>{{ orderphoneform.telephone }}</div>
         <span> {{ error }}</span>
-        {% if messages %}
-            <div id="hideMe">
-                <p style="color:green; text-align:center">Заявка отправленно успешно</p>
-        </div>
-        {% endif %}
+        <span class="mess"> {{ mess }}</span>
         <div class="obtton">
-            <button type="submit" name="phoneSubmit" id="phonesubmit" class="osubmitBtn" >Отправить заявку</button>
+            <button type="submit" name="phoneSubmit" id="phonesubmit" class="osubmitBtn" href="#ordermess">Отправить заявку</button>
         </div>
     </form>
-<script src="script.js"></script>
 {% endblock %}
