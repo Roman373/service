@@ -168,7 +168,9 @@
 .cInp-4,.cInp-5,.cInp-6,.cInp-7,
 .cInp-8,.cInp-9,.sInp-1,.sInp-2,
 .tInp-1,.tInp-2,.tInp-3,.tInp-4,
-.spInp-1,.spInp-2,.spInp-3,.spInp-4{
+.spInp-1,.spInp-2,.spInp-3,.spInp-4,
+.wInp-1,.wInp-2,.wInp-3,.wInp-4,
+.wInp-5,.wInp-6,.wInp-7,.wInp-8{
   border: none;
   padding: 2px;
   margin-top: 13px;
@@ -177,6 +179,32 @@
   font-size: 15px;
   display: flex;
   background-color: #e3e3e3;
+}
+
+.wInp-1{
+  width: 40%;
+}
+.wInp-2{
+  width: 40%;
+}
+.wInp-3{
+  width: 40%;
+}
+.wInp-4{
+  width: 40%;
+  margin-right:5px;
+}
+.wInp-5{
+  width: 40%;
+}
+.wInp-6{
+  width: 40%;
+}
+.wInp-7{
+  width: 40%;
+}
+.wInp-8{
+  width: 40%;
 }
 .spInp-1{
     width: 58%;
@@ -266,4 +294,13 @@
   justify-content: center;
   bottom: 70px;
   margin-top: 20px;
+}
+
+
+.mess{
+    color:green;
+    font-size:15px;
+    display:flex;
+    margin-left:100px;
+    margin-top:20px;
 }

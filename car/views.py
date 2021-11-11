@@ -65,6 +65,7 @@ class VisitorPage(View):
                 loginform = LoginForm(request.POST)
                 if loginform.is_valid():
                     loginform.save()
+                    loginform = LoginForm()
                     messlogin="Регистрация выполнена успешно"
                 else:
                     error = "Ошибка формы"
@@ -87,6 +88,7 @@ class VisitorPage(View):
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
+                    appointmentform = AppointmentForm()
                     messappoint="Обращение отправлено успешно"
                 else:
                     error = "Ошибка формы"
@@ -120,31 +122,41 @@ class ClientPage(View):
         return render(request, 'client.html', context=context)
 
     def post(self, request):
+        error=''
+        messappoint=''
         if 'appointmentSubmit' in request.POST:
             if request.method == 'POST':
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
-                    return HttpResponseRedirect('client.html')
+                    appointmentform = AppointmentForm()
+                    messappoint="Обращение отправлено успешно"
                 else:
                     error = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
-                'error': error
+                'error': error,
+                "messappoint":messappoint,
+                'mworkorderform': MWorkOrderForm,
             }
             return render(request, 'client.html', context=context)
 
         if 'workorderSubmit' in request.POST:
+            error=''
+            messworkorder=''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
                 if mworkorderform.is_valid():
                     mworkorderform.save()
-                    return HttpResponseRedirect('client.html')
+                    mworkorderform = MWorkOrderForm()
+                    messworkorder="Заказ-наряд добавлен"
                 else:
                     error = "Ошибка формы"
             context = {
                 'mworkorderform': mworkorderform,
-                'error': error
+                'error': error,
+                'appointmentform': AppointmentForm,
+                "messworkorder": messworkorder
             }
             return render(request, 'client.html', context=context)
 
@@ -167,9 +179,9 @@ class MasterPage(View):
             'masters': masters,
             "services": services,
             "type_jobs": type_jobs,
+            'users': users,
             'mworkorderform': MWorkOrderForm,
             'carform': CarForm,
-            'users': users,
             'serviceform': ServiceForm,
             'typejobform': TypeJobForm,
             'spareform': SpareForm
@@ -178,73 +190,109 @@ class MasterPage(View):
 
     def post(self, request):
         if 'mworkorderSubmit' in request.POST:
+            error=''
+            messworkorder=''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
                 if mworkorderform.is_valid():
                     mworkorderform.save()
-                    return HttpResponseRedirect('master.html')
+                    mworkorderform = MWorkOrderForm()
+                    messworkorder="Заказ-наряд добавлен"
                 else:
                     error = "Ошибка формы"
             context = {
                 'mworkorderform': mworkorderform,
-                'error': error
+                'error': error,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "messworkorder":messworkorder
             }
             return render(request, 'master.html', context=context)
-        if 'carformSubmit' in request.POST:
+        if 'carSubmit' in request.POST:
+            error=''
+            messcar=''
             if request.method == 'POST':
                 carform = CarForm(request.POST)
                 if carform.is_valid():
                     carform.save()
-                    return HttpResponseRedirect('master.html')
+                    carform = CarForm()
+                    messcar="Автомобиль добавлен"
                 else:
                     error = "Ошибка формы"
             context = {
                 'carform': carform,
-                'error': error
+                'error': error,
+                'mworkorderform': MWorkOrderForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "messcar":messcar
+
             }
             return render(request, 'master.html', context=context)
-        if 'serviceformSubmit' in request.POST:
+        if 'serviceSubmit' in request.POST:
+            error=''
+            messservice=''
             if request.method == 'POST':
                 serviceform = ServiceForm(request.POST)
                 if serviceform.is_valid():
                     serviceform.save()
-                    return HttpResponseRedirect('master.html')
+                    serviceform = ServiceForm()
+                    messservice="Услуга добавлена"
                 else:
                     error = "Ошибка формы"
             context = {
                 'serviceform': serviceform,
-                'error': error
+                'error': error,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "messservice":messservice
             }
             return render(request, 'master.html', context=context)
-        if 'typejobformSubmit' in request.POST:
+        if 'typejobSubmit' in request.POST:
+            error=''
+            messtypejob=''
             if request.method == 'POST':
                 typejobform = TypeJobForm(request.POST)
                 if typejobform.is_valid():
                     typejobform.save()
-                    return HttpResponseRedirect('master.html')
+                    typejobform = TypeJobForm()
+                    messtypejob="Тип работы добавлен"
                 else:
                     error = "Ошибка формы"
             context = {
                 'typejobform': typejobform,
-                'error': error
+                'error': error,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'spareform': SpareForm,
+                "messtypejob":messtypejob
             }
             return render(request, 'master.html', context=context)
-        if 'spareformSubmit' in request.POST:
+        if 'spareSubmit' in request.POST:
+            messspare=''
+            error=''
             if request.method == 'POST':
                 spareform = SpareForm(request.POST)
                 if spareform.is_valid():
                     spareform.save()
-                    return HttpResponseRedirect('master.html')
+                    spareform = SpareForm()
+                    messspare="Запчасти добавлены"
                 else:
                     error = "Ошибка формы"
             context = {
                 'spareform': spareform,
-                'error': error
+                'error': error,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                "messspare":messspare
             }
             return render(request, 'master.html', context=context)
 
-
-class MainPage(View):
-    def get(self, request):
-        context = {}
-        return render(request, 'home.html', context=context)
