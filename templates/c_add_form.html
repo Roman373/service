@@ -21,7 +21,7 @@
                     <option>{{ workorderform.car_id  }}</option>
                     <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
                     <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
-                <span>{{ error }}</span>
+                <span>{{ errorworkorder }}</span>
                 <span>{{ messworkorder }}</span>
             </div>
             <button type="submit" name="workorderSubmit" class="lenterBtn" >Добавить</button>
@@ -49,7 +49,7 @@
             <div class="btton">
                 <p>Дата осмотра:</p>{{ appointmentform.data }}
             </div></div>
-            <span> {{ error }}</span>
+            <span> {{ errorappoint }}</span>
              <span>{{messappoint}}</span>
             <div class="cbtn">
             <div class="btton">

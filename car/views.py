@@ -122,7 +122,7 @@ class ClientPage(View):
         return render(request, 'client.html', context=context)
 
     def post(self, request):
-        error=''
+        errorappoint=''
         messappoint=''
         if 'appointmentSubmit' in request.POST:
             if request.method == 'POST':
@@ -135,14 +135,14 @@ class ClientPage(View):
                     error = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
-                'error': error,
+                'errorappoint': errorappoint,
                 "messappoint":messappoint,
                 'mworkorderform': MWorkOrderForm,
             }
             return render(request, 'client.html', context=context)
 
         if 'workorderSubmit' in request.POST:
-            error=''
+            errorworkorder=''
             messworkorder=''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
@@ -151,10 +151,10 @@ class ClientPage(View):
                     mworkorderform = MWorkOrderForm()
                     messworkorder="Заказ-наряд добавлен"
                 else:
-                    error = "Ошибка формы"
+                    errorworkorder = "Ошибка формы"
             context = {
                 'mworkorderform': mworkorderform,
-                'error': error,
+                'errorworkorder': errorworkorder,
                 'appointmentform': AppointmentForm,
                 "messworkorder": messworkorder
             }
@@ -190,7 +190,7 @@ class MasterPage(View):
 
     def post(self, request):
         if 'mworkorderSubmit' in request.POST:
-            error=''
+            errorworkorder=''
             messworkorder=''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
@@ -199,10 +199,10 @@ class MasterPage(View):
                     mworkorderform = MWorkOrderForm()
                     messworkorder="Заказ-наряд добавлен"
                 else:
-                    error = "Ошибка формы"
+                    errorworkorder = "Ошибка формы"
             context = {
                 'mworkorderform': mworkorderform,
-                'error': error,
+                'errorworkorder': errorworkorder,
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
@@ -211,7 +211,7 @@ class MasterPage(View):
             }
             return render(request, 'master.html', context=context)
         if 'carSubmit' in request.POST:
-            error=''
+            errorcar=''
             messcar=''
             if request.method == 'POST':
                 carform = CarForm(request.POST)
@@ -220,10 +220,10 @@ class MasterPage(View):
                     carform = CarForm()
                     messcar="Автомобиль добавлен"
                 else:
-                    error = "Ошибка формы"
+                    errorcar = "Ошибка формы"
             context = {
                 'carform': carform,
-                'error': error,
+                'errorcar': errorcar,
                 'mworkorderform': MWorkOrderForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
@@ -233,7 +233,7 @@ class MasterPage(View):
             }
             return render(request, 'master.html', context=context)
         if 'serviceSubmit' in request.POST:
-            error=''
+            errorservice=''
             messservice=''
             if request.method == 'POST':
                 serviceform = ServiceForm(request.POST)
@@ -242,10 +242,10 @@ class MasterPage(View):
                     serviceform = ServiceForm()
                     messservice="Услуга добавлена"
                 else:
-                    error = "Ошибка формы"
+                    errorservice = "Ошибка формы"
             context = {
                 'serviceform': serviceform,
-                'error': error,
+                'errorservice': errorservice,
                 'mworkorderform': MWorkOrderForm,
                 'carform': CarForm,
                 'typejobform': TypeJobForm,
@@ -254,7 +254,7 @@ class MasterPage(View):
             }
             return render(request, 'master.html', context=context)
         if 'typejobSubmit' in request.POST:
-            error=''
+            errortypejob=''
             messtypejob=''
             if request.method == 'POST':
                 typejobform = TypeJobForm(request.POST)
@@ -263,10 +263,10 @@ class MasterPage(View):
                     typejobform = TypeJobForm()
                     messtypejob="Тип работы добавлен"
                 else:
-                    error = "Ошибка формы"
+                    errortypejob = "Ошибка формы"
             context = {
                 'typejobform': typejobform,
-                'error': error,
+                'errortypejob': errortypejob,
                 'mworkorderform': MWorkOrderForm,
                 'carform': CarForm,
                 'serviceform': ServiceForm,
@@ -276,7 +276,7 @@ class MasterPage(View):
             return render(request, 'master.html', context=context)
         if 'spareSubmit' in request.POST:
             messspare=''
-            error=''
+            errorspare=''
             if request.method == 'POST':
                 spareform = SpareForm(request.POST)
                 if spareform.is_valid():
@@ -284,10 +284,10 @@ class MasterPage(View):
                     spareform = SpareForm()
                     messspare="Запчасти добавлены"
                 else:
-                    error = "Ошибка формы"
+                    errorspare = "Ошибка формы"
             context = {
                 'spareform': spareform,
-                'error': error,
+                'errorspare': errorspare,
                 'mworkorderform': MWorkOrderForm,
                 'carform': CarForm,
                 'serviceform': ServiceForm,

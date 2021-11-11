@@ -30,7 +30,7 @@
             </div>
             <div class="minput">
             <p>Расстояние в км:</p>{{ carform.mileage}}</div>
-             <span>{{error}}</span>
+             <span>{{errorcar}}</span>
              <span>{{messcar}}</span>
              <div class="mbtn">
                  <button type="submit" name="carSubmit" class="menterBtn" >Добавить</button>
@@ -51,7 +51,7 @@
                 <p>Тип работы:</p>{{ serviceform.job_id }}
                 <p>Номер запчасти:</p>{{ serviceform.spare_id }}
             </div>
-            <span>{{error}}</span>
+            <span>{{errorservice}}</span>
              <span>{{messservice}}</span>
         <div class="mbtn">
             <button type="submit" name="serviceSubmit" class="menterBtn" >Добавить</button></div>
@@ -75,7 +75,7 @@
                 <div class="btton">
                 <p>Гарантия:</p>{{ typejobform.guarantee}}
             </div>
-             <span>{{error}}</span>
+             <span>{{errortypejob}}</span>
              <span>{{messtypejob}}</span>
             <div class="mbtn">
                 <button type="submit" name="typejobSubmit" class="menterBtn" >Добавить</button></div>
@@ -98,7 +98,7 @@
             <div class="btton">
                 <p>Гарантия:</p>{{ spareform.guarantee}}
             </div>
-             <span>{{error}}</span>
+             <span>{{errorspare}}</span>
              <span>{{messspare}}</span>
             <div class="mbtn">
                 <button type="submit" name="spareSubmit" class="menterBtn" >Добавить</button></div>
@@ -125,7 +125,7 @@
                 <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
                 <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
         </div>
-             <span>{{error}}</span>
+             <span>{{errorworkorder}}</span>
              <span>{{messworkorder}}</span>
         <div class="mbtn">
             <button type="submit" name="mworkorderSubmit" class="menterBtn" >Добавить</button></div>
