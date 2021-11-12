@@ -54,10 +54,10 @@
             <th>Имя:</th>
             <th>Фамилия:</th>
             <th>Телефон:</th>
+            <th>E-mail:</th>
             <th>Стаж:</th>
             <th>Должность:</th>
-            <th>Номер пользователя:</th>
-            <th>E-mail:</th>
+            <th>Номер пользователя</th>
         </tr>
             {% for master in masters %}
                 <tr>
@@ -68,11 +68,11 @@
                             <td>{{ user.name}} </td>
                             <td>{{ user.lastname}}</td>
                             <td>{{ user.telephone}}</td>
+                            <td>{{ user.e_mail}}</td>
                         {% endfor %}
                     <td>{{ master.experience}}</td>
                     <td>{{ master.position_id}}</td>
                     <td>{{ master.user_id}}</td>
-                    <td>{{ master.e_mail}}</td>
                     <td><a href="/">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>

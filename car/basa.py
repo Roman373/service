@@ -7,22 +7,22 @@ def autoriz(login, password):
 
 
 def get_c_work_order(user_id):
-    clientworkorders = WorkOrder.objects.filter(id__in=user_id)
+    clientworkorders = WorkOrder.objects.filter(id__in=user_id).order_by("-id")
     return clientworkorders
 
 
 def get_workorder():
-    workorders = WorkOrder.objects.all()
+    workorders = WorkOrder.objects.order_by("-id")
     return workorders
 
 
 def get_m_car():
-    cars = Car.objects.all()
+    cars = Car.objects.order_by("-id")
     return cars
 
 
 def get_c_car():
-    cars = Car.objects.all()
+    cars = Car.objects.order_by("-id")
     return cars
 
 
@@ -32,7 +32,7 @@ def get_appointment(user_id):
 
 
 def get_spare():
-    spares = Spare.objects.all()
+    spares = Spare.objects.order_by("-id")
     return spares
 
 
@@ -42,12 +42,12 @@ def get_supplier():
 
 
 def get_service():
-    services = Service.objects.all()
+    services = Service.objects.order_by("-id")
     return services
 
 
 def get_type_job():
-    type_jobs = TypesJob.objects.all()
+    type_jobs = TypesJob.objects.order_by("-id")
     return type_jobs
 
 
@@ -61,8 +61,8 @@ def get_master(user_id):
     return masters
 
 
-def get_position(user_id):
-    masters = Staff.objects.filter(position__id=user_id)
+def get_position(position_id):
+    masters = Staff.objects.filter(position__id=position_id)
     return masters
 
 
