@@ -114,7 +114,7 @@
 }
 
 .modalDialog > div {
-	width: 400px;
+	width: 500px;
 	position: relative;
 	margin: 5% auto;
 	padding: 5px 20px 13px 20px;
@@ -129,7 +129,7 @@
 	background: #606061;
 	color: #FFFFFF;
 	position: absolute;
-	right: -12px;
+	left: 524px;
 	text-align: center;
 	top: -8px;
 	width: 24px;
@@ -173,50 +173,92 @@
 .wInp-5,.wInp-6,.wInp-7,.wInp-8{
   border: none;
   padding: 2px;
-  margin-top: 13px;
-  margin-left: 3px;
   height:20px;
+  display:flex;
+  justify--content: left;
   font-size: 15px;
-  display: flex;
   background-color: #e3e3e3;
 }
 
+.m_carform{
+    margin-left:50px;
+}
+.m_workorderform{
+    display:fixed;
+    margin-left:35px;
+}
+
+.m_typejobform{
+    display:fixed;
+    margin-left:65px;
+}
+.m_spareform{
+    display:fixed;
+    margin-left:80px;
+}
+.m_serviceform{
+    display:fixed;
+    margin-left:20px;
+}
+.m_workorderform tr{
+    display:flex;
+    justify--content: left;
+}
+.m_carform tr{
+    display:flex;
+    justify--content: left;
+}
+.m_typejobform tr{
+    display:flex;
+    justify--content: left;
+}
+.m_spareform tr{
+    display:flex;
+    justify--content: left;
+}
+.m_serviceform tr{
+    display:flex;
+    justify--content: left;
+}
 .wInp-1{
-  width: 40%;
+  width: 250px;
 }
 .wInp-2{
-  width: 40%;
+  width: 250px;
 }
 .wInp-3{
-  width: 40%;
+  width: 215px;
+  height:40px;
+  vertical-align: top;
+
 }
+
 .wInp-4{
-  width: 40%;
-  margin-right:5px;
+  width: 200px;
 }
 .wInp-5{
-  width: 40%;
+  width: 200px;
 }
 .wInp-6{
-  width: 40%;
+  width: 150px;
 }
 .wInp-7{
-  width: 40%;
+  width: 150px;
 }
 .wInp-8{
-  width: 40%;
+  width: 150px;
 }
 .spInp-1{
-    width: 58%;
+    width: 68%;
 }
 .spInp-2{
-    width: 72%;
+    width: 92%;
 }
 .spInp-3{
-    width: 47%;
+    width: 84%;
 }
 .spInp-4{
-    width: 69%;
+    width: 91%;
 }
 .lInp-1{
   width: 28%;
@@ -234,27 +276,29 @@
   width: 49%;
 }
 .cInp-1{
-    width: 44%;
+    width: 80%;
 }.cInp-2{
-    width: 40%;
+    width: 68%;
 }
 .cInp-3{
-    width: 24%;
-    margin-right:5px;
+    width: 93%;
 }
 .cInp-4{
-    width: 22%;
+    width: 48%;
 }
 .cInp-5{
-    width: 50%;
+    width: 80%;
 }.cInp-6{
-    width: 57%;
+    width: 67%;
 }
 .cInp-7{
-    width: 77%;
+    width: 87%;
 }
 .cInp-8{
-    width: 40%;
+    width: 60%;
+}
+.cInp-9{
+    width: 80%;
 }
 .minput{
   display: flex;
@@ -270,19 +314,19 @@
     margin-left:30px;
 }
 .sInp-1{
-    width:20%;
+    width:40%;
 }
 .tInp-1{
-    width:50%;
+    width:80%;
 }
 .tInp-2{
-    width:51%;
+    width:63%;
 }
 .tInp-3{
-    width:46%;
+    width:60%;
 }
 .tInp-4{
-    width:66%;
+    width:102%;
 }
 .menterBtn {
   width: 40%;

@@ -5,31 +5,16 @@
         <a href='#f_type_job' title="Добавить" class="btn">Тип работы</a>
         <a href='#f_spare' title="Добавить" class="btn">Запчасти</a>
 </div>
+
 <div id="f_car" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление автомобиля</h2>
          <form method="post" class="stl_car">
             {% csrf_token %}
-             <h2 style="text-align:center">Добавить автомобиль</h2>
-            <div class="minput">
-                <p>Модель автомобиля:</p>{{ carform.car_model}}</div>
-            <div class="minput">
-                <p>Регистрационный знак:</p>{{ carform.register_sign}}</div>
-            <div class="minput">
-                <p>Цвет:</p>{{ carform.car_color}}
-                <p>Год выпуска:</p>{{ carform.year_issue}}
-            </div>
-            <div class="minput">
-                <p>Номер двигателя:</p>{{ carform.engine_number}}
-            </div>
-            <div class="minput">
-                <p>Номер кузова:</p>{{ carform.body_number}}
-            </div>
-            <div class="minput">
-                <p>VIN:</p>{{ carform.vin}}
-            </div>
-            <div class="minput">
-            <p>Расстояние в км:</p>{{ carform.mileage}}</div>
+             <table class="m_carform">
+                {{ carform.as_table }}
+             </table>
              <span>{{errorcar}}</span>
              <span>{{messcar}}</span>
              <div class="mbtn">
@@ -41,16 +26,12 @@
 <div id="f_service" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление услуги</h2>
         <form method="post" class="stl_car">
             {% csrf_token %}
-            <h2 style="text-align:center">Добавить услугу</h2>
-            <div class="btton">
-                <p>Количество запасных частей:</p>{{ serviceform.number_spare_parts }}
-            </div>
-            <div class="btton">
-                <p>Тип работы:</p>{{ serviceform.job_id }}
-                <p>Номер запчасти:</p>{{ serviceform.spare_id }}
-            </div>
+            <table class="m_serviceform">
+                {{ serviceform.as_table }}
+             </table>
             <span>{{errorservice}}</span>
              <span>{{messservice}}</span>
         <div class="mbtn">
@@ -62,19 +43,12 @@
     <div id="f_type_job" class="modalDialog">
         <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-            <h2 style="text-align:center">Добавить тип работы</h2>
+            <h2 style="text-align:center">Добавление тип работы</h2>
          <form method="post" class="stl_car">
             {% csrf_token %}
-            <div class="btton">
-                <p>Название работы:</p>{{ typejobform.name_work}}
-            </div>
-                <div class="btton">
-                    <p>Стоимость работ:</p>{{ typejobform.cost_work}}</div>
-                <div class="btton">
-                    <p>Время выполнения::</p>{{ typejobform.lead_time}}</div>
-                <div class="btton">
-                <p>Гарантия:</p>{{ typejobform.guarantee}}
-            </div>
+            <table class="m_typejobform">
+                {{ typejobform.as_table }}
+             </table>
              <span>{{errortypejob}}</span>
              <span>{{messtypejob}}</span>
             <div class="mbtn">
@@ -86,18 +60,12 @@
     <div id="f_spare" class="modalDialog">
         <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-            <h2 style="text-align:center">Добавить запчасти</h2>
+            <h2 style="text-align:center">Добавление запчасти</h2>
          <form method="post" class="stl_car">
             {% csrf_token %}
-            <div class="btton">
-                <p>Наименование:</p>{{ spareform.name}}</div>
-                <div class="btton">
-                    <p>Остаток:</p>{{ spareform.remainder}}</div>
-            <div class="btton">
-                <p>Стоимость запчасти:</p>{{ spareform.spare_cost}}</div>
-            <div class="btton">
-                <p>Гарантия:</p>{{ spareform.guarantee}}
-            </div>
+            <table class="m_spareform">
+                {{ spareform.as_table }}
+             </table>
              <span>{{errorspare}}</span>
              <span>{{messspare}}</span>
             <div class="mbtn">
@@ -109,22 +77,12 @@
 <div id="f_work_order" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление заказ-наряда</h2>
          <form method="post" class="stl_car">
             {% csrf_token %}
-        <h2 style="text-align:center">Добавить заказ-наряд</h2>
-        <div class="btton">
-            <p>Дата начала:</p>{{ mworkorderform.date_appeal}}
-            <p>Дата заверщения:</p>{{ mworkorderform.date_completion }}</div>
-        <div class="btton">
-                <p>Причина обращения:</p>{{ mworkorderform.reason_petition }}</div>
-        <div class="btton">
-                <p>Общая стоимость:</p>{{mworkorderform.total_cost }}
-                <p>Статус заказа:</p>{{mworkorderform.order_status }}</div>
-        <div class="btton">
-                <p>Номер автомобиля:</p>{{ mworkorderform.car_id }}
-                <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
-                <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
-        </div>
+             <table class="m_workorderform">
+                {{ mworkorderform.as_table }}
+             </table>
              <span>{{errorworkorder}}</span>
              <span>{{messworkorder}}</span>
         <div class="mbtn">

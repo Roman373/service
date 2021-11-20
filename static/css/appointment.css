@@ -1,23 +1,24 @@
 .aInp-5,.aInp-1,.aInp-2,.aInp-3{
   border: none;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 7px;
   margin-left: 3px;
   font-size: 15px;
   display: flex;
   background-color: #e3e3e3;
+  float: left;
+  height:7px;
 }
 .aInp-1{
-  width: 58%;
+  width: 91%;
 }
 .aInp-2{
-  width: 49%;
+  width: 76%;
 }
 .aInp-3{
-  width: 43%;
+  width: 62%;
 }
 .aInp-5{
-  width: 40%;
+  width: 58%;
 }
 .appointBtn{
   padding:5px;
@@ -35,10 +36,12 @@
   display: flex;
   justify-content: center;
 }
-.ainput{
+tr{
   display: flex;
-  height: 30px;
-  justify-content: center;
+  justify-content: left;
+}
+.atable{
+    margin-left:68px;
 }
 
 

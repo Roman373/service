@@ -1,6 +1,11 @@
-from django.http import HttpResponseRedirect
+from urllib import request
+
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import UpdateView, DeleteView
+
 from car.basa import *
 from car.forms import *
 
@@ -132,7 +137,7 @@ class ClientPage(View):
                     appointmentform = AppointmentForm()
                     messappoint="Обращение отправлено успешно"
                 else:
-                    error = "Ошибка формы"
+                    errorappoint = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
                 'errorappoint': errorappoint,
@@ -171,9 +176,11 @@ class MasterPage(View):
         services = get_service()
         type_jobs = get_type_job()
         masters = get_master(users)
+        ccars = get_c_car()
         context = {
             'workorders': workorders,
             'cars': cars,
+            "ccars": ccars,
             "spares": spares,
             "suppliers": suppliers,
             'masters': masters,
@@ -190,14 +197,14 @@ class MasterPage(View):
 
     def post(self, request):
         if 'mworkorderSubmit' in request.POST:
-            errorworkorder=''
-            messworkorder=''
+            errorworkorder = ''
+            messworkorder = ''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
                 if mworkorderform.is_valid():
                     mworkorderform.save()
                     mworkorderform = MWorkOrderForm()
-                    messworkorder="Заказ-наряд добавлен"
+                    messworkorder = "Заказ-наряд добавлен"
                 else:
                     errorworkorder = "Ошибка формы"
             context = {
@@ -207,7 +214,7 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "messworkorder":messworkorder
+                "messworkorder": messworkorder
             }
             return render(request, 'master.html', context=context)
         if 'carSubmit' in request.POST:
@@ -265,13 +272,13 @@ class MasterPage(View):
                 else:
                     errortypejob = "Ошибка формы"
             context = {
-                'typejobform': typejobform,
+                'typejobform': TypeJobForm,
                 'errortypejob': errortypejob,
                 'mworkorderform': MWorkOrderForm,
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'spareform': SpareForm,
-                "messtypejob":messtypejob
+                "messtypejob": messtypejob
             }
             return render(request, 'master.html', context=context)
         if 'spareSubmit' in request.POST:
@@ -292,7 +299,19 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                "messspare":messspare
+                "messspare": messspare
             }
             return render(request, 'master.html', context=context)
+
+
+class edit(UpdateView):
+    model = TypesJob
+    template_name = "m_edit.html"
+    form_class = TypeJobUpdateForm
+
+
+class delete(DeleteView):
+    model = TypesJob
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_type_job'
 

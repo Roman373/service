@@ -1,34 +1,37 @@
 .lInp-5,.lInp-1,.lInp-2,.lInp-3,.lInp-4,.lInp-6{
   border: none;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 7px;
   margin-left: 3px;
   font-size: 15px;
   display: flex;
   background-color: #e3e3e3;
+
+  height:7px;
 }
 .lInp-1{
-  width: 58%;
-}
-.lInp-2{
-  width: 49%;
+  width: 72%;
+  display: flex;
+  float:left;
 }
 .lInp-3{
-  width: 55%;
+  width: 67%;
 }
 .lInp-4{
-  width: 52%;
+  width: 61%;
 }
 .lInp-5{
-  width: 49%;
+  width: 56%;
 }
 .lInp-6{
-  width: 55%;
+  width: 67%;
 }
-.linput{
+tr{
   display: flex;
-  height: 30px;
-  justify-content: center;
+  justify-content: left;
+  margin-top:5px;
+}
+.ltable{
+    margin-left:95px;
 }
 .lbtton{
   display: flex;

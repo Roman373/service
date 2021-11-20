@@ -37,7 +37,7 @@ def get_spare():
 
 
 def get_supplier():
-    suppliers = Supplier.objects.all()
+    suppliers = Supplier.objects.order_by("-id")
     return suppliers
 
 

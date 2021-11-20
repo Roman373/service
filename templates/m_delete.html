@@ -1,0 +1,23 @@
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/delete.css'%}" type="text/css">
+{% endblock %}
+
+<div id="card" class="modaldelete">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление автомобиля</h2>
+         <form method="post" class="stl_car">
+            {% csrf_token %}
+             <table>
+                {{ carform.as_table }}
+             </table>
+             <span>{{errorcar}}</span>
+             <span>{{messcar}}</span>
+             <div class="mbtn">
+                 <button type="submit">Добавить</button>
+             </div>
+        </form>
+    </div>
+</div>

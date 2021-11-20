@@ -10,18 +10,9 @@
     <h1 style="text-align: center">Регистрация</h1>
     <form method="post">
         {% csrf_token %}
-        <div class="linput">
-            <p>Имя:</p>{{ loginform.name }}</div>
-        <div class="linput">
-            <p>Фамилия:</p>{{ loginform.lastname }}</div>
-        <div class="linput">
-            <p>Логин:</p>{{ loginform.login }}</div>
-        <div class="linput">
-            <p>Пароль:</p>{{ loginform.password }}</div>
-        <div class="linput">
-            <p>Телефон:</p>{{ loginform.telephone }}</div>
-        <div class="linput">
-            <p>Почта:</p>{{ loginform.e_mail }}</div>
+        <table class="ltable">
+            {{ loginform.as_table }}
+        </table>
         <span> {{ error }}</span>
         <span class="mess"> {{ messlogin }}</span>
         <div class="lbtton">

@@ -5,15 +5,11 @@ from car.models import *
 class LoginForm(ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'lastname', 'login', 'password', "telephone", 'e_mail']
+        fields = ['name_lastname', 'login', 'password', "telephone", 'e_mail']
         widgets = {
-            "name": TextInput(attrs={
-                'placeholder': "Ваше имя",
+            "name_lastname": TextInput(attrs={
+                'placeholder': "Ваше имя и фамилия",
                 'class': 'lInp-1'
-            }),
-            "lastname": TextInput(attrs={
-                'placeholder': "Ваша фамилия",
-                'class': 'lInp-2'
             }),
             "login": TextInput(attrs={
                 'placeholder': "Ваш логин",
@@ -55,7 +51,7 @@ class EnterForm(ModelForm):
 class OrderPhoneForm(ModelForm):
     class Meta:
         fields = ['name', 'telephone']
-        model = User
+        model = Appointment
         widgets = {
             "name": TextInput(attrs={
                 'placeholder': "Ваше имя",
@@ -73,6 +69,7 @@ class AppointmentForm(ModelForm):
     class Meta:
         fields = ['name', 'telephone', 'car', 'data']
         model = Appointment
+
         widgets = {
             "name": TextInput(attrs={
                 'placeholder': "Ваше имя",
@@ -101,6 +98,7 @@ class MWorkOrderForm(ModelForm):
                   'order_status', 'car',
                   'staff', 'appointment']
         model = WorkOrder
+        car_id = ModelMultipleChoiceField(queryset=Car.objects.all())
         widgets = {
             'date_appeal': TextInput(attrs={
                 'placeholder': "Дата обращения",
@@ -110,7 +108,7 @@ class MWorkOrderForm(ModelForm):
                 'placeholder': "Дата заверщения",
                 'class': 'wInp-2'
             }),
-            'reason_petition': TextInput(attrs={
+            'reason_petition': Textarea(attrs={
                 'placeholder': "Причина обращения",
                 'class': 'wInp-3'
             }),
@@ -122,16 +120,14 @@ class MWorkOrderForm(ModelForm):
                 'placeholder': "Статус заказа",
                 'class': 'wInp-5'
             }),
-            'car_id': TextInput(attrs={
-                'placeholder': "Номер автомобиля",
+            'car': Select(attrs={
+                'placeholder': "Статус заказа",
                 'class': 'wInp-6'
             }),
-            'staff_id': TextInput(attrs={
-                'placeholder': "Номер запчасти",
+            'staff': Select(attrs={
                 'class': 'wInp-7'
             }),
-            'appointment_id': TextInput(attrs={
-                'placeholder': "Номер",
+            'appointment': Select(attrs={
                 'class': 'wInp-8'
             }),
         }
@@ -176,6 +172,10 @@ class CarForm(ModelForm):
             'mileage': TextInput(attrs={
                 'placeholder': "Расстояние в км",
                 'class': 'cInp-8'
+            }),
+            'user': Select(attrs={
+                'placeholder': "Расстояние в км",
+                'class': 'cInp-9'
             })
         }
 
@@ -189,15 +189,14 @@ class ServiceForm(ModelForm):
                 'placeholder': "кол.зап.ч.",
                 'class': 'sInp-1'
             }),
-            "job": TextInput(attrs={
-                'placeholder': "Тип работы",
+            "job": Select(attrs={
+                'placeholder': "кол.зап.ч.",
                 'class': 'sInp-2'
             }),
-            "spare": TextInput(attrs={
-                'placeholder': "Номер запчасти",
-                'class': 'sInp-3'
-            })
-
+            "spare": Select(attrs={
+                'placeholder': "кол.зап.ч.",
+                'class': 'sInp-2'
+            }),
         }
 
 
@@ -209,19 +208,19 @@ class TypeJobForm(ModelForm):
         widgets = {
             "name_work": TextInput(attrs={
                 'placeholder': "Наименование",
-                'class': 'tInp-1'
+                'class': 'tInp-1',
             }),
             "cost_work": TextInput(attrs={
                 'placeholder': "Стоимость",
-                'class': 'tInp-2'
+                'class': 'tInp-2',
             }),
             "lead_time": TextInput(attrs={
                 'placeholder': "Время выполнения",
-                'class': 'tInp-3'
+                'class': 'tInp-3',
             }),
             "guarantee": TextInput(attrs={
                 'placeholder': "Гарантия",
-                'class': 'tInp-4'
+                'class': 'tInp-4',
             })
         }
 
@@ -247,5 +246,30 @@ class SpareForm(ModelForm):
             "guarantee": TextInput(attrs={
                 'placeholder': "Гарантия",
                 'class': 'spInp-4'
+            })
+        }
+
+
+class TypeJobUpdateForm(ModelForm):
+    class Meta:
+        fields = ['name_work', 'cost_work',
+                  'lead_time', 'guarantee']
+        model = TypesJob
+        widgets = {
+            "name_work": TextInput(attrs={
+                'placeholder': "Наименование",
+                'class': 'tInp-1',
+            }),
+            "cost_work": TextInput(attrs={
+                'placeholder': "Стоимость",
+                'class': 'tInp-2',
+            }),
+            "lead_time": TextInput(attrs={
+                'placeholder': "Время выполнения",
+                'class': 'tInp-3',
+            }),
+            "guarantee": TextInput(attrs={
+                'placeholder': "Гарантия",
+                'class': 'tInp-4',
             })
         }

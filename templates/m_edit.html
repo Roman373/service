@@ -1,0 +1,15 @@
+
+    <div id="edit" class="modalDialog">
+        <div>
+        <a href="/master.html#m_type_job" title="Закрыть" class="close">X</a>
+            <h2 style="text-align:center">Изменить тип работы</h2>
+         <form action="" method="post">
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <input type="submit" value="Submit"/>
+
+        </form>
+        </div>
+    </div>

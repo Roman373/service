@@ -1,19 +1,25 @@
 .eInp-1,.eInp-2{
   border: none;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 5px;
   margin-left: 3px;
   font-size: 15px;
   display: flex;
   background-color: #e3e3e3;
+  height:11px;
 }
 .eInp-1{
-  width: 52%;
+  width: 55%;
 }
 .eInp-2{
   width: 49%;
 }
-
+tr{
+    display: flex;
+    justify-content: center;
+}
+.etable{
+    margin-left:95px;
+}
 .ebtton{
   display: flex;
   flex-direction: row;

@@ -8,6 +8,7 @@
 {% block title %}Страница мастер{% endblock %}
 
 {% block content %}
+
     <div id="m_work_order" class="dialog">
         <table class="m_table">
         <tr>
@@ -32,7 +33,7 @@
                     <td>{{ workorder.car_id}} </td>
                     <td>{{ workorder.stuff_id}}</td>
                     <td>{{ workorder.appointment_id}}</td>
-                    <td><a href="/">
+                    <td><a href="#edit_workorder/{{workorder.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
@@ -73,7 +74,7 @@
                     <td>{{ master.experience}}</td>
                     <td>{{ master.position_id}}</td>
                     <td>{{ master.user_id}}</td>
-                    <td><a href="/">
+                    <td><a href="#edit_master/{{master.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
@@ -111,7 +112,7 @@
                     <td>{{ car.vin }}</td>
                     <td>{{ car.mileage }}</td>
                     <td>{{ car.client_id }}</td>
-                    <td><a href="/">
+                    <td><a href="#edit_car/{{car.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
@@ -140,7 +141,7 @@
                     <td>{{ spare.remainder}}</td>
                     <td>{{ spare.spare_cost}} </td>
                     <td>{{ spare.guarantee}}</td>
-                    <td><a href="/">
+                    <td><a href="#edit_spare/{{spare.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
@@ -168,7 +169,7 @@
                     <td>{{ supplier.name}}</td>
                     <td>{{ supplier.address}}</td>
                     <td>{{ supplier.telephone}}</td>
-                    <td><a href="/">
+                    <td><a href="#edit_supplier/{{supplier.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                     </a>
                     </td>
@@ -196,10 +197,10 @@
                     <td>{{ service.job_id}}</td>
                     <td>{{ service.spare_id}}</td>
                     <td>
-                        <a href="/"><img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        <a href="#edit_service/{{service.id}}"><img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                    <td><a href="/">
+                    <td><a href="delete/{{person.id}}">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -214,7 +215,7 @@
                 <th>Номер работы:</th>
                 <th>Название:</th>
                 <th>Стоимость:</th>
-                <th>Время выполнения:</th>
+                <th>Время выполнения(Мин.):</th>
                 <th>Гарантия:</th>
             </tr>
                 {% for type_job in type_jobs %}
@@ -224,13 +225,17 @@
                         <td>{{ type_job.cost_work}}</td>
                         <td>{{ type_job.lead_time}}</td>
                         <td>{{ type_job.guarantee}}</td>
-                        <td><a href="/">
+
+                        <td><a href="master.html/edit/{{type_job.id}}/">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                             </a>
                         </td>
-                        <td><a href="/">
+                        <td>
+                            {% include "m_delete.html" %}
+                        <a href="#card">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
+
                     </td>
                     </tr>
                 {% endfor %}

@@ -9,22 +9,10 @@
     <h1 style="text-align: center;">Запись на прием</h1>
     <form id="my" method="post">
         {% csrf_token %}
-        <div class="ainput">
-            <p>Имя:</p>
-            {{ appointmentform.name }}
-        </div>
-        <div class="ainput">
-            <p>Телефон:</p>
-            {{ appointmentform.telephone }}
-        </div>
-        <div class="ainput">
-            <p>Автомобиль:</p>
-            {{appointmentform.car }}
-        </div>
-        <div class="ainput">
-            <p>Дата осмотра:</p>
-            {{ appointmentform.data }}
-        </div>
+        <div class="atable">
+        <table >
+            {{ appointmentform.as_table }}
+        </table></div>
         <span> {{ error }}</span>
         <span class="mess"> {{ messappoint }}</span>
         <div class="abton">
