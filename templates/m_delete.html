@@ -1,23 +1,17 @@
 {% load static %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/delete.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/m_delete.css'%}" type="text/css">
 {% endblock %}
 
-<div id="card" class="modaldelete">
-    <div>
-        <a href="#close" title="Закрыть" class="close">X</a>
-        <h2 style="text-align: center">Добавление автомобиля</h2>
-         <form method="post" class="stl_car">
+<div class="modalDel">
+	<div class="btton">
+		<form method="post">
             {% csrf_token %}
-             <table>
-                {{ carform.as_table }}
-             </table>
-             <span>{{errorcar}}</span>
-             <span>{{messcar}}</span>
-             <div class="mbtn">
-                 <button type="submit">Добавить</button>
-             </div>
+            <div >
+                 <button class="mbtn" type="submit" title="Удалить">Удалить</button>
+            </div>
         </form>
+        <button class="mbtn" onclick="window.location.href='/master.html'" title="Закрыть">Закрыть</button>
     </div>
 </div>

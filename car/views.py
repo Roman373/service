@@ -123,47 +123,61 @@ class ClientPage(View):
             'clients': clients,
             'appointmentform': AppointmentForm,
             'mworkorderform': MWorkOrderForm,
+            "carform": CarForm
         }
         return render(request, 'client.html', context=context)
 
     def post(self, request):
         errorappoint=''
-        messappoint=''
         if 'appointmentSubmit' in request.POST:
             if request.method == 'POST':
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
-                    appointmentform = AppointmentForm()
-                    messappoint="Обращение отправлено успешно"
+                    return HttpResponseRedirect("")
                 else:
                     errorappoint = "Ошибка формы"
             context = {
                 'appointmentform': appointmentform,
                 'errorappoint': errorappoint,
-                "messappoint":messappoint,
                 'mworkorderform': MWorkOrderForm,
             }
             return render(request, 'client.html', context=context)
 
         if 'workorderSubmit' in request.POST:
-            errorworkorder=''
-            messworkorder=''
+            errorworkorder = ''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
                 if mworkorderform.is_valid():
                     mworkorderform.save()
-                    mworkorderform = MWorkOrderForm()
-                    messworkorder="Заказ-наряд добавлен"
+                    return HttpResponseRedirect("/client.html#c_work_order")
                 else:
                     errorworkorder = "Ошибка формы"
             context = {
                 'mworkorderform': mworkorderform,
                 'errorworkorder': errorworkorder,
+                'carform': CarForm,
                 'appointmentform': AppointmentForm,
-                "messworkorder": messworkorder
             }
             return render(request, 'client.html', context=context)
+        if 'carSubmit' in request.POST:
+            errorcar=''
+            if request.method == 'POST':
+                carform = CarForm(request.POST)
+                if carform.is_valid():
+                    carform.save()
+                    return HttpResponseRedirect("/client.html#c_car")
+                else:
+                    errorcar = "Ошибка формы"
+            context = {
+                'carform': carform,
+                'errorcar': errorcar,
+                'appointmentform': AppointmentForm,
+                'mworkorderform': MWorkOrderForm,
+            }
+            return render(request, 'client.html', context=context)
+
+
 
 
 class MasterPage(View):
@@ -178,6 +192,12 @@ class MasterPage(View):
         masters = get_master(users)
         ccars = get_c_car()
         context = {
+            'mworkorderform': MWorkOrderForm,
+            'carform': CarForm,
+            'serviceform': ServiceForm,
+            'typejobform': TypeJobForm,
+            'spareform': SpareForm,
+            'supplierform': SupplierForm,
             'workorders': workorders,
             'cars': cars,
             "ccars": ccars,
@@ -187,24 +207,17 @@ class MasterPage(View):
             "services": services,
             "type_jobs": type_jobs,
             'users': users,
-            'mworkorderform': MWorkOrderForm,
-            'carform': CarForm,
-            'serviceform': ServiceForm,
-            'typejobform': TypeJobForm,
-            'spareform': SpareForm
         }
         return render(request, 'master.html', context=context)
 
     def post(self, request):
         if 'mworkorderSubmit' in request.POST:
             errorworkorder = ''
-            messworkorder = ''
             if request.method == 'POST':
                 mworkorderform = MWorkOrderForm(request.POST)
                 if mworkorderform.is_valid():
                     mworkorderform.save()
-                    mworkorderform = MWorkOrderForm()
-                    messworkorder = "Заказ-наряд добавлен"
+                    return HttpResponseRedirect("/master.html#m_work_order")
                 else:
                     errorworkorder = "Ошибка формы"
             context = {
@@ -214,7 +227,7 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "messworkorder": messworkorder
+                "supplierform": SupplierForm
             }
             return render(request, 'master.html', context=context)
         if 'carSubmit' in request.POST:
@@ -235,7 +248,8 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "messcar":messcar
+                "messcar":messcar,
+                "supplierform": SupplierForm
 
             }
             return render(request, 'master.html', context=context)
@@ -257,7 +271,8 @@ class MasterPage(View):
                 'carform': CarForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "messservice":messservice
+                "messservice":messservice,
+                "supplierform": SupplierForm
             }
             return render(request, 'master.html', context=context)
         if 'typejobSubmit' in request.POST:
@@ -278,7 +293,8 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'spareform': SpareForm,
-                "messtypejob": messtypejob
+                "messtypejob": messtypejob,
+                "supplierform": SupplierForm
             }
             return render(request, 'master.html', context=context)
         if 'spareSubmit' in request.POST:
@@ -299,19 +315,101 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                "messspare": messspare
+                "messspare": messspare,
+                "supplierform":SupplierForm
+            }
+            return render(request, 'master.html', context=context)
+        if 'supplierSubmit' in request.POST:
+            messsupplier=''
+            errorsupplier=''
+            if request.method == 'POST':
+                supplierform = SupplierForm(request.POST)
+                if supplierform.is_valid():
+                    supplierform.save()
+                    supplierform = SupplierForm()
+                    messsupplier="Поставщик добавлен"
+                else:
+                    errorsupplier = "Ошибка формы"
+            context = {
+                'spareform': SpareForm,
+                'errorspare': errorsupplier,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                "messspare": messsupplier,
+                'supplierform': supplierform
             }
             return render(request, 'master.html', context=context)
 
-
-class edit(UpdateView):
+class editTypejob(UpdateView):
     model = TypesJob
     template_name = "m_edit.html"
     form_class = TypeJobUpdateForm
 
 
-class delete(DeleteView):
+class editService(UpdateView):
+    model = Service
+    template_name = "m_edit.html"
+    form_class = ServiceForm
+
+
+class editWorkOrder(UpdateView):
+    model = WorkOrder
+    template_name = "m_edit.html"
+    form_class = MWorkOrderForm
+
+
+class editCar(UpdateView):
+    model = Car
+    template_name = "m_edit.html"
+    form_class = CarForm
+
+
+class editSpare(UpdateView):
+    model = Spare
+    template_name = "m_edit.html"
+    form_class = SpareForm
+
+
+class editSupplier(UpdateView):
+    model = Supplier
+    template_name = "m_edit.html"
+    form_class = SupplierForm
+
+
+class deleteTypeJob(DeleteView):
     model = TypesJob
     template_name = "m_delete.html"
     success_url = '/master.html#m_type_job'
+
+
+class deleteService(DeleteView):
+    model = Service
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_service'
+
+
+class deleteWorkOrder(DeleteView):
+    model = WorkOrder
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_work_order'
+
+
+class deleteCar(DeleteView):
+    model = Car
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_car'
+
+
+class deleteSpare(DeleteView):
+    model = Spare
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_spare'
+
+
+class deleteSupplier(DeleteView):
+    model = Supplier
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_supplier'
 

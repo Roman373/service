@@ -3,7 +3,23 @@
         <a href='#f_car' title="Добавить" class="btn">Автомобиль</a>
         <a href='#f_service' title="Добавить" class="btn">Услугу</a>
         <a href='#f_type_job' title="Добавить" class="btn">Тип работы</a>
+        <a href='#f_supplier' title="Добавить" class="btn">Поставщик</a>
         <a href='#f_spare' title="Добавить" class="btn">Запчасти</a>
+</div>
+<div id="f_supplier" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление поставщика</h2>
+        <form method="post" class="stl_car">
+            {% csrf_token %}
+            <table class="m_serviceform">
+                {{ supplierform.as_table }}
+             </table>
+            <span>{{errorsupplier}}</span>
+        <div class="mbtn">
+            <button type="submit" name="supplierSubmit" class="menterBtn" >Добавить</button></div>
+        </form>
+    </div>
 </div>
 
 <div id="f_car" class="modalDialog">
@@ -39,6 +55,8 @@
         </form>
     </div>
 </div>
+
+
 
     <div id="f_type_job" class="modalDialog">
         <div>

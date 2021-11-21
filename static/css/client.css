@@ -1,5 +1,74 @@
+.atable{
+    margin-left:68px;
+}
+.atable tr{
+  display: flex;
+  justify-content: left;
+}
 
+.c_workorder{
+    margin-left:60px;
+}
+.c_workorder tr{
+    display:flex;
+    justify-content: left;
+}
+.c_car{
+    margin-left:60px;
+}
+.c_car tr{
+    display:flex;
+    justify-content: left;
+}
+.wInp-1,.wInp-2,.wInp-3,.wInp-4,
+.wInp-5,.wInp-6,.wInp-7,.wInp-8,
+aInp-1,aInp-2,aInp-3,aInp-4,aInp-5,
+.cInp-1,.cInp-2,.cInp-3,
+.cInp-4,.cInp-5,.cInp-6,.cInp-7,
+.cInp-8,.cInp-9{
+  border: none;
+  padding: 11px;
+  margin-left: 3px;
+  font-size: 15px;
+  display: flex;
+  background-color: #e3e3e3;
+  float: left;
+  height:5px;
+  vertical-align: center;
+}
 
+.cInp-1{
+    width: 120px;
+}
+.cInp-2{
+  width: 120px;
+}
+.cInp-3{
+  width: 120px;
+}
+.cInp-4{
+  width: 200px;
+}
+.cInp-5{
+  width: 200px;
+}
+.cInp-6{
+  width: 200px;
+}
+.cInp-7{
+  width: 200px;
+}
+.cInp-8{
+  width: 200px;
+}
+.cInp-9{
+  width: 200px;
+}
+
+label{
+    display:flex;
+    padding-top:3px;
+}
 .widget {
   padding: 20px 30px;
   background: white;
@@ -90,6 +159,7 @@
   color: #dd3333;
 }
 
+
 .modalDialog {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;
@@ -113,10 +183,10 @@
 }
 
 .modalDialog > div {
-	width: 400px;
+	width: 450px;
 	position: relative;
-	margin: 10% auto;
-	padding: 5px 20px 13px 20px;
+	margin: 5% auto;
+	padding: 1px 1px 10px 10px;
 	border-radius: 10px;
 	background: #fff;
 	background: -moz-linear-gradient(#fff, #999);
@@ -145,16 +215,11 @@
 
 .close:hover { background: #00d9ff; }
 
-.btton{
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-}
+
 .btn{
 	color: #black;
 	right: 8px;
 	height:25px;
-	margin-left:10px;
 	top: -10px;
 	border:none;
 	border-radius: 19px;
@@ -165,9 +230,9 @@
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,
 .wInp-5,.wInp-6,.wInp-7,.wInp-8{
   border: none;
-  padding: 12px;
-  margin-top: 15px;
-  height:8px;
+  padding: 9px;
+  height:7px;
+  margin-top:5px;
   margin-left: 3px;
   font-size: 15px;
   display: flex;
@@ -186,43 +251,30 @@
   width: 40%;
 }
 .wInp-1{
-  width: 40%;
+  width: 200px;
 }
 .wInp-2{
-  width: 40%;
+  width: 180px;
 }
 .wInp-3{
-  width: 40%;
+  width: 180px;
 }
 .wInp-4{
-  width: 40%;
-  margin-right:5px;
+  width: 180px;
 }
 .wInp-5{
-  width: 40%;
+  width: 180px;
 }
 .wInp-6{
-  width: 40%;
+  width: 180px;
 }
 .wInp-7{
-  width: 40%;
+  width: 180px;
 }
 .wInp-8{
-  width: 40%;
+  width: 180px;
 }
 .cbtn{
     display: flex;
     justify-content: center;
-}
-
-.stlapp{
-    margin-left:40px;
-}
-
-.mess{
-    color:green;
-    font-size:15px;
-    display:flex;
-    margin-left:100px;
-    margin-top:20px;
 }

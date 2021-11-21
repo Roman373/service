@@ -65,6 +65,27 @@ class OrderPhoneForm(ModelForm):
         }
 
 
+class SupplierForm(ModelForm):
+    class Meta:
+        fields = ['name', 'address', 'telephone']
+        model = Supplier
+        widgets = {
+            "name": TextInput(attrs={
+                'placeholder': "Ваше имя",
+                'class': 'supInp-1'
+            }),
+            "address": TextInput(attrs={
+                'placeholder': "Ваше адрес",
+                'class': 'supInp-2'
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Ваш телефон",
+                'value': "+7",
+                'class': 'supInp-3'
+            })
+        }
+
+
 class AppointmentForm(ModelForm):
     class Meta:
         fields = ['name', 'telephone', 'car', 'data']

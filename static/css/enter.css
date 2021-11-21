@@ -13,12 +13,13 @@
 .eInp-2{
   width: 49%;
 }
-tr{
-    display: flex;
-    justify-content: center;
-}
+
 .etable{
     margin-left:95px;
+}
+.etable tr{
+    display: flex;
+    justify-content: left;
 }
 .ebtton{
   display: flex;

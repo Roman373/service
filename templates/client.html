@@ -8,6 +8,7 @@
 {% block title %}Страница клиента{% endblock %}
 
 {% block content %}
+
 <div id="c_appointment" class="modalD">
      <table class="c_table">
         <tr>
@@ -35,8 +36,7 @@
             <th>Номер пользователя:</th>
             <th>Логин:</th>
             <th>Пароль:</th>
-            <th>Имя:</th>
-            <th>Фамилия:</th>
+            <th>ФИО:</th>
             <th>Телефон:</th>
             <th>E-mail:</th>
         </tr>
@@ -45,8 +45,7 @@
                     <td>{{ user.id}}</td>
                         <td>{{ user.login}}</td>
                         <td>{{ user.password}}</td>
-                        <td>{{ user.name}} </td>
-                        <td>{{ user.lastname}}</td>
+                        <td>{{ user.name_lastname}}</td>
                         <td>{{ user.telephone}}</td>
                         <td>{{ user.e_mail}}</td>
                     {% endfor %}
@@ -64,7 +63,7 @@
             <th>Общая стоимость:</th>
             <th>Статус заказа:</th>
             <th>Номер автомобиля:</th>
-            <th>Номер запчасти:</th>
+            <th>Мастер:</th>
             <th>Номер обращения:</th>
         </tr>
             {% for clientworkorder in clientworkorders %}
@@ -76,13 +75,43 @@
                 <td>{{ clientworkorder.total_cost}}</td>
                 <td>{{ clientworkorder.order_status}}</td>
                 <td>{{ clientworkorder.car_id}}</td>
-                <td>{{ clientworkorder.stuff_id}}</td>
+                <td>{{ clientworkorder.staff_id}}</td>
                 <td>{{ clientworkorder.appointment_id}}</td>
                     <td></td>
                 </tr>
             {% endfor %}
     </table>
 </div>
+<div id="c_car" class="modalD">
+        <table class="c_table">
+        <tr>
+            <th>Номер автомобиля:</th>
+            <th>Модель автомобиля:</th>
+            <th>Рег. знак:</th>
+            <th>Цвет автомобиля:</th>
+            <th>Год выпуска:</th>
+            <th>Номер двигателя:</th>
+            <th>Номер кузова:</th>
+            <th>VIN:</th>
+            <th>Расстояние в км:</th>
+            <th>Владелец:</th>
+        </tr>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.car_model }}</td>
+                    <td>{{ car.register_sign }}</td>
+                    <td>{{ car.car_color }}</td>
+                    <td>{{ car.year_issue }}</td>
+                    <td>{{ car.engine_number }}</td>
+                    <td>{{ car.body_number }}</td>
+                    <td>{{ car.vin }}</td>
+                    <td>{{ car.mileage }}</td>
+                    <td>{{ car.user_id }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
     <div class="widget">
       <h3 class="widget-title">Категории</h3>
       <ul class="widget-list">
@@ -91,14 +120,18 @@
               {% include "c_add_form.html" %}
           </li>
           <li class="btton">
+              <a href="#c_appointment">Обращения</a>
+          </li>
+          <li class="btton">
+              <a href="#c_car">Автомобиль</a>
+          </li>
+          <li class="btton">
               <a href="#c_work_order">Заказ-наряд</a>
           </li>
           <li class="btton">
               <a href="#c_user">Пользователь</a>
           </li>
-          <li class="btton">
-              <a href="#c_appointment">Обращения</a>
-          </li>
+
           <li><a href="/">Выйти</a></li>
       </ul>
     </div>

@@ -1,60 +1,54 @@
 <div id="c_add_form" class="modalD">
     <a href='#f_work_order' title="Добавить" class="btn">Заказ-наряд</a>
     <a href='#f_appointment' title="Добавить" class="btn">Обращение</a>
+    <a href='#f_car' title="Добавить" class="btn">Автомобиль</a>
 </div>
 
 <div id="f_work_order" class="modalDialog">
     <div>
+        <h2 style="text-align:center;">Добавить заказ-наряд</h2>
         <a href="#close" title="Закрыть" class="close">X</a>
-         <form method="post">
+        <form method="post">
             {% csrf_token %}
-            <div class="btton">
-                <p>Дата начала:</p>{{ mworkorderform.date_appeal}}
-                <p>Дата заверщения:</p>{{ mworkorderform.date_completion }}</div>
-            <div class="btton">
-                    <p>Причина обращения:</p>{{ mworkorderform.reason_petition }}</div>
-            <div class="btton">
-                    <p>Общая стоимость:</p>{{mworkorderform.total_cost }}
-                    <p>Статус заказа:</p>{{mworkorderform.order_status }}</div>
-            <div class="btton">
-                    <p>Номер автомобиля:</p>{{ mworkorderform.car_id }}
-                    <option>{{ workorderform.car_id  }}</option>
-                    <p>Номер запчасти:</p>{{ mworkorderform.stuff_id }}
-                    <p>Номер обращения:</p>{{ mworkorderform.appointment_id }}
-                <span>{{ errorworkorder }}</span>
-                <span>{{ messworkorder }}</span>
-            </div>
-            <button type="submit" name="workorderSubmit" class="lenterBtn" >Добавить</button>
+            <table class="c_workorder">
+                {{ mworkorderform.as_table }}
+             </table>
+            <span>{{errorworkorder}}</span>
+            <div class="cbtn">
+                <button type="submit" name="workorderSubmit" class="appointBtn" >Добавить</button></div>
+        </form>
+    </div>
+</div>
+<div id="f_car" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление автомобиля</h2>
+         <form method="post" class="stl_car">
+            {% csrf_token %}
+             <table class="c_car">
+                {{ carform.as_table }}
+             </table>
+             <span>{{errorcar}}</span>
+             <div class="cbtn">
+                 <button type="submit" name="carSubmit" class="appointBtn">Добавить</button>
+             </div>
         </form>
     </div>
 </div>
 
-
 <div id="f_appointment" class="modalDialog">
     <div>
+        <h2 style="text-align:center;">Добавить обращение</h2>
         <a href="#close" title="Закрыть" class="close">X</a>
         <form method="post">
             {% csrf_token %}
-            <h2 style="text-align:center">Добавление обращения</h2>
-            <div class="stlapp">
-            <div class="btton">
-                <p>Имя:</p>{{ appointmentform.name }}
-            </div>
-            <div class="btton">
-                <p>Телефон:</p>{{ appointmentform.telephone }}
-            </div>
-            <div class="btton">
-                <p>Автомобиль:</p>{{appointmentform.car }}
-            </div>
-            <div class="btton">
-                <p>Дата осмотра:</p>{{ appointmentform.data }}
-            </div></div>
+            <table class="atable">
+                {{ appointmentform.as_table }}
+             </table>
             <span> {{ errorappoint }}</span>
-             <span>{{messappoint}}</span>
             <div class="cbtn">
-            <div class="btton">
                 <button type="submit" name="appointmentSubmit" class="appointBtn">Записаться</button>
-            </div></div>
+            </div>
         </form>
     </div>
 </div>

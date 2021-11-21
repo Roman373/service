@@ -76,9 +76,6 @@ class TypesJob(models.Model):
     def get_absolute_url(self):
         return f'/master.html#m_type_job'
 
-    def get_success_url(self):
-        return f'/master.html#m_type_job'
-
 
 class Appointment(models.Model):
     name = models.CharField("ФИО", max_length=40)
@@ -101,6 +98,9 @@ class WorkOrder(models.Model):
     car = models.ForeignKey(Car, verbose_name='Автомобиль', on_delete=models.CASCADE)
     staff = models.ForeignKey(Staff, verbose_name='Мастер', on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointment, verbose_name='Обращение', on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return f'/master.html#m_work_order'
 
 
 class Supplier(models.Model):

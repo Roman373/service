@@ -25,13 +25,14 @@
 .lInp-6{
   width: 67%;
 }
-tr{
+
+.ltable{
+    margin-left:95px;
+}
+.ltable tr{
   display: flex;
   justify-content: left;
   margin-top:5px;
-}
-.ltable{
-    margin-left:95px;
 }
 .lbtton{
   display: flex;

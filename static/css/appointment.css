@@ -36,12 +36,12 @@
   display: flex;
   justify-content: center;
 }
-tr{
-  display: flex;
-  justify-content: left;
-}
+
 .atable{
     margin-left:68px;
 }
-
+.atable tr{
+  display: flex;
+  justify-content: left;
+}
 
