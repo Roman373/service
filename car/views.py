@@ -32,13 +32,13 @@ class VisitorPage(View):
                 }
                 return render(request, 'visitor.html', context=context)
 
-            elif get_master(users, 3) and get_position(3):
+            elif get_master(users,3):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('admin.html')
-            elif get_master(users, 2):
+            elif get_master(users,2):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('master.html')
-            elif get_client(users):
+            elif get_master(users,1):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('client.html')
 
@@ -111,7 +111,7 @@ class VisitorPage(View):
 class ClientPage(View):
     def get(self, request):
         users = get_user_filter(request.session["id_user"])
-        clients = get_client(users)
+        clients = get_master(users,1)
         clientworkorders = get_c_work_order(users)
         appointments = get_appointment(users)
         cars = get_c_car()
@@ -189,7 +189,9 @@ class MasterPage(View):
         type_jobs = get_type_job()
         masters = get_master(users, 2)
         ccars = get_c_car()
+        appointments = get_appointmentposition()
         context = {
+            "appointments":appointments,
             'mworkorderform': MWorkOrderForm,
             'carform': CarForm,
             'serviceform': ServiceForm,
@@ -205,6 +207,7 @@ class MasterPage(View):
             "services": services,
             "type_jobs": type_jobs,
             'users': users,
+            "appointmentform": AppointmentForm
         }
         return render(request, 'master.html', context=context)
 
@@ -225,7 +228,27 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
+            }
+            return render(request, 'master.html', context=context)
+        if 'appointmentSubmit' in request.POST:
+            errorappointment = ''
+            if request.method == 'POST':
+                appointmentform = AppointmentForm(request.POST)
+                if appointmentform.is_valid():
+                    appointmentform.save()
+                    return HttpResponseRedirect("/master.html#m_appointment")
+                else:
+                    errorappointment = "Ошибка формы"
+            context = {
+                'appointmentform': appointmentform,
+                'errorappointment': errorappointment,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm,
             }
             return render(request, 'master.html', context=context)
         if 'carSubmit' in request.POST:
@@ -244,7 +267,8 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
 
             }
             return render(request, 'master.html', context=context)
@@ -266,7 +290,8 @@ class MasterPage(View):
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
                 "messservice":messservice,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'master.html', context=context)
         if 'typejobSubmit' in request.POST:
@@ -285,7 +310,8 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'master.html', context=context)
         if 'spareSubmit' in request.POST:
@@ -304,7 +330,8 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                "supplierform":SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'master.html', context=context)
         if 'supplierSubmit' in request.POST:
@@ -323,7 +350,8 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                'supplierform': supplierform
+                'supplierform': supplierform,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'master.html', context=context)
 
@@ -337,10 +365,12 @@ class AdminPage(View):
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
-        masters = get_master(users, 3)
-        admin_masters = get_admin_masters()
+        admin = get_master(users, 3)
+        admin_masters = get_masters_position(2)
+        appointments = get_appointmentposition()
         ccars = get_c_car()
         context = {
+            "appointments":appointments,
             "admin_masters": admin_masters,
             'mworkorderform': MWorkOrderForm,
             'carform': CarForm,
@@ -353,15 +383,35 @@ class AdminPage(View):
             "ccars": ccars,
             "spares": spares,
             "suppliers": suppliers,
-            'masters': masters,
+            'admin': admin,
             "services": services,
             "type_jobs": type_jobs,
             'users': users,
-            "masterform": MasterForm
+            "masterform": MasterForm,
+            'appointmentform': AppointmentForm
         }
         return render(request, 'admin.html', context=context)
 
     def post(self, request):
+        if 'appointmentSubmit' in request.POST:
+            errorappointment = ''
+            if request.method == 'POST':
+                appointmentform = AppointmentForm(request.POST)
+                if appointmentform.is_valid():
+                    appointmentform.save()
+                    return HttpResponseRedirect("/master.html#m_appointment")
+                else:
+                    errorappointment = "Ошибка формы"
+            context = {
+                'appointmentform': appointmentform,
+                'errorappointment': errorappointment,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm,
+            }
+            return render(request, 'master.html', context=context)
         if 'mworkorderSubmit' in request.POST:
             errorworkorder = ''
             if request.method == 'POST':
@@ -378,7 +428,8 @@ class AdminPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
         if 'carSubmit' in request.POST:
@@ -397,7 +448,8 @@ class AdminPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
 
             }
             return render(request, 'admin.html', context=context)
@@ -417,7 +469,8 @@ class AdminPage(View):
                 'carform': CarForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
         if 'typejobSubmit' in request.POST:
@@ -436,7 +489,8 @@ class AdminPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'spareform': SpareForm,
-                "supplierform": SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
         if 'spareSubmit' in request.POST:
@@ -457,7 +511,8 @@ class AdminPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 "messspare": messspare,
-                "supplierform":SupplierForm
+                "supplierform": SupplierForm,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
         if 'supplierSubmit' in request.POST:
@@ -476,7 +531,8 @@ class AdminPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                'supplierform': supplierform
+                'supplierform': supplierform,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
 
@@ -497,7 +553,8 @@ class AdminPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'supplierform': SupplierForm,
-                "masterform": masterform
+                "masterform": masterform,
+                'appointmentform': AppointmentForm
             }
             return render(request, 'admin.html', context=context)
 

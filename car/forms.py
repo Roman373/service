@@ -298,19 +298,30 @@ class TypeJobUpdateForm(ModelForm):
 
 class MasterForm(ModelForm):
     class Meta:
-        fields = ['user', 'experience', 'position']
-        model = Staff
+        model = User
+        fields = ['name_lastname', 'login', 'password', "telephone", 'e_mail',"position"]
         widgets = {
-            "user": Select(attrs={
-                'placeholder': "кол.зап.ч.",
-                'class': 'sInp-1'
+            "name_lastname": TextInput(attrs={
+                'placeholder': "Ваше имя и фамилия",
+                'class': 'lInp-1'
             }),
-            "experience": TextInput(attrs={
-                'placeholder': "кол.зап.ч.",
-                'class': 'sInp-2'
+            "login": TextInput(attrs={
+                'placeholder': "Ваш логин",
+                'class': 'lInp-3'
+            }),
+            "password": PasswordInput(attrs={
+                'placeholder': "Ваш пароль",
+                'class': 'lInp-4'
+            }),
+            "telephone": TextInput(attrs={
+                'placeholder': "Ваш телефон",
+                'class': 'lInp-5'
+            }),
+            "e_mail": EmailInput(attrs={
+                'placeholder': "Ваша почта",
+                'class': 'lInp-6'
             }),
             "position": Select(attrs={
-                'placeholder': "кол.зап.ч.",
-                'class': 'sInp-2'
-            }),
+                'class': 'lInp-7'
+            })
         }

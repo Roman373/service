@@ -5,6 +5,22 @@
         <a href='#f_type_job' title="Добавить" class="btn">Тип работы</a>
         <a href='#f_supplier' title="Добавить" class="btn">Поставщик</a>
         <a href='#f_spare' title="Добавить" class="btn">Запчасти</a>
+        <a href='#f_appointment' title="Добавить" class="btn">Обращение</a>
+</div>
+<div id="f_appointment" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Добавление обращения</h2>
+        <form method="post" class="stl_car">
+            {% csrf_token %}
+            <table class="m_serviceform">
+                {{ appointmentform.as_table }}
+             </table>
+            <span>{{errorappointment}}</span>
+        <div class="mbtn">
+            <button type="submit" name="appointmentSubmit" class="menterBtn" >Добавить</button></div>
+        </form>
+    </div>
 </div>
 <div id="f_supplier" class="modalDialog">
     <div>

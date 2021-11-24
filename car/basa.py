@@ -31,6 +31,10 @@ def get_appointment(user_id):
     return appointments
 
 
+def get_appointmentposition():
+    appointments = Appointment.objects.order_by("-id")
+    return appointments
+
 def get_spare():
     spares = Spare.objects.order_by("-id")
     return spares
@@ -56,21 +60,11 @@ def get_user_filter(user_id):
     return users
 
 
-def get_master(user_id, position_id):
-    masters = Staff.objects.filter(position__staff__user_id__in=user_id, position__id=position_id)
+def get_master(user_id,position):
+    masters = User.objects.filter(id__in=user_id,position__id=position)
     return masters
 
 
-def get_admin_masters():
-    masters = Staff.objects.order_by("-id")
+def get_masters_position(position):
+    masters = User.objects.filter(position__id=position)
     return masters
-
-
-def get_position(position_id):
-    masters = Staff.objects.filter(position__id=position_id)
-    return masters
-
-
-def get_client(user_id):
-    clients = User.objects.filter(id__in=user_id)
-    return clients

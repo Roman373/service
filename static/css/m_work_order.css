@@ -216,14 +216,14 @@
 
 
 .lInp-5,.lInp-1,.lInp-2,.lInp-3,
-.lInp-4,.cInp-1,.cInp-2,.cInp-3,
+.lInp-4,.lInp-6,.lInp-7,.cInp-1,.cInp-2,.cInp-3,
 .cInp-4,.cInp-5,.cInp-6,.cInp-7,
 .cInp-8,.cInp-9,.sInp-1,.sInp-2,
 .tInp-1,.tInp-2,.tInp-3,.tInp-4,
 .spInp-1,.spInp-2,.spInp-3,.spInp-4,
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,
 .wInp-5,.wInp-6,.wInp-7,.wInp-8,
-supInp-1,supInp-2,supInp-3{
+supInp-1,supInp-2,supInp-3,{
   border: none;
   padding: 2px;
   height:20px;

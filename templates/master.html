@@ -49,35 +49,26 @@
     <div id="m_user" class="dialog">
          <table class="m_table">
         <tr>
-            <th>Номер мастера:</th>
+            <th>Номер:</th>
             <th>Логин:</th>
             <th>Пароль:</th>
             <th>ФИО:</th>
             <th>Телефон:</th>
             <th>E-mail:</th>
-            <th>Стаж:</th>
-            <th>Должность:</th>
-            <th>Номер пользователя</th>
         </tr>
-            {% for master in masters %}
-                <tr>
-                    <td>{{ master.id }}</td>
-                        {% for user in users %}
+                <tr>{% for user in masters %}
+                            <td>{{ user.id}}</td>
                             <td>{{ user.login}}</td>
                             <td>{{ user.password}}</td>
                             <td>{{ user.name_lastname}}</td>
                             <td>{{ user.telephone}}</td>
                             <td>{{ user.e_mail}}</td>
                         {% endfor %}
-                    <td>{{ master.experience}}</td>
-                    <td>{{ master.position_id}}</td>
-                    <td>{{ master.user_id}}</td>
                     <td><a href="edit_master/{{master.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
                 </tr>
-            {% endfor %}
         </table>
     </div>
     <div id="m_car" class="dialog">
@@ -233,6 +224,35 @@
                 {% endfor %}
         </table>
     </div>
+<div id="m_appointment" class="dialog">
+        <table class="m_table">
+            <tr>
+                <th>Номер работы:</th>
+                <th>ФИО:</th>
+                <th>Телефон:</th>
+                <th>Автомобиль:</th>
+                <th>Дата осмотра:</th>
+            </tr>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.id }}</td>
+                        <td>{{ appointment.name}}</td>
+                        <td>{{ appointment.telephone}}</td>
+                        <td>{{ appointment.car}}</td>
+                        <td>{{ appointment.data | date:"d.m.Y"}}</td>
+                        <td><a href="edit_type_job/{{appointment.id}}/" title="Изменить">
+                            <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="delete_type_job/{{appointment.id}}/" title="Удалить">
+                            <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
     <div class="widget">
       <h3 class="widget-title">Категории</h3>
       <ul class="widget-list">
@@ -245,6 +265,9 @@
         </li>
         <li class="btton">
             <a href="#m_user">Мастер</a>
+        </li>
+          <li class="btton">
+            <a href="#m_appointment">Обращения</a>
         </li>
         <li class="btton">
             <a href="#m_car">Автомобили</a>

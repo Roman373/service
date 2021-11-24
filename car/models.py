@@ -7,6 +7,7 @@ class User(models.Model):
     name_lastname = models.CharField("ФИО",max_length=100)
     telephone = models.CharField("Телефон", max_length=11)
     e_mail = models.EmailField("Почта", max_length=50)
+    position = models.ForeignKey('Position', verbose_name='Должность', default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name_lastname
@@ -15,19 +16,8 @@ class User(models.Model):
         return f'/master.html#m_user'
 
 
-class Staff(models.Model):
-    user = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    experience = models.IntegerField("Стаж", max_length=2)
-    position = models.ForeignKey('Position', verbose_name='Должность', on_delete=models.CASCADE)
-
-    def get_absolute_url(self):
-        return f'/admin.html#m_staff'
-
-
 class Position(models.Model):
     job_title = models.CharField("Наименование", max_length=50)
-
-
 
 
 class Car(models.Model):
@@ -113,7 +103,7 @@ class WorkOrder(models.Model):
     total_cost = models.DecimalField("Общая стоимость", decimal_places=X, max_digits=Y)
     order_status = models.CharField("Статус", max_length=20)
     car = models.ForeignKey(Car, verbose_name='Автомобиль', on_delete=models.CASCADE)
-    staff = models.ForeignKey(Staff, verbose_name='Мастер', on_delete=models.CASCADE)
+    staff = models.ForeignKey(User, verbose_name='Мастер', on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointment, verbose_name='Обращение', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
