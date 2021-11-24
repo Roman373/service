@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/m_delete.css'%}" type="text/css">
+{% endblock %}
+
+<div class="modalDel">
+	<div class="btton">
+		<form method="post">
+            {% csrf_token %}
+            <div>
+                 <button class="mbtn" type="submit" title="Удалить">Удалить</button>
+            </div>
+        </form>
+        <button class="mbtn" onclick="window.location.href='/admin.html'" title="Закрыть">Закрыть</button>
+    </div>
+</div>

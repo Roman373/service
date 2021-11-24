@@ -1,0 +1,19 @@
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/m_work_order.css'%}" type="text/css">
+{% endblock %}
+    <div class="modalEdit">
+        <div>
+        <a href="/admin.html" title="Закрыть" class="closeEdit">X</a>
+            <h2 style="text-align:center">Изменить</h2>
+         <form method="post">
+            {% csrf_token %}
+            <table class="m_serviceform">
+            {{ form.as_table }}
+            </table>
+            <div class="editBtn"><input type="submit" class="menterBtn" value="Изменить"/></div>
+
+        </form>
+        </div>
+    </div>
