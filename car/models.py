@@ -11,15 +11,23 @@ class User(models.Model):
     def __str__(self):
         return self.name_lastname
 
+    def get_absolute_url(self):
+        return f'/master.html#m_user'
+
 
 class Staff(models.Model):
-    user = models.OneToOneField(User,verbose_name='Мастер', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     experience = models.IntegerField("Стаж", max_length=2)
-    position = models.ForeignKey('Position',verbose_name='Должность', on_delete=models.CASCADE)
+    position = models.ForeignKey('Position', verbose_name='Должность', on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return f'/admin.html#m_staff'
 
 
 class Position(models.Model):
     job_title = models.CharField("Наименование", max_length=50)
+
+
 
 
 class Car(models.Model):
@@ -35,6 +43,9 @@ class Car(models.Model):
 
     def __str__(self):
         return self.car_model
+
+    def get_absolute_url(self):
+        return f'/master.html#m_car'
 
 
 class Spare(models.Model):
@@ -61,6 +72,9 @@ class Service(models.Model):
     def __str__(self):
         return self.name_service
 
+    def get_absolute_url(self):
+        return f'/master.html#m_service'
+
 
 class TypesJob(models.Model):
     name_work = models.CharField("Наименование", max_length=40)
@@ -86,6 +100,9 @@ class Appointment(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/master.html#m_appointment'
+
 
 class WorkOrder(models.Model):
     date_appeal = models.DateField("Дата начала")
@@ -110,3 +127,8 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        if (Position == 2):
+            return f'/master.html#m_supplier'
+

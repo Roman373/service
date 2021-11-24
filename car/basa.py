@@ -56,8 +56,13 @@ def get_user_filter(user_id):
     return users
 
 
-def get_master(user_id):
-    masters = Staff.objects.filter(position__staff__user_id__in=user_id)
+def get_master(user_id, position_id):
+    masters = Staff.objects.filter(position__staff__user_id__in=user_id, position__id=position_id)
+    return masters
+
+
+def get_admin_masters():
+    masters = Staff.objects.order_by("-id")
     return masters
 
 

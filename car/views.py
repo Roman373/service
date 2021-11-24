@@ -1,11 +1,7 @@
-from urllib import request
-
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import UpdateView, DeleteView
-
 from car.basa import *
 from car.forms import *
 
@@ -35,7 +31,11 @@ class VisitorPage(View):
                     "orderphoneform": OrderPhoneForm,
                 }
                 return render(request, 'visitor.html', context=context)
-            elif get_master(users) and get_position(2):
+
+            elif get_master(users, 3) and get_position(3):
+                request.session["id_user"] = users[0].id
+                return HttpResponseRedirect('admin.html')
+            elif get_master(users, 2):
                 request.session["id_user"] = users[0].id
                 return HttpResponseRedirect('master.html')
             elif get_client(users):
@@ -178,8 +178,6 @@ class ClientPage(View):
             return render(request, 'client.html', context=context)
 
 
-
-
 class MasterPage(View):
     def get(self, request):
         users = get_user_filter(request.session["id_user"])
@@ -189,7 +187,7 @@ class MasterPage(View):
         suppliers = get_supplier()
         services = get_service()
         type_jobs = get_type_job()
-        masters = get_master(users)
+        masters = get_master(users, 2)
         ccars = get_c_car()
         context = {
             'mworkorderform': MWorkOrderForm,
@@ -232,13 +230,11 @@ class MasterPage(View):
             return render(request, 'master.html', context=context)
         if 'carSubmit' in request.POST:
             errorcar=''
-            messcar=''
             if request.method == 'POST':
                 carform = CarForm(request.POST)
                 if carform.is_valid():
                     carform.save()
-                    carform = CarForm()
-                    messcar="Автомобиль добавлен"
+                    return HttpResponseRedirect("/master.html#m_car")
                 else:
                     errorcar = "Ошибка формы"
             context = {
@@ -248,7 +244,6 @@ class MasterPage(View):
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
                 'spareform': SpareForm,
-                "messcar":messcar,
                 "supplierform": SupplierForm
 
             }
@@ -260,8 +255,7 @@ class MasterPage(View):
                 serviceform = ServiceForm(request.POST)
                 if serviceform.is_valid():
                     serviceform.save()
-                    serviceform = ServiceForm()
-                    messservice="Услуга добавлена"
+                    return HttpResponseRedirect("/master.html#m_service")
                 else:
                     errorservice = "Ошибка формы"
             context = {
@@ -277,13 +271,11 @@ class MasterPage(View):
             return render(request, 'master.html', context=context)
         if 'typejobSubmit' in request.POST:
             errortypejob=''
-            messtypejob=''
             if request.method == 'POST':
                 typejobform = TypeJobForm(request.POST)
                 if typejobform.is_valid():
                     typejobform.save()
-                    typejobform = TypeJobForm()
-                    messtypejob="Тип работы добавлен"
+                    return HttpResponseRedirect("/master.html#m_type_job")
                 else:
                     errortypejob = "Ошибка формы"
             context = {
@@ -293,10 +285,160 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'spareform': SpareForm,
-                "messtypejob": messtypejob,
                 "supplierform": SupplierForm
             }
             return render(request, 'master.html', context=context)
+        if 'spareSubmit' in request.POST:
+            errorspare=''
+            if request.method == 'POST':
+                spareform = SpareForm(request.POST)
+                if spareform.is_valid():
+                    spareform.save()
+                    return HttpResponseRedirect("/master.html#m_spare")
+                else:
+                    errorspare = "Ошибка формы"
+            context = {
+                'spareform': spareform,
+                'errorspare': errorspare,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                "supplierform":SupplierForm
+            }
+            return render(request, 'master.html', context=context)
+        if 'supplierSubmit' in request.POST:
+            errorsupplier=''
+            if request.method == 'POST':
+                supplierform = SupplierForm(request.POST)
+                if supplierform.is_valid():
+                    supplierform.save()
+                    return HttpResponseRedirect("/master.html#m_supplier")
+                else:
+                    errorsupplier = "Ошибка формы"
+            context = {
+                'spareform': SpareForm,
+                'errorspare': errorsupplier,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'supplierform': supplierform
+            }
+            return render(request, 'master.html', context=context)
+
+
+class AdminPage(View):
+    def get(self, request):
+        users = get_user_filter(request.session["id_user"])
+        workorders = get_workorder()
+        cars = get_m_car()
+        spares = get_spare()
+        suppliers = get_supplier()
+        services = get_service()
+        type_jobs = get_type_job()
+        masters = get_master(users, 3)
+        admin_masters = get_admin_masters()
+        ccars = get_c_car()
+        context = {
+            "admin_masters": admin_masters,
+            'mworkorderform': MWorkOrderForm,
+            'carform': CarForm,
+            'serviceform': ServiceForm,
+            'typejobform': TypeJobForm,
+            'spareform': SpareForm,
+            'supplierform': SupplierForm,
+            'workorders': workorders,
+            'cars': cars,
+            "ccars": ccars,
+            "spares": spares,
+            "suppliers": suppliers,
+            'masters': masters,
+            "services": services,
+            "type_jobs": type_jobs,
+            'users': users,
+            "masterform": MasterForm
+        }
+        return render(request, 'admin.html', context=context)
+
+    def post(self, request):
+        if 'mworkorderSubmit' in request.POST:
+            errorworkorder = ''
+            if request.method == 'POST':
+                mworkorderform = MWorkOrderForm(request.POST)
+                if mworkorderform.is_valid():
+                    mworkorderform.save()
+                    return HttpResponseRedirect("/admin.html#m_work_order")
+                else:
+                    errorworkorder = "Ошибка формы"
+            context = {
+                'mworkorderform': mworkorderform,
+                'errorworkorder': errorworkorder,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm
+            }
+            return render(request, 'admin.html', context=context)
+        if 'carSubmit' in request.POST:
+            errorcar=''
+            if request.method == 'POST':
+                carform = CarForm(request.POST)
+                if carform.is_valid():
+                    carform.save()
+                    return HttpResponseRedirect("/admin.html#m_car")
+                else:
+                    errorcar = "Ошибка формы"
+            context = {
+                'carform': carform,
+                'errorcar': errorcar,
+                'mworkorderform': MWorkOrderForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm
+
+            }
+            return render(request, 'admin.html', context=context)
+        if 'serviceSubmit' in request.POST:
+            errorservice=''
+            if request.method == 'POST':
+                serviceform = ServiceForm(request.POST)
+                if serviceform.is_valid():
+                    serviceform.save()
+                    return HttpResponseRedirect("/admin.html#m_service")
+                else:
+                    errorservice = "Ошибка формы"
+            context = {
+                'serviceform': serviceform,
+                'errorservice': errorservice,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'typejobform': TypeJobForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm
+            }
+            return render(request, 'admin.html', context=context)
+        if 'typejobSubmit' in request.POST:
+            errortypejob=''
+            if request.method == 'POST':
+                typejobform = TypeJobForm(request.POST)
+                if typejobform.is_valid():
+                    typejobform.save()
+                    return HttpResponseRedirect("/admin.html#m_type_job")
+                else:
+                    errortypejob = "Ошибка формы"
+            context = {
+                'typejobform': TypeJobForm,
+                'errortypejob': errortypejob,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'spareform': SpareForm,
+                "supplierform": SupplierForm
+            }
+            return render(request, 'admin.html', context=context)
         if 'spareSubmit' in request.POST:
             messspare=''
             errorspare=''
@@ -304,8 +446,7 @@ class MasterPage(View):
                 spareform = SpareForm(request.POST)
                 if spareform.is_valid():
                     spareform.save()
-                    spareform = SpareForm()
-                    messspare="Запчасти добавлены"
+                    return HttpResponseRedirect("/admin.html#m_spare")
                 else:
                     errorspare = "Ошибка формы"
             context = {
@@ -318,16 +459,14 @@ class MasterPage(View):
                 "messspare": messspare,
                 "supplierform":SupplierForm
             }
-            return render(request, 'master.html', context=context)
+            return render(request, 'admin.html', context=context)
         if 'supplierSubmit' in request.POST:
-            messsupplier=''
             errorsupplier=''
             if request.method == 'POST':
                 supplierform = SupplierForm(request.POST)
                 if supplierform.is_valid():
                     supplierform.save()
-                    supplierform = SupplierForm()
-                    messsupplier="Поставщик добавлен"
+                    return HttpResponseRedirect("/admin.html#m_supplier")
                 else:
                     errorsupplier = "Ошибка формы"
             context = {
@@ -337,10 +476,30 @@ class MasterPage(View):
                 'carform': CarForm,
                 'serviceform': ServiceForm,
                 'typejobform': TypeJobForm,
-                "messspare": messsupplier,
                 'supplierform': supplierform
             }
-            return render(request, 'master.html', context=context)
+            return render(request, 'admin.html', context=context)
+
+        if 'adminMasterSubmit' in request.POST:
+            errormaster = ''
+            if request.method == 'POST':
+                masterform = MasterForm(request.POST)
+                if masterform.is_valid():
+                    masterform.save()
+                    return HttpResponseRedirect("/admin.html#m_master")
+                else:
+                    errormaster = "Ошибка формы"
+            context = {
+                'spareform': SpareForm,
+                'errormaster': errormaster,
+                'mworkorderform': MWorkOrderForm,
+                'carform': CarForm,
+                'serviceform': ServiceForm,
+                'typejobform': TypeJobForm,
+                'supplierform': SupplierForm,
+                "masterform": masterform
+            }
+            return render(request, 'admin.html', context=context)
 
 class editTypejob(UpdateView):
     model = TypesJob
@@ -412,4 +571,76 @@ class deleteSupplier(DeleteView):
     model = Supplier
     template_name = "m_delete.html"
     success_url = '/master.html#m_supplier'
+
+
+class aeditTypejob(UpdateView):
+    model = TypesJob
+    template_name = "a_edit.html"
+    form_class = TypeJobUpdateForm
+
+
+class aeditService(UpdateView):
+    model = Service
+    template_name = "a_edit.html"
+    form_class = ServiceForm
+
+
+class aeditWorkOrder(UpdateView):
+    model = WorkOrder
+    template_name = "a_edit.html"
+    form_class = MWorkOrderForm
+
+
+class aeditCar(UpdateView):
+    model = Car
+    template_name = "a_edit.html"
+    form_class = CarForm
+
+
+class aeditSpare(UpdateView):
+    model = Spare
+    template_name = "a_edit.html"
+    form_class = SpareForm
+
+
+class aeditSupplier(UpdateView):
+    model = Supplier
+    template_name = "a_edit.html"
+    form_class = SupplierForm
+
+
+class adeleteTypeJob(DeleteView):
+    model = TypesJob
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
+
+
+class adeleteService(DeleteView):
+    model = Service
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
+
+
+class adeleteWorkOrder(DeleteView):
+    model = WorkOrder
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
+
+
+class adeleteCar(DeleteView):
+    model = Car
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
+
+
+class adeleteSpare(DeleteView):
+    model = Spare
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
+
+
+class adeleteSupplier(DeleteView):
+    model = Supplier
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_supplier'
 

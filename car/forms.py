@@ -294,3 +294,23 @@ class TypeJobUpdateForm(ModelForm):
                 'class': 'tInp-4',
             })
         }
+
+
+class MasterForm(ModelForm):
+    class Meta:
+        fields = ['user', 'experience', 'position']
+        model = Staff
+        widgets = {
+            "user": Select(attrs={
+                'placeholder': "кол.зап.ч.",
+                'class': 'sInp-1'
+            }),
+            "experience": TextInput(attrs={
+                'placeholder': "кол.зап.ч.",
+                'class': 'sInp-2'
+            }),
+            "position": Select(attrs={
+                'placeholder': "кол.зап.ч.",
+                'class': 'sInp-2'
+            }),
+        }

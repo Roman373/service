@@ -33,11 +33,11 @@
                     <td>{{ workorder.car_id}} </td>
                     <td>{{ workorder.staff_id}}</td>
                     <td>{{ workorder.appointment_id}}</td>
-                    <td><a href="master.html/edit_work_order/{{workorder.id}}/" title="Изменить">
+                    <td><a href="edit_work_order/{{workorder.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                    <td><a href="master.html/m_delete.html/delete_work_order/{{workorder.id}}/" title="Удалить">
+                    <td><a href="delete_work_order/{{workorder.id}}/" title="Удалить">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -72,7 +72,7 @@
                     <td>{{ master.experience}}</td>
                     <td>{{ master.position_id}}</td>
                     <td>{{ master.user_id}}</td>
-                    <td><a href="master.html/edit_master/{{master.id}}/" title="Изменить">
+                    <td><a href="edit_master/{{master.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
@@ -105,12 +105,12 @@
                     <td>{{ car.body_number }}</td>
                     <td>{{ car.vin }}</td>
                     <td>{{ car.mileage }}</td>
-                    <td>{{ car.client_id }}</td>
-                    <td><a href="master.html/edit_car/{{car.id}}/" title="Изменить">
+                    <td>{{ car.user_id }}</td>
+                    <td><a href="edit_car/{{car.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                    <td><a href="master.html/m_delete.html/delete_car/{{car.id}}/" title="Удалить">
+                    <td><a href="delete_car/{{car.id}}/" title="Удалить">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -135,11 +135,11 @@
                     <td>{{ spare.remainder}}</td>
                     <td>{{ spare.spare_cost}} </td>
                     <td>{{ spare.guarantee}}</td>
-                    <td><a href="master.html/edit_spare/{{spare.id}}/" title="Изменить">
+                    <td><a href="edit_spare/{{spare.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                    <td><a href="master.html/m_delete.html/delete_spare/{{spare.id}}/" title="Удалить">
+                    <td><a href="delete_spare/{{spare.id}}/" title="Удалить">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -163,11 +163,11 @@
                     <td>{{ supplier.name}}</td>
                     <td>{{ supplier.address}}</td>
                     <td>{{ supplier.telephone}}</td>
-                    <td><a href="master.html/edit_supplier/{{supplier.id}}/" title="Изменить">
+                    <td><a href="edit_supplier/{{supplier.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                     </a>
                     </td>
-                    <td><a href="master.html/m_delete.html/delete_supplier/{{supplier.id}}/" title="Удалить">
+                    <td><a href="delete_supplier/{{supplier.id}}/" title="Удалить">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -191,11 +191,11 @@
                     <td>{{ service.job_id}}</td>
                     <td>{{ service.spare_id}}</td>
                     <td>
-                        <a href="master.html/edit_service/{{service.id}}/" title="Изменить">
+                        <a href="edit_service/{{service.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                    <td><a href="master.html/m_delete.html/delete_service/{{service.id}}/" title="Удалить">
+                    <td><a href="delete_service/{{service.id}}/" title="Удалить">
                         <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
@@ -220,12 +220,12 @@
                         <td>{{ type_job.cost_work}}</td>
                         <td>{{ type_job.lead_time}}</td>
                         <td>{{ type_job.guarantee}}</td>
-                        <td><a href="master.html/edit_type_job/{{type_job.id}}/" title="Изменить">
+                        <td><a href="edit_type_job/{{type_job.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                             </a>
                         </td>
                         <td>
-                            <a href="master.html/m_delete.html/delete_type_job/{{type_job.id}}/" title="Удалить">
+                            <a href="delete_type_job/{{type_job.id}}/" title="Удалить">
                             <img style="width:25px; height:20px" src="static/css/images/delete.png">
                             </a>
                         </td>

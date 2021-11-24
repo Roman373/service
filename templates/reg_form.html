@@ -1,0 +1,18 @@
+<div id="reg_form" class="dialog">
+    <a href='#reg_master' title="Добавить" class="btn">Мастера</a>
+</div>
+<div id="reg_master" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2 style="text-align: center">Регистрация мастера</h2>
+        <form method="post" class="stl_car">
+            {% csrf_token %}
+            <table class="m_serviceform">
+                {{ masterform.as_table }}
+             </table>
+            <span>{{errormaster}}</span>
+        <div class="mbtn">
+            <button type="submit" name="adminMasterSubmit" class="menterBtn" >Добавить</button></div>
+        </form>
+    </div>
+</div>
