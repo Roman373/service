@@ -223,7 +223,9 @@
 .spInp-1,.spInp-2,.spInp-3,.spInp-4,
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,
 .wInp-5,.wInp-6,.wInp-7,.wInp-8,
-supInp-1,supInp-2,supInp-3,{
+supInp-1,supInp-2,supInp-3,
+.aInp-1,.aInp-2,.aInp-3,.aInp-5,
+.supInp-1,.supInp-2,.supInp-3{
   border: none;
   padding: 2px;
   height:20px;
@@ -301,6 +303,27 @@ supInp-1,supInp-2,supInp-3,{
 .wInp-8{
   width: 150px;
 }
+.supInp-1{
+    width: 250px;
+}
+.supInp-2{
+    width: 320px;
+}
+.supInp-3{
+    width: 68%;
+}
+.aInp-1{
+    width: 220px;
+}
+.aInp-2{
+    width: 189px;
+}
+.aInp-3{
+    width: 158px;
+}
+.aInp-5{
+    width: 150px;
+}
 .spInp-1{
     width: 68%;
 }
@@ -314,10 +337,10 @@ supInp-1,supInp-2,supInp-3,{
     width: 91%;
 }
 .lInp-1{
-  width: 28%;
+  width: 200px;
 }
 .lInp-2{
-  width: 49%;
+  width: 300px;
 }
 .lInp-3{
   width: 55%;

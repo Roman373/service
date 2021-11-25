@@ -240,12 +240,12 @@
                         <td>{{ appointment.telephone}}</td>
                         <td>{{ appointment.car}}</td>
                         <td>{{ appointment.data | date:"d.m.Y"}}</td>
-                        <td><a href="edit_type_job/{{appointment.id}}/" title="Изменить">
+                        <td><a href="edit_appointment/{{appointment.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                             </a>
                         </td>
                         <td>
-                            <a href="delete_type_job/{{appointment.id}}/" title="Удалить">
+                            <a href="delete_appointment/{{appointment.id}}/" title="Удалить">
                             <img style="width:25px; height:20px" src="static/css/images/delete.png">
                             </a>
                         </td>
@@ -284,7 +284,7 @@
         <li class="btton">
             <a href="#m_supplier">Поставщик</a>
         </li>
-          <li><a href="/">Выйти</a></li>
+          <li><a href="logout">Выйти</a></li>
       </ul>
     </div>
 {% endblock %}

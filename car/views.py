@@ -1,9 +1,36 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import UpdateView, DeleteView
 from car.basa import *
 from car.forms import *
+
+
+def logout(request):
+    try:
+        del request.session['id_user']
+    except KeyError:
+        pass
+    return HttpResponse("<div style='text-align:center; background: #fff;"
+                        "background: -moz-linear-gradient(#fff, #999);"
+                        "background: -webkit-linear-gradient(#fff, #999);"
+                        "background: -o-linear-gradient(#fff, #999);"
+                        "width: 500px;"
+                        "position: relative;margin: 5% auto;"
+                        "padding: 25px 10px 23px 10px;border-radius: 10px;'>"
+                        "Вы вышли из аккаунта:<br>"
+                        "<button onclick="
+                        "window.location.href='/' style='width: 20%;"
+                        "height: 30px;color: #000000;"
+                        " background: #ecb832;font-size: 15px;"
+                        "display: inline-block;justify-content: center;"
+                        "bottom: 70px;margin-top: 20px;margin-right: 20px;'>На главную</button>"
+                        "<button onclick="
+                        "window.location.href='/#enter' style='width: 20%;"
+                        "height: 30px;color: #000000;"
+                        " background: #ecb832;font-size: 15px;"
+                        "display: inline-block;justify-content: center;"
+                        "bottom: 70px;margin-top: 20px;'>Войти</button>")
 
 
 class VisitorPage(View):
@@ -594,6 +621,11 @@ class editSupplier(UpdateView):
     form_class = SupplierForm
 
 
+class editAppointment(UpdateView):
+    model = Appointment
+    template_name = "m_edit.html"
+    form_class = AppointmentForm
+
 class deleteTypeJob(DeleteView):
     model = TypesJob
     template_name = "m_delete.html"
@@ -628,6 +660,12 @@ class deleteSupplier(DeleteView):
     model = Supplier
     template_name = "m_delete.html"
     success_url = '/master.html#m_supplier'
+
+
+class deleteAppointment(DeleteView):
+    model = Appointment
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_appointment'
 
 
 class aeditTypejob(UpdateView):
@@ -666,6 +704,12 @@ class aeditSupplier(UpdateView):
     form_class = SupplierForm
 
 
+class aeditAppointment(UpdateView):
+    model = Appointment
+    template_name = "a_edit.html"
+    form_class = AppointmentForm
+
+
 class adeleteTypeJob(DeleteView):
     model = TypesJob
     template_name = "a_delete.html"
@@ -700,4 +744,11 @@ class adeleteSupplier(DeleteView):
     model = Supplier
     template_name = "a_delete.html"
     success_url = '/admin.html#m_supplier'
+
+
+class adeleteAppointment(DeleteView):
+    model = Appointment
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_appointment'
+
 

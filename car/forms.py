@@ -75,7 +75,7 @@ class SupplierForm(ModelForm):
                 'class': 'supInp-1'
             }),
             "address": TextInput(attrs={
-                'placeholder': "Ваше адрес",
+                'placeholder': "Ваш адрес",
                 'class': 'supInp-2'
             }),
             "telephone": TextInput(attrs={
@@ -106,7 +106,7 @@ class AppointmentForm(ModelForm):
                 'class': 'aInp-3'
             }),
             "data": DateInput(attrs={
-                'placeholder': "Дата осмотра/ремонта",
+                'placeholder': "YYYY-MM-DD",
                 'class': 'aInp-5'
             })
         }
@@ -122,11 +122,11 @@ class MWorkOrderForm(ModelForm):
         car_id = ModelMultipleChoiceField(queryset=Car.objects.all())
         widgets = {
             'date_appeal': TextInput(attrs={
-                'placeholder': "Дата обращения",
+                'placeholder': "YYYY-MM-DD",
                 'class': 'wInp-1'
             }),
             'date_completion': TextInput(attrs={
-                'placeholder': "Дата заверщения",
+                'placeholder': "YYYY-MM-DD",
                 'class': 'wInp-2'
             }),
             'reason_petition': Textarea(attrs={
@@ -142,7 +142,6 @@ class MWorkOrderForm(ModelForm):
                 'class': 'wInp-5'
             }),
             'car': Select(attrs={
-                'placeholder': "Статус заказа",
                 'class': 'wInp-6'
             }),
             'staff': Select(attrs={
@@ -175,7 +174,7 @@ class CarForm(ModelForm):
                 'class': 'cInp-3'
             }),
             'year_issue': TextInput(attrs={
-                'placeholder': "Год выпуска",
+                'placeholder': "Год выпуска YYYY",
                 'class': 'cInp-4'
             }),
             'engine_number': TextInput(attrs={
