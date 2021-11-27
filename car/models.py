@@ -12,9 +12,6 @@ class User(models.Model):
     def __str__(self):
         return self.name_lastname
 
-    def get_absolute_url(self):
-        return f'/master.html#m_user'
-
 
 class Position(models.Model):
     job_title = models.CharField("Наименование", max_length=50)
@@ -32,10 +29,7 @@ class Car(models.Model):
     user = models.ForeignKey(User, verbose_name='Владелец', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.car_model
-
-    def get_absolute_url(self):
-        return f'/master.html#m_car'
+        return self.register_sign
 
 
 class Spare(models.Model):
@@ -43,7 +37,7 @@ class Spare(models.Model):
     remainder = models.IntegerField("Отстаток", max_length=3)
     spare_cost = models.IntegerField("Стоимость", max_length=7)
     guarantee = models.CharField("Гарантия", max_length=200)
-    suppliers = models.ManyToManyField('Supplier')
+    suppliers = models.ManyToManyField('Supplier', verbose_name='Поставщик')
 
     def __str__(self):
         return self.name
@@ -62,8 +56,8 @@ class Service(models.Model):
     def __str__(self):
         return self.name_service
 
-    def get_absolute_url(self):
-        return f'/master.html#m_service'
+    def job_name(self):
+        return self.job.name_work
 
 
 class TypesJob(models.Model):
@@ -77,9 +71,6 @@ class TypesJob(models.Model):
     def __str__(self):
         return self.name_work
 
-    def get_absolute_url(self):
-        return f'/master.html#m_type_job'
-
 
 class Appointment(models.Model):
     name = models.CharField("ФИО", max_length=40)
@@ -89,9 +80,6 @@ class Appointment(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return f'/master.html#m_appointment'
 
 
 class WorkOrder(models.Model):
@@ -105,9 +93,7 @@ class WorkOrder(models.Model):
     car = models.ForeignKey(Car, verbose_name='Автомобиль', on_delete=models.CASCADE)
     staff = models.ForeignKey(User, verbose_name='Мастер', on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointment, verbose_name='Обращение', on_delete=models.CASCADE)
-
-    def get_absolute_url(self):
-        return f'/master.html#m_work_order'
+    services = models.ManyToManyField(Service, verbose_name='Услуги')
 
 
 class Supplier(models.Model):
@@ -117,8 +103,3 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        if (Position == 2):
-            return f'/master.html#m_supplier'
-

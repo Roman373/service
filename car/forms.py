@@ -117,7 +117,7 @@ class MWorkOrderForm(ModelForm):
         fields = ['date_appeal', 'date_completion',
                   'reason_petition', 'total_cost',
                   'order_status', 'car',
-                  'staff', 'appointment']
+                  'staff', 'appointment', "services"]
         model = WorkOrder
         car_id = ModelMultipleChoiceField(queryset=Car.objects.all())
         widgets = {
@@ -148,6 +148,9 @@ class MWorkOrderForm(ModelForm):
                 'class': 'wInp-7'
             }),
             'appointment': Select(attrs={
+                'class': 'wInp-8'
+            }),
+            'services': SelectMultiple(attrs={
                 'class': 'wInp-8'
             }),
         }
@@ -248,7 +251,7 @@ class TypeJobForm(ModelForm):
 class SpareForm(ModelForm):
     class Meta:
         fields = ['name', 'remainder',
-                  'spare_cost', 'guarantee']
+                  'spare_cost', 'guarantee', 'suppliers']
         model = Spare
         widgets = {
             "name": TextInput(attrs={
@@ -265,6 +268,9 @@ class SpareForm(ModelForm):
             }),
             "guarantee": TextInput(attrs={
                 'placeholder': "Гарантия",
+                'class': 'spInp-4'
+            }),
+            "suppliers": SelectMultiple(attrs={
                 'class': 'spInp-4'
             })
         }

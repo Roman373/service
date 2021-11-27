@@ -62,9 +62,10 @@
             <th style="width: 20%">Причина обращения:</th>
             <th>Общая стоимость:</th>
             <th>Статус заказа:</th>
-            <th>Номер автомобиля:</th>
+            <th>Рег. номер автомобиля:</th>
             <th>Мастер:</th>
-            <th>Номер обращения:</th>
+            <th>Обращение:</th>
+            <th>Услуги:</th>
         </tr>
             {% for clientworkorder in clientworkorders %}
                 <tr>
@@ -74,9 +75,10 @@
                 <td>{{ clientworkorder.reason_petition}}</td>
                 <td>{{ clientworkorder.total_cost}}</td>
                 <td>{{ clientworkorder.order_status}}</td>
-                <td>{{ clientworkorder.car_id}}</td>
-                <td>{{ clientworkorder.staff_id}}</td>
-                <td>{{ clientworkorder.appointment_id}}</td>
+                <td>{{ clientworkorder.car}}</td>
+                <td>{{ clientworkorder.staff}}</td>
+                <td>{{ clientworkorder.appointment}}</td>
+                <td>{{ clientworkorder.services.all|join:", "}}</td>
                     <td></td>
                 </tr>
             {% endfor %}
@@ -107,7 +109,7 @@
                     <td>{{ car.body_number }}</td>
                     <td>{{ car.vin }}</td>
                     <td>{{ car.mileage }}</td>
-                    <td>{{ car.user_id }}</td>
+                    <td>{{ car.user }}</td>
                 </tr>
             {% endfor %}
         </table>

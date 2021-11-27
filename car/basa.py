@@ -1,3 +1,5 @@
+from django.db.models import Sum
+
 from car.models import *
 
 
@@ -7,7 +9,7 @@ def autoriz(login, password):
 
 
 def get_c_work_order(user_id):
-    clientworkorders = WorkOrder.objects.filter(id__in=user_id).order_by("-id")
+    clientworkorders = WorkOrder.objects.filter(car__user__id__in=user_id).order_by("-id")
     return clientworkorders
 
 
@@ -16,12 +18,12 @@ def get_workorder():
     return workorders
 
 
-def get_m_car():
-    cars = Car.objects.order_by("-id")
+def get_c_car(user_id):
+    cars = Car.objects.filter(user__id__in=user_id).order_by("-id")
     return cars
 
 
-def get_c_car():
+def get_m_car():
     cars = Car.objects.order_by("-id")
     return cars
 
@@ -34,6 +36,7 @@ def get_appointment(user_id):
 def get_appointmentposition():
     appointments = Appointment.objects.order_by("-id")
     return appointments
+
 
 def get_spare():
     spares = Spare.objects.order_by("-id")
@@ -60,7 +63,7 @@ def get_user_filter(user_id):
     return users
 
 
-def get_master(user_id,position):
+def get_master(user_id, position):
     masters = User.objects.filter(id__in=user_id,position__id=position)
     return masters
 

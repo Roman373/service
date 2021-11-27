@@ -18,9 +18,10 @@
             <th style="width: 20%">Причина обращения:</th>
             <th>Общая стоимость:</th>
             <th>Статус заказа:</th>
-            <th>Номер автомобиля:</th>
-            <th>Номер мастера:</th>
-            <th>Номер обращения:</th>
+            <th>Рег. номер автомобиля:</th>
+            <th>Мастер:</th>
+            <th>Обращение:</th>
+            <th>Услуга:</th>
         </tr>
             {% for workorder in workorders %}
                 <tr>
@@ -30,9 +31,10 @@
                     <td>{{ workorder.reason_petition}}</td>
                     <td>{{ workorder.total_cost}}</td>
                     <td>{{ workorder.order_status}}</td>
-                    <td>{{ workorder.car_id}} </td>
-                    <td>{{ workorder.staff_id}}</td>
-                    <td>{{ workorder.appointment_id}}</td>
+                    <td>{{ workorder.car}} </td>
+                    <td>{{ workorder.staff}}</td>
+                    <td>{{ workorder.appointment}}</td>
+                    <td>{{ workorder.services.all|join:", "}}</td>
                     <td><a href="edit_work_order/{{workorder.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
@@ -118,6 +120,7 @@
             <th>Остаток:</th>
             <th>Стоимость:</th>
             <th>Гарантия:</th>
+            <th>Поставщик:</th>
         </tr>
             {% for spare in spares %}
                 <tr>
@@ -126,6 +129,7 @@
                     <td>{{ spare.remainder}}</td>
                     <td>{{ spare.spare_cost}} </td>
                     <td>{{ spare.guarantee}}</td>
+                    <td>{{ spare.suppliers.all|join:", " }}</td>
                     <td><a href="edit_spare/{{spare.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
@@ -173,14 +177,14 @@
             <th>Номер услуги:</th>
             <th>Количество запасных частей:</th>
             <th>Типы работ:</th>
-            <th>Номер запчасти:</th>
+            <th>Наименование запчасти:</th>
         </tr>
             {% for service in services %}
                 <tr>
                     <td>{{ service.id }}</td>
                     <td>{{ service.number_spare_parts }}</td>
-                    <td>{{ service.job_id}}</td>
-                    <td>{{ service.spare_id}}</td>
+                    <td>{{ service.job}}</td>
+                    <td>{{ service.spare}}</td>
                     <td>
                         <a href="edit_service/{{service.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">

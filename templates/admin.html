@@ -18,9 +18,10 @@
             <th style="width: 20%">Причина обращения:</th>
             <th>Общая стоимость:</th>
             <th>Статус заказа:</th>
-            <th>Номер автомобиля:</th>
-            <th>Номер мастера:</th>
-            <th>Номер обращения:</th>
+            <th>Рег. номер автомобиля:</th>
+            <th>Мастер:</th>
+            <th>Обращение:</th>
+            <th>Услуга:</th>
         </tr>
             {% for workorder in workorders %}
                 <tr>
@@ -30,9 +31,10 @@
                     <td>{{ workorder.reason_petition}}</td>
                     <td>{{ workorder.total_cost}}</td>
                     <td>{{ workorder.order_status}}</td>
-                    <td>{{ workorder.car_id}} </td>
-                    <td>{{ workorder.staff_id}}</td>
-                    <td>{{ workorder.appointment_id}}</td>
+                    <td>{{ workorder.car}} </td>
+                    <td>{{ workorder.staff}}</td>
+                    <td>{{ workorder.appointment}}</td>
+                    <td>{{ workorder.services.all|join:", "}}</td>
                     <td><a href="aedit_work_order/{{workorder.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
@@ -99,7 +101,7 @@
                     <td>{{ car.body_number }}</td>
                     <td>{{ car.vin }}</td>
                     <td>{{ car.mileage }}</td>
-                    <td>{{ car.user_id }}</td>
+                    <td>{{ car.user }}</td>
                     <td><a href="aedit_car/{{car.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
@@ -121,6 +123,7 @@
             <th>Остаток:</th>
             <th>Стоимость:</th>
             <th>Гарантия:</th>
+            <th>Поставщик:</th>
         </tr>
             {% for spare in spares %}
                 <tr>
@@ -129,6 +132,7 @@
                     <td>{{ spare.remainder}}</td>
                     <td>{{ spare.spare_cost}} </td>
                     <td>{{ spare.guarantee}}</td>
+                    <td>{{ spare.suppliers.all|join:", " }}</td>
                     <td><a href="aedit_spare/{{spare.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
@@ -176,14 +180,14 @@
             <th>Номер услуги:</th>
             <th>Количество запасных частей:</th>
             <th>Типы работ:</th>
-            <th>Номер запчасти:</th>
+            <th>Наименование запчасти:</th>
         </tr>
             {% for service in services %}
                 <tr>
                     <td>{{ service.id }}</td>
                     <td>{{ service.number_spare_parts }}</td>
-                    <td>{{ service.job_id}}</td>
-                    <td>{{ service.spare_id}}</td>
+                    <td>{{ service.job}}</td>
+                    <td>{{ service.spare}}</td>
                     <td>
                         <a href="aedit_service/{{service.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
@@ -237,9 +241,9 @@
             <th>Телефон:</th>
             <th>E-mail:</th>
             <th>Должность:</th>
-        </tr>
+        </tr>{% for user in admin_masters %}
                 <tr>
-                    {% for user in admin_masters %}
+
                     <td>{{ user.id}}</td>
                     <td>{{ user.login}}</td>
                     <td>{{ user.password}}</td>
@@ -247,12 +251,12 @@
                     <td>{{ user.telephone}}</td>
                     <td>{{ user.e_mail}}</td>
                     <td>{{ user.position_id}}</td>
-                        {% endfor %}
+
                     <td><a href="aedit_master/{{master.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                         </a>
                     </td>
-                </tr>
+                </tr>{% endfor %}
         </table>
     </div>
 <div id="m_appointment" class="dialog">
@@ -271,12 +275,12 @@
                         <td>{{ appointment.telephone}}</td>
                         <td>{{ appointment.car}}</td>
                         <td>{{ appointment.data | date:"d.m.Y"}}</td>
-                        <td><a href="edit_appointment/{{appointment.id}}/" title="Изменить">
+                        <td><a href="aedit_appointment/{{appointment.id}}/" title="Изменить">
                             <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
                             </a>
                         </td>
                         <td>
-                            <a href="delete_appointment/{{appointment.id}}/" title="Удалить">
+                            <a href="adelete_appointment/{{appointment.id}}/" title="Удалить">
                             <img style="width:25px; height:20px" src="static/css/images/delete.png">
                             </a>
                         </td>

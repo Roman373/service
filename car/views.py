@@ -138,10 +138,10 @@ class VisitorPage(View):
 class ClientPage(View):
     def get(self, request):
         users = get_user_filter(request.session["id_user"])
-        clients = get_master(users,1)
+        clients = get_master(users, 1)
         clientworkorders = get_c_work_order(users)
         appointments = get_appointment(users)
-        cars = get_c_car()
+        cars = get_c_car(users)
         context = {
             'clientworkorders': clientworkorders,
             "appointments": appointments,
@@ -215,7 +215,6 @@ class MasterPage(View):
         services = get_service()
         type_jobs = get_type_job()
         masters = get_master(users, 2)
-        ccars = get_c_car()
         appointments = get_appointmentposition()
         context = {
             "appointments":appointments,
@@ -227,7 +226,6 @@ class MasterPage(View):
             'supplierform': SupplierForm,
             'workorders': workorders,
             'cars': cars,
-            "ccars": ccars,
             "spares": spares,
             "suppliers": suppliers,
             'masters': masters,
@@ -395,7 +393,6 @@ class AdminPage(View):
         admin = get_master(users, 3)
         admin_masters = get_masters_position(2)
         appointments = get_appointmentposition()
-        ccars = get_c_car()
         context = {
             "appointments":appointments,
             "admin_masters": admin_masters,
@@ -407,7 +404,6 @@ class AdminPage(View):
             'supplierform': SupplierForm,
             'workorders': workorders,
             'cars': cars,
-            "ccars": ccars,
             "spares": spares,
             "suppliers": suppliers,
             'admin': admin,
@@ -585,46 +581,55 @@ class AdminPage(View):
             }
             return render(request, 'admin.html', context=context)
 
+
 class editTypejob(UpdateView):
     model = TypesJob
     template_name = "m_edit.html"
     form_class = TypeJobUpdateForm
+    success_url = '/master.html#m_type_job'
 
 
 class editService(UpdateView):
     model = Service
     template_name = "m_edit.html"
     form_class = ServiceForm
+    success_url = '/master.html#m_service'
 
 
 class editWorkOrder(UpdateView):
     model = WorkOrder
     template_name = "m_edit.html"
     form_class = MWorkOrderForm
+    success_url = '/master.html#m_work_order'
 
 
 class editCar(UpdateView):
     model = Car
     template_name = "m_edit.html"
     form_class = CarForm
+    success_url = '/master.html#m_car'
 
 
 class editSpare(UpdateView):
     model = Spare
     template_name = "m_edit.html"
     form_class = SpareForm
+    success_url = '/master.html#m_spare'
 
 
 class editSupplier(UpdateView):
     model = Supplier
     template_name = "m_edit.html"
     form_class = SupplierForm
+    success_url = '/master.html#m_supplier'
 
 
 class editAppointment(UpdateView):
     model = Appointment
     template_name = "m_edit.html"
     form_class = AppointmentForm
+    success_url = '/master.html#m_appointment'
+
 
 class deleteTypeJob(DeleteView):
     model = TypesJob
@@ -672,42 +677,49 @@ class aeditTypejob(UpdateView):
     model = TypesJob
     template_name = "a_edit.html"
     form_class = TypeJobUpdateForm
+    success_url = '/admin.html#m_type_job'
 
 
 class aeditService(UpdateView):
     model = Service
     template_name = "a_edit.html"
     form_class = ServiceForm
+    success_url = '/admin.html#m_service'
 
 
 class aeditWorkOrder(UpdateView):
     model = WorkOrder
     template_name = "a_edit.html"
     form_class = MWorkOrderForm
+    success_url = '/admin.html#m_work_order'
 
 
 class aeditCar(UpdateView):
     model = Car
     template_name = "a_edit.html"
     form_class = CarForm
+    success_url = '/admin.html#m_car'
 
 
 class aeditSpare(UpdateView):
     model = Spare
     template_name = "a_edit.html"
     form_class = SpareForm
+    success_url = '/admin.html#m_spare'
 
 
 class aeditSupplier(UpdateView):
     model = Supplier
     template_name = "a_edit.html"
     form_class = SupplierForm
+    success_url = '/admin.html#m_supplier'
 
 
 class aeditAppointment(UpdateView):
     model = Appointment
     template_name = "a_edit.html"
     form_class = AppointmentForm
+    success_url = '/admin.html#m_appointment'
 
 
 class adeleteTypeJob(DeleteView):
