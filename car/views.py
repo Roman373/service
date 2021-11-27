@@ -392,6 +392,7 @@ class AdminPage(View):
         type_jobs = get_type_job()
         admin = get_master(users, 3)
         admin_masters = get_masters_position(2)
+        admin_users = get_users_position(1)
         appointments = get_appointmentposition()
         context = {
             "appointments":appointments,
@@ -404,6 +405,7 @@ class AdminPage(View):
             'supplierform': SupplierForm,
             'workorders': workorders,
             'cars': cars,
+            "admin_users": admin_users,
             "spares": spares,
             "suppliers": suppliers,
             'admin': admin,
@@ -631,6 +633,13 @@ class editAppointment(UpdateView):
     success_url = '/master.html#m_appointment'
 
 
+class editMaster(UpdateView):
+    model = User
+    template_name = "m_edit.html"
+    form_class = MasterForm
+    success_url = '/master.html#m_master'
+
+
 class deleteTypeJob(DeleteView):
     model = TypesJob
     template_name = "m_delete.html"
@@ -671,6 +680,12 @@ class deleteAppointment(DeleteView):
     model = Appointment
     template_name = "m_delete.html"
     success_url = '/master.html#m_appointment'
+
+
+class deleteMaster(DeleteView):
+    model = User
+    template_name = "m_delete.html"
+    success_url = '/master.html#m_master'
 
 
 class aeditTypejob(UpdateView):
@@ -722,6 +737,20 @@ class aeditAppointment(UpdateView):
     success_url = '/admin.html#m_appointment'
 
 
+class aeditMaster(UpdateView):
+    model = User
+    template_name = "a_edit.html"
+    form_class = MasterForm
+    success_url = '/admin.html#m_master'
+
+
+class aeditUser(UpdateView):
+    model = User
+    template_name = "a_edit.html"
+    form_class = MasterForm
+    success_url = '/admin.html#m_user_admin'
+
+
 class adeleteTypeJob(DeleteView):
     model = TypesJob
     template_name = "a_delete.html"
@@ -764,3 +793,13 @@ class adeleteAppointment(DeleteView):
     success_url = '/admin.html#m_appointment'
 
 
+class adeleteMaster(DeleteView):
+    model = User
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_master'
+
+
+class adeleteUser(DeleteView):
+    model = User
+    template_name = "a_delete.html"
+    success_url = '/admin.html#m_user_admin'

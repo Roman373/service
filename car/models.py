@@ -49,7 +49,7 @@ class Spare(models.Model):
 
 class Service(models.Model):
     name_service = models.CharField("Наименование", max_length=40)
-    number_spare_parts = models.IntegerField("Количество запасных частей", max_length=4)
+    number_spare_parts = models.IntegerField("Кол. запасных частей", max_length=4)
     job = models.ForeignKey('TypesJob', verbose_name='Тип работы', on_delete=models.CASCADE)
     spare = models.ForeignKey(Spare, verbose_name='Запчасти', on_delete=models.CASCADE)
 

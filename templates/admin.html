@@ -69,10 +69,6 @@
                     <td>{{ user.e_mail}}</td>
                     <td>{{ user.position_id}}</td>
                         {% endfor %}
-                    <td><a href="aedit_master/{{master.id}}/" title="Изменить">
-                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
-                        </a>
-                    </td>
                 </tr>
         </table>
     </div>
@@ -240,7 +236,6 @@
             <th>ФИО:</th>
             <th>Телефон:</th>
             <th>E-mail:</th>
-            <th>Должность:</th>
         </tr>{% for user in admin_masters %}
                 <tr>
 
@@ -250,10 +245,43 @@
                     <td>{{ user.name_lastname}}</td>
                     <td>{{ user.telephone}}</td>
                     <td>{{ user.e_mail}}</td>
-                    <td>{{ user.position_id}}</td>
 
-                    <td><a href="aedit_master/{{master.id}}/" title="Изменить">
+                    <td><a href="aedit_master/{{user.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="adelete_master/{{user.id}}/" title="Удалить">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
+                        </a>
+                    </td>
+                </tr>{% endfor %}
+        </table>
+    </div>
+ <div id="m_user_admin" class="dialog">
+         <table class="m_table">
+        <tr>
+            <th>Номер:</th>
+            <th>Логин:</th>
+            <th>Пароль:</th>
+            <th>ФИО:</th>
+            <th>Телефон:</th>
+            <th>E-mail:</th>
+        </tr>{% for user in admin_users %}
+                <tr>
+                    <td>{{ user.id}}</td>
+                    <td>{{ user.login}}</td>
+                    <td>{{ user.password}}</td>
+                    <td>{{ user.name_lastname}}</td>
+                    <td>{{ user.telephone}}</td>
+                    <td>{{ user.e_mail}}</td>
+                    <td><a href="aedit_user/{{user.id}}/" title="Изменить">
+                        <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="adelete_user/{{user.id}}/" title="Удалить">
+                        <img style="width:25px; height:20px" src="static/css/images/delete.png">
                         </a>
                     </td>
                 </tr>{% endfor %}
@@ -310,6 +338,9 @@
         </li>
           <li class="btton">
             <a href="#m_master">Мастера</a>
+        </li>
+          <li class="btton">
+            <a href="#m_user_admin">Пользователи</a>
         </li>
         <li class="btton">
             <a href="#m_car">Автомобили</a>

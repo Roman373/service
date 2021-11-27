@@ -71,3 +71,8 @@ def get_master(user_id, position):
 def get_masters_position(position):
     masters = User.objects.filter(position__id=position)
     return masters
+
+
+def get_users_position(position):
+    masters = User.objects.filter(position__id=position)
+    return masters
