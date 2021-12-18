@@ -19,18 +19,20 @@
                 Екатеринбург, ул.Крауля 77А</a>
                     &#9993;<a href="mailto:roman.izibaeff2017@yandex.ru"> roman.izibaeff2017@yandex.ru</a></span>
             </div>
-            <button onclick="window.location.href='#login'" class="loginBtn">Регистрация</button>
-            <div id="login" class="modalDialog">
-                <div>
-                    <a href="#close" title="Закрыть" class="close">X</a>
-                    {% include "login.html" %}
+            <div class="btton-login">
+                <button onclick="window.location.href='#login'" class="loginBtn">Регистрация</button>
+                <div id="login" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Закрыть" class="close">X</a>
+                        {% include "login.html" %}
+                    </div>
                 </div>
-            </div>
-            <button onclick="window.location.href='#enter'" class="enterBtn">Вход</button>
-            <div id="enter" class="modalDialog">
-                <div>
-                    <a href="#close" title="Закрыть" class="close">X</a>
-                    {% include "enter.html" %}
+                <button onclick="window.location.href='#enter'" class="enterBtn">Вход</button>
+                <div id="enter" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Закрыть" class="close">X</a>
+                        {% include "enter.html" %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,13 +65,10 @@
         </div>
     </div>
     <p id="serv"><strong>Наши услуги</strong></p>
-    <div class="service">
-        <p class="serv1">Кузовной ремонт</p>
-        <p class="serv1">Техническое обслуживание</p>
-        <p class="serv1">Уход за автомобилем</p>
-    </div>
+
     <div class="servicep">
         <ul class="ul">
+            <li class="serv1">Кузовной ремонт</li><br>
             <li>Локальная покраска кузовных элементов - для максимального сохранения заводского лакокрасочного покрытия</li>
             <li>Покраска кузовных элементов целиком - при повреждении более 30 % площади детали</li>
             <li>Восстановление геометрии кузова и отдельных кузовных элементов</li>
@@ -78,6 +77,7 @@
             <li>Замена элементов кузова, регулировка зазоров</li>
         </ul>
         <ul class="ul">
+            <li class="serv1">Техническое обслуживание</li><br>
             <li>Замена технических жидкостей и фильтрующих элементов</li>
             <li>Диагностик и ремонт ходовой части </li>
             <li>Диагностика и ремонт систем рулевого управления</li>
@@ -89,6 +89,7 @@
             <li>Установка доп оборудования</li>
         </ul>
         <ul class="ul">
+            <li class="serv1">Уход за автомобилем</li><br>
             <li>Полировка кузова</li>
             <li>Полировка фар</li>
             <li>Выправление вмятин без покраски (технология PDR)</li>
