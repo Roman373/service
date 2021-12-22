@@ -20,7 +20,6 @@
             <th>Статус заказа:</th>
             <th>Рег. номер автомобиля:</th>
             <th>Мастер:</th>
-            <th>Обращение:</th>
             <th>Услуга:</th>
         </tr>
             {% for workorder in workorders %}
@@ -33,7 +32,6 @@
                     <td>{{ workorder.order_status}}</td>
                     <td>{{ workorder.car}} </td>
                     <td>{{ workorder.staff}}</td>
-                    <td>{{ workorder.appointment}}</td>
                     <td>{{ workorder.services.all|join:", "}}</td>
                     <td><a href="aedit_work_order/{{workorder.id}}/" title="Изменить">
                         <img style="width:25px; height:20px" src="static/css/images/icon_reddit.jpg">

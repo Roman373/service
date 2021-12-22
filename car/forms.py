@@ -101,8 +101,8 @@ class AppointmentForm(ModelForm):
                 'value': "+7",
                 'class': 'aInp-2'
             }),
-            "car": TextInput(attrs={
-                'placeholder': "Ваш автомобиль",
+            "car": Select(attrs={
+                'placeholder': "Номер автомобиля",
                 'class': 'aInp-3'
             }),
             "data": DateInput(attrs={
@@ -117,7 +117,7 @@ class MWorkOrderForm(ModelForm):
         fields = ['date_appeal', 'date_completion',
                   'reason_petition', 'total_cost',
                   'order_status', 'car',
-                  'staff', 'appointment', "services"]
+                  'staff', "services"]
         model = WorkOrder
         car_id = ModelMultipleChoiceField(queryset=Car.objects.all())
         widgets = {
@@ -146,9 +146,6 @@ class MWorkOrderForm(ModelForm):
             }),
             'staff': Select(attrs={
                 'class': 'wInp-7'
-            }),
-            'appointment': Select(attrs={
-                'class': 'wInp-8'
             }),
             'services': SelectMultiple(attrs={
                 'class': 'wInp-8'
@@ -197,7 +194,6 @@ class CarForm(ModelForm):
                 'class': 'cInp-8'
             }),
             'user': Select(attrs={
-                'placeholder': "Расстояние в км",
                 'class': 'cInp-9'
             })
         }
@@ -205,19 +201,21 @@ class CarForm(ModelForm):
 
 class ServiceForm(ModelForm):
     class Meta:
-        fields = ['number_spare_parts', 'job', 'spare']
+        fields = ["name_service", 'number_spare_parts', 'job', 'spare']
         model = Service
         widgets = {
+            "name_service": TextInput(attrs={
+                'placeholder': "Наименование",
+                'class': 'sInp-1'
+            }),
             "number_spare_parts": TextInput(attrs={
                 'placeholder': "кол.зап.ч.",
                 'class': 'sInp-1'
             }),
             "job": Select(attrs={
-                'placeholder': "кол.зап.ч.",
                 'class': 'sInp-2'
             }),
             "spare": Select(attrs={
-                'placeholder': "кол.зап.ч.",
                 'class': 'sInp-2'
             }),
         }
@@ -304,7 +302,7 @@ class TypeJobUpdateForm(ModelForm):
 class MasterForm(ModelForm):
     class Meta:
         model = User
-        fields = ['name_lastname', 'login', 'password', "telephone", 'e_mail',"position"]
+        fields = ['name_lastname', 'login', 'password', "telephone", 'e_mail', "position"]
         widgets = {
             "name_lastname": TextInput(attrs={
                 'placeholder': "Ваше имя и фамилия",

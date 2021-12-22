@@ -19,7 +19,7 @@ def get_workorder():
 
 
 def get_c_car(user_id):
-    cars = Car.objects.filter(user__id__in=user_id).order_by("-id")
+    cars = Car.objects.filter(user_id__in=user_id).order_by("-id")
     return cars
 
 
@@ -29,7 +29,7 @@ def get_m_car():
 
 
 def get_appointment(user_id):
-    appointments = Appointment.objects.filter(workorder__car__user__id__in=user_id)
+    appointments = Appointment.objects.filter(car__user_id__in=user_id)
     return appointments
 
 

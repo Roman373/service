@@ -75,7 +75,7 @@ class TypesJob(models.Model):
 class Appointment(models.Model):
     name = models.CharField("ФИО", max_length=40)
     telephone = models.CharField("Телефон", max_length=11)
-    car = models.CharField("Автомобиль", max_length=40)
+    car = models.ForeignKey(Car, verbose_name='Рег. номер авто', on_delete=models.CASCADE)
     data = models.DateField("Дата осмотра")
 
     def __str__(self):
@@ -92,7 +92,6 @@ class WorkOrder(models.Model):
     order_status = models.CharField("Статус", max_length=20)
     car = models.ForeignKey(Car, verbose_name='Автомобиль', on_delete=models.CASCADE)
     staff = models.ForeignKey(User, verbose_name='Мастер', on_delete=models.CASCADE)
-    appointment = models.ForeignKey(Appointment, verbose_name='Обращение', on_delete=models.CASCADE)
     services = models.ManyToManyField(Service, verbose_name='Услуги')
 
 

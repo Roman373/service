@@ -22,19 +22,17 @@
 }
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,
 .wInp-5,.wInp-6,.wInp-7,.wInp-8,
-aInp-1,aInp-2,aInp-3,aInp-4,aInp-5,
+aInp-1,aInp-2,aInp-3,aInp-5,
 .cInp-1,.cInp-2,.cInp-3,
 .cInp-4,.cInp-5,.cInp-6,.cInp-7,
 .cInp-8,.cInp-9{
   border: none;
-  padding: 11px;
-  margin-left: 3px;
+  padding: 2px;
+  height:20px;
+  display:flex;
+  justify--content: left;
   font-size: 15px;
-  display: flex;
   background-color: #e3e3e3;
-  float: left;
-  height:5px;
-  vertical-align: center;
 }
 
 .cInp-1{
@@ -230,12 +228,11 @@ label{
 .wInp-1,.wInp-2,.wInp-3,.wInp-4,
 .wInp-5,.wInp-6,.wInp-7,.wInp-8{
   border: none;
-  padding: 9px;
-  height:7px;
-  margin-top:5px;
-  margin-left: 3px;
+  padding: 2px;
+  height:20px;
+  display:flex;
+  justify--content: left;
   font-size: 15px;
-  display: flex;
   background-color: #e3e3e3;
 }
 .aInp-1{

@@ -1,12 +1,11 @@
 .aInp-5,.aInp-1,.aInp-2,.aInp-3{
   border: none;
-  padding: 7px;
-  margin-left: 3px;
+  padding: 2px;
+  height:20px;
+  display:flex;
+  justify--content: left;
   font-size: 15px;
-  display: flex;
   background-color: #e3e3e3;
-  float: left;
-  height:7px;
 }
 .aInp-1{
   width: 91%;

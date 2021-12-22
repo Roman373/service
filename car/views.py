@@ -161,13 +161,13 @@ class ClientPage(View):
                 appointmentform = AppointmentForm(request.POST)
                 if appointmentform.is_valid():
                     appointmentform.save()
-                    return HttpResponseRedirect("")
+                    return HttpResponseRedirect("/client.html#c_appointment")
                 else:
                     errorappoint = "Ошибка формы"
             context = {
-                'appointmentform': appointmentform,
                 'errorappoint': errorappoint,
                 'mworkorderform': MWorkOrderForm,
+                "carform": CarForm,
             }
             return render(request, 'client.html', context=context)
 

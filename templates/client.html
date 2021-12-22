@@ -64,7 +64,6 @@
             <th>Статус заказа:</th>
             <th>Рег. номер автомобиля:</th>
             <th>Мастер:</th>
-            <th>Обращение:</th>
             <th>Услуги:</th>
         </tr>
             {% for clientworkorder in clientworkorders %}
@@ -77,7 +76,6 @@
                 <td>{{ clientworkorder.order_status}}</td>
                 <td>{{ clientworkorder.car}}</td>
                 <td>{{ clientworkorder.staff}}</td>
-                <td>{{ clientworkorder.appointment}}</td>
                 <td>{{ clientworkorder.services.all|join:", "}}</td>
                     <td></td>
                 </tr>
